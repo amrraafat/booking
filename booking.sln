@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "booking", "booking\booking.csproj", "{0DAA795F-8E8C-4601-BC58-223023C9A266}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domin", "Domin\Domin.csproj", "{4A4877CC-F78E-406E-9E18-493F075415BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infarstuructre", "Infarstuructre\Infarstuructre.csproj", "{82896DF7-FF05-4582-9589-66B0B114D13C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0DAA795F-8E8C-4601-BC58-223023C9A266}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DAA795F-8E8C-4601-BC58-223023C9A266}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DAA795F-8E8C-4601-BC58-223023C9A266}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DAA795F-8E8C-4601-BC58-223023C9A266}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A4877CC-F78E-406E-9E18-493F075415BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A4877CC-F78E-406E-9E18-493F075415BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A4877CC-F78E-406E-9E18-493F075415BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A4877CC-F78E-406E-9E18-493F075415BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82896DF7-FF05-4582-9589-66B0B114D13C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82896DF7-FF05-4582-9589-66B0B114D13C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82896DF7-FF05-4582-9589-66B0B114D13C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82896DF7-FF05-4582-9589-66B0B114D13C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D3EE3AFF-3BDE-40A6-9FD2-96DFEAEF901A}
+	EndGlobalSection
+EndGlobal
