@@ -13,16 +13,16 @@
 
   <ItemGroup>
     <Compile Update="Resource\ResourceData.Designer.cs">
-      <DependentUpon>ResourceData.resx</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
+      <DependentUpon>ResourceData.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Update="Resource\ResourceData.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourceData.Designer.cs</LastGenOutput>
-      <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
   </ItemGroup>
 

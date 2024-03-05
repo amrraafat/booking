@@ -22,7 +22,7 @@ namespace Domin.Resource {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ResourceData {
+    public class ResourceData {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Domin.Resource {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Domin.Resource.ResourceData", typeof(ResourceData).Assembly);
@@ -51,12 +51,147 @@ namespace Domin.Resource {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to يجب ادخال اسم المؤلف.
+        /// </summary>
+        public static string AuthorName {
+            get {
+                return ResourceManager.GetString("AuthorName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to يجب ادخال اسم الكتاب.
+        /// </summary>
+        public static string BookName {
+            get {
+                return ResourceManager.GetString("BookName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to اعد كتابة كلمة المرور.
+        /// </summary>
+        public static string ComparePassword {
+            get {
+                return ResourceManager.GetString("ComparePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to كلمة المرور غير متطابقة.
+        /// </summary>
+        public static string ComparePasswordError {
+            get {
+                return ResourceManager.GetString("ComparePasswordError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to يجب ادخال اسم الفئة.
+        /// </summary>
+        public static string CtaegoryName {
+            get {
+                return ResourceManager.GetString("CtaegoryName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to يجب الا يزيد عدد حروف الكلمة عن عشرون حرف.
+        /// </summary>
+        public static string MaxLength {
+            get {
+                return ResourceManager.GetString("MaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to يجب الا يزيد عدد حروف الكلمة عن عشرون حرف.
+        /// </summary>
+        public static string MaxLengthPassword {
+            get {
+                return ResourceManager.GetString("MaxLengthPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to يجب الا يقل عدد حروف الكلمة عن ثلاث حروف.
+        /// </summary>
+        public static string MinLength {
+            get {
+                return ResourceManager.GetString("MinLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to يجب الا يقل عدد حروف الكلمة عن خمس ارقام.
+        /// </summary>
+        public static string MinLengthPassword {
+            get {
+                return ResourceManager.GetString("MinLengthPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to يجب ادخال الرقم السري.
+        /// </summary>
+        public static string Password {
+            get {
+                return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to يجب ادخال البريد الالكترونى.
+        /// </summary>
+        public static string RegisterEmail {
+            get {
+                return ResourceManager.GetString("RegisterEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to يجب ادخال البريد الالكتروني بشكل صحيح.
+        /// </summary>
+        public static string RegisterEmailError {
+            get {
+                return ResourceManager.GetString("RegisterEmailError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to يجب ادخال اسم المستخدم.
+        /// </summary>
+        public static string RegisterName {
+            get {
+                return ResourceManager.GetString("RegisterName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to يجب ادخال اسم المجموعة.
+        /// </summary>
+        public static string RoleName {
+            get {
+                return ResourceManager.GetString("RoleName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to يجب ادخال اسم الفئة الفرعية.
+        /// </summary>
+        public static string SubCategoryName {
+            get {
+                return ResourceManager.GetString("SubCategoryName", resourceCulture);
             }
         }
     }
