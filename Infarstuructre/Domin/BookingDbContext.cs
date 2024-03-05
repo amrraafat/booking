@@ -18,5 +18,9 @@ namespace Infarstuructre.Domin
 
         }
         public DbSet<VwUser> VwUsers { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Package> Packages { get; set; }
+        public DbSet<Hotel> Hotels { get; set; }
     }
 }
