@@ -209,6 +209,7 @@
 <!------------------------End change password popup form -------------------------->
 @section Script
 {
+
     @if (!string.IsNullOrEmpty(Context.Session.GetString("msgType")))
     {
         if (Context.Session.GetString("msgType") == "success")

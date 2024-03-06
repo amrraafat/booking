@@ -15,20 +15,23 @@ using System.Threading.Tasks;
 namespace booking.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class AccountsController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly BookingDbContext _context;
 
-        public AccountsController(RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> UserManager , BookingDbContext context)
+        public AccountsController(RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> UserManager , SignInManager<ApplicationUser> signInManager, BookingDbContext context)
         {
             _roleManager = roleManager;
             _userManager = UserManager;
+            _signInManager = signInManager;
             _context = context;
         }
 
-
+        [Authorize(Roles = "superadmin")]
         public IActionResult Roles()
         {
            return View(new RoleViweModel
@@ -40,6 +43,7 @@ namespace booking.Areas.Admin.Controllers
 
         }
         //-------------------------------------------------------------------------- calling Users to Viwe
+        [Authorize(Roles = "superadmin")]
         public IActionResult Register()
         {
             var model = new RegisterViweModel
@@ -58,6 +62,7 @@ namespace booking.Areas.Admin.Controllers
 
         //--------------------------------------------------------------------------create New Users
         [HttpPost]
+        
         public async Task <IActionResult> Register( RegisterViweModel model)
         {
             if (ModelState.IsValid)
@@ -66,7 +71,7 @@ namespace booking.Areas.Admin.Controllers
                 if (file.Count()>0)
                 {
                     string ImageName = Guid.NewGuid().ToString() + Path.GetExtension(file[0].FileName);
-                    var fileStream = new FileStream(Path.Combine(@"wwwroot/", Helper.PathSaveImageUser, ImageName), FileMode.Create);
+                    var fileStream = new FileStream(Path.Combine(@"wwwroot/", Helper.PathSaveImageuser, ImageName), FileMode.Create);
                     file[0].CopyTo(fileStream);
                     model.NewRegister.ImgeUser = ImageName;
 
@@ -175,7 +180,7 @@ namespace booking.Areas.Admin.Controllers
             }
             return RedirectToAction("Register", "Accounts");
         }
-
+        [Authorize(Roles = "superadmin")]
         public async Task<IActionResult> DeleteUser(string Id)
         {
             var User = _userManager.Users.FirstOrDefault(x => x.Id == Id);
@@ -196,6 +201,7 @@ namespace booking.Areas.Admin.Controllers
 
         
         [HttpPost]
+        
         public async Task<IActionResult> Roles(RoleViweModel model)
         {
             if (ModelState.IsValid)
@@ -266,18 +272,18 @@ namespace booking.Areas.Admin.Controllers
            
             return View();
         }
-        public async Task<IActionResult> DeleteRoles(string Id)
+      
+        public async Task<IActionResult> DeleteRole(string Id)
         {
-
             var role = _roleManager.Roles.FirstOrDefault(x => x.Id == Id);
             if ((await _roleManager.DeleteAsync(role)).Succeeded)
-            {
-                return RedirectToAction("Roles");
-            }
+                return RedirectToAction(nameof(Roles));
+
             return RedirectToAction("Roles");
         }
 
 
+        [Authorize(Roles = "superadmin")]
         public async Task<IActionResult> UpdateRole(string Id, string Name)
         {
             var role = _roleManager.Roles.FirstOrDefault(x => x.Id == Id);
@@ -291,39 +297,43 @@ namespace booking.Areas.Admin.Controllers
 
 
 
+        [AllowAnonymous]
         public IActionResult Login()
         {
             return View();
         }
+
         [HttpPost]
-        public async Task <IActionResult> Login(RegisterViweModel model)
+        [ValidateAntiForgeryToken]
+        [AllowAnonymous]
+        public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var result =await _userManager.FindByIdAsync(model.changePassword.Id);
-                if (result!= null)
-                {
-                  var deleteid =  await _userManager.RemovePasswordAsync(result);
-                    if (deleteid.Succeeded) {
-                        var NwePassword =await _userManager.AddPasswordAsync(result, model.changePassword.Password);
-                        if (NwePassword.Succeeded)
-                        {
-                            HttpContext.Session.SetString("msgType", "success");
-                            HttpContext.Session.SetString("titel", " تم الحفظ");
-                            HttpContext.Session.SetString("msg", "تم مجموعة المستخدم ");
-                        }
-                        else
-                        {
-                            HttpContext.Session.SetString("msgType", " erorr");
-                            HttpContext.Session.SetString("titel", "لم يتم الحفظ");
-                            HttpContext.Session.SetString("msg", "لم يتم مجموعة المستخدم ");
-                        }
-                    }
-                    return RedirectToAction("Register", "Accounts");
-
-                }
+                var Result = await _signInManager.PasswordSignInAsync(model.Eamil,
+                    model.Password, model.RememberMy, false);
+                if (Result.Succeeded)
+                    return RedirectToAction("Index", "Home");
+                else
+                    ViewBag.ErrorLogin = false;
             }
-            return RedirectToAction("Register", "Accounts");
+            return View(model);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction(nameof(Login));
+        }
+
+        private void SessionMsg(string MsgType, string Title, string Msg)
+        {
+            HttpContext.Session.SetString(Helper.MsgType, MsgType);
+            HttpContext.Session.SetString(Helper.Title, Title);
+            HttpContext.Session.SetString(Helper.Msg, Msg);
         }
     }
 }

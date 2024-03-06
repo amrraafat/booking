@@ -15,7 +15,7 @@ namespace booking.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction( "Accounts", "Admin");
         }
 
         public IActionResult Privacy()
