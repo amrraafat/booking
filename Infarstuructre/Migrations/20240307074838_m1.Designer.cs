@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infarstuructre.Migrations
 {
     [DbContext(typeof(BookingDbContext))]
-    [Migration("20240305185101_app")]
-    partial class app
+    [Migration("20240307074838_m1")]
+    partial class m1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,9 +47,8 @@ namespace Infarstuructre.Migrations
                     b.Property<int>("NationalId")
                         .HasColumnType("int");
 
-                    b.Property<string>("NationalIdImage")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte[]>("NationalIdImage")
+                        .HasColumnType("varbinary(max)");
 
                     b.HasKey("CustomerId");
 
@@ -64,9 +63,9 @@ namespace Infarstuructre.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HotelId"));
 
-                    b.Property<string>("HotelImage")
+                    b.Property<byte[]>("HotelImage")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("HotelLocation")
                         .IsRequired()
@@ -161,34 +160,6 @@ namespace Infarstuructre.Migrations
                     b.HasKey("ReservationId");
 
                     b.ToTable("Reservations");
-                });
-
-            modelBuilder.Entity("Domin.Entity.VwUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<bool>("ActiveUser")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImageUser")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Role")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("VwUsers");
                 });
 
             modelBuilder.Entity("Infarstuructre.ViewModel.ApplicationUser", b =>

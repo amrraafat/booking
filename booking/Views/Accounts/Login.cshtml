@@ -36,7 +36,11 @@
                 <form asp-action="Login" asp-controller="Accounts" method="post">
                     @if(ViewBag.ErrorLogin == false)
                         {<span class="alert alert-danger w-100">
-                            @ResourceWeb.lbMsgErrorLogin</span><br /> <br />}
+                            @Localizer["lbMsgErrorLogin"]
+                        </span>
+
+                        <br /> <br />
+                    }
 
                     <div class="input-group mb-3">
                         <input type="email" class="form-control" asp-for="Eamil" placeholder="Email">

@@ -1,32 +1,37 @@
-﻿using booking.Resource;
+﻿
 using Domin.Entity;
 using Infarstuructre.Domin;
 using Infarstuructre.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Localization;
 
-namespace booking.Areas.Admin.Controllers
+namespace booking.Controllers
 {
-    [Area("Admin")]
+    
     [Authorize]
     public class AccountsController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IStringLocalizer<ApplicationUser> _localizer;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly BookingDbContext _context;
 
-        public AccountsController(RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> UserManager , SignInManager<ApplicationUser> signInManager, BookingDbContext context)
+        public AccountsController(RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> UserManager , IStringLocalizer<ApplicationUser> localizer, SignInManager<ApplicationUser> signInManager, BookingDbContext context)
         {
             _roleManager = roleManager;
             _userManager = UserManager;
+            _localizer = localizer;
             _signInManager = signInManager;
             _context = context;
         }
@@ -58,6 +63,20 @@ namespace booking.Areas.Admin.Controllers
 
         }
 
+        //--------------------------------------------------------------------------locliazetion
+
+        public IActionResult SelectLanguage(string culture, string returnURL)
+        {
+            // Set the selected language in a cookie or other storage
+            Response.Cookies.Append(
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+                new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+            );
+
+            // Return a response indicating success
+            return LocalRedirect(returnURL);
+        }
 
 
         //--------------------------------------------------------------------------create New Users
@@ -99,16 +118,16 @@ namespace booking.Areas.Admin.Controllers
                         var Role = await _userManager.AddToRoleAsync(User, model.NewRegister.RoleName);
                         if (Role.Succeeded)
                         {
-                            HttpContext.Session.SetString("msgType", "success");
-                            HttpContext.Session.SetString("titel", ResourceWeb.lbNotSaved);
-                            HttpContext.Session.SetString("msg", ResourceWeb.lbSaveMsgRole);
+                            HttpContext.Session.SetString("msgType", _localizer["lbSuccess"].Value);
+                            HttpContext.Session.SetString("titel", _localizer["lbNotSaved"].Value );
+                            HttpContext.Session.SetString("msg", _localizer["lbSaveMsgRole"].Value );
 
                         }
                         else
                         {
-                            HttpContext.Session.SetString("msgType", ResourceWeb.lbNotSaved);
-                            HttpContext.Session.SetString("titel", ResourceWeb.lbMsgDuplicateName);
-                            HttpContext.Session.SetString("msg", ResourceWeb.lbNotSavedMsgUserRole);
+                            HttpContext.Session.SetString("msgType", _localizer["lbNotSaved"].Value);
+                            HttpContext.Session.SetString("titel", _localizer["lbMsgDuplicateName"].Value);
+                            HttpContext.Session.SetString("msg", _localizer["lbNotSavedMsgUserRole"].Value);
                         }
 
                     }
@@ -232,7 +251,7 @@ namespace booking.Areas.Admin.Controllers
                         {
                             HttpContext.Session.SetString("msgType", " لم يتم الحفظ");
                             HttpContext.Session.SetString("titel", "اسم المستخدم مستخدم من قبل");
-                            HttpContext.Session.SetString("msg", "لم يتم مجموعة المستخدم ");
+                            HttpContext.Session.SetString("msg", _localizer["lbNotSavedMsgRole"].Value);
                         }
                         else
                         {
@@ -313,7 +332,7 @@ namespace booking.Areas.Admin.Controllers
                 var Result = await _signInManager.PasswordSignInAsync(model.Eamil,
                     model.Password, model.RememberMy, false);
                 if (Result.Succeeded)
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("CreateCustomer", "Home");
                 else
                     ViewBag.ErrorLogin = false;
             }

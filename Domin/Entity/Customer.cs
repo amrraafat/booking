@@ -11,10 +11,10 @@ namespace Domin.Entity
     {
         [Key]
         public int CustomerId { get; set; }
-        public string CustomerName { get; set; }
+        public required string CustomerName { get; set; }
         public byte Gender { get; set; }
-        public string Address { get; set; }
+        public string? Address { get; set; }
         public int NationalId { get; set; }
-        public string NationalIdImage { get; set; }
+        public byte[]? NationalIdImage { get; set; }
     }
 }

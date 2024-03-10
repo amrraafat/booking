@@ -2,3 +2,16 @@
 @using booking.Models
 @using Infarstuructre.ViewModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.AspNetCore.Http
+@using Domin.Entity
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+@await Html.PartialAsync("_LanguageSwitch")
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> locOption
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers

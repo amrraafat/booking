@@ -16,7 +16,7 @@ function Delete(id) {
         cancelButtonText: lbcancelButtonText
     }).then((result) => {
         if (result.isConfirmed) {
-            window.location.href = `/Admin/Accounts/DeleteRole?Id=${id}`;
+            window.location.href =`/Accounts/DeleteRole?Id=${id}`;
             Swal.fire(
                 lbTitleDeletedOk,
                 lbMsgDeletedOkRole,

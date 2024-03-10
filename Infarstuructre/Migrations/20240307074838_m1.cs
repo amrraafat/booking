@@ -6,18 +6,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Infarstuructre.Migrations
 {
     /// <inheritdoc />
-    public partial class app : Migration
+    public partial class m1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<string>(
-                name: "ImageUser",
-                table: "VwUsers",
-                type: "nvarchar(max)",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldType: "nvarchar(max)");
+          
 
             migrationBuilder.CreateTable(
                 name: "Customers",
@@ -29,7 +23,7 @@ namespace Infarstuructre.Migrations
                     Gender = table.Column<byte>(type: "tinyint", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     NationalId = table.Column<int>(type: "int", nullable: false),
-                    NationalIdImage = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    NationalIdImage = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -45,7 +39,7 @@ namespace Infarstuructre.Migrations
                     HotelNameFL = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     HotelNameSL = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     HotelRate = table.Column<byte>(type: "tinyint", nullable: false),
-                    HotelImage = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HotelImage = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
                     HotelLocation = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -109,15 +103,21 @@ namespace Infarstuructre.Migrations
             migrationBuilder.DropTable(
                 name: "Reservations");
 
-            migrationBuilder.AlterColumn<string>(
-                name: "ImageUser",
-                table: "VwUsers",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "",
-                oldClrType: typeof(string),
-                oldType: "nvarchar(max)",
-                oldNullable: true);
+            migrationBuilder.CreateTable(
+                name: "VwUsers",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ActiveUser = table.Column<bool>(type: "bit", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImageUser = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Role = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_VwUsers", x => x.Id);
+                });
         }
     }
 }

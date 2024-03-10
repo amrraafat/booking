@@ -1,32 +1,46 @@
-using booking.Models;
+﻿using Domin.Entity;
+using Infarstuructre.Domin;
+using Infarstuructre.ViewModel;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace booking.Controllers
 {
+ 
+    [Authorize]
+
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly BookingDbContext context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController( BookingDbContext context)
         {
-            _logger = logger;
+            this.context = context;
         }
-
-        public IActionResult Index()
-        {
-            return RedirectToAction( "Accounts", "Admin");
-        }
-
-        public IActionResult Privacy()
+        [Authorize(Roles = "superadmin, admin, user")]
+        public IActionResult CreateCustomer()
         {
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateCustomer([Bind("CustomerId,CustomerName,Gender,Address,NationalId,NationalIdImage")] Customer customer)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            if (ModelState.IsValid)
+            {
+                // Add the new customer to the database
+                context.Add(customer);
+                await context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(customer);
         }
     }
 }

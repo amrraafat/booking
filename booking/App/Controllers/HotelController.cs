@@ -4,7 +4,7 @@ using Infarstuructre.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace booking.Areas.App.Controllers
+namespace booking.App.Controllers
 {
     public class HotelController : Controller
     {
