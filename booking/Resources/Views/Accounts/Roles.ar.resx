@@ -199,7 +199,7 @@
     <value>عمليات الفئات</value>
   </data>
   <data name="lbManageBook" xml:space="preserve">
-    <value>ادارة الكتب</value>
+    <value>ادارة الحجز</value>
   </data>
   <data name="lbManagePermission" xml:space="preserve">
     <value>إدارة الصلحيات لل</value>
@@ -314,9 +314,6 @@
   </data>
   <data name="lbTitleEdit" xml:space="preserve">
     <value>تعديل مجموعة المستخدم</value>
-  </data>
-  <data name="lbTitleEditCategory" xml:space="preserve">
-    <value>تعديل مجموعة الفئات</value>
   </data>
   <data name="lbTitleMsgDelete" xml:space="preserve">
     <value>هل انتا متأكد ؟</value>

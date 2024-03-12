@@ -189,6 +189,18 @@
   <data name="lbImageUser" xml:space="preserve">
     <value>User image </value>
   </data>
+  <data name="lbLogCategories" xml:space="preserve">
+    <value>log c</value>
+  </data>
+  <data name="lbManageBook" xml:space="preserve">
+    <value>booking manegment</value>
+  </data>
+  <data name="lbManagePermission" xml:space="preserve">
+    <value>dfsdf</value>
+  </data>
+  <data name="lbMsgDeletedOkCategory" xml:space="preserve">
+    <value>dsfsdf</value>
+  </data>
   <data name="lbMsgDeletedOkRegister" xml:space="preserve">
     <value>User deleted successfully </value>
   </data>
@@ -201,6 +213,9 @@
   <data name="lbMsgDuplicateName" xml:space="preserve">
     <value>you can't save this name is already using</value>
   </data>
+  <data name="lbMsgDuplicateNameCategory" xml:space="preserve">
+    <value>dsdfsd</value>
+  </data>
   <data name="lbMsgErrorLogin" xml:space="preserve">
     <value>Username or password is incorrect</value>
   </data>
@@ -210,8 +225,20 @@
   <data name="lbMsgNotSavedChangePassword" xml:space="preserve">
     <value>The password has not been changed</value>
   </data>
+  <data name="lbMsgNotUpdatedCategory" xml:space="preserve">
+    <value>dfsdd</value>
+  </data>
+  <data name="lbMsgSaveCategory" xml:space="preserve">
+    <value>dssdd</value>
+  </data>
   <data name="lbMsgSavedChangePassword" xml:space="preserve">
     <value>The password has been changed successfully</value>
+  </data>
+  <data name="lbMsgUpdateCategory" xml:space="preserve">
+    <value>tytt</value>
+  </data>
+  <data name="lbNameCategory" xml:space="preserve">
+    <value>uioo</value>
   </data>
   <data name="lbNameRole" xml:space="preserve">
     <value>Role name </value>
@@ -228,6 +255,9 @@
   <data name="lbNotSavedMsgUser" xml:space="preserve">
     <value>User not saved</value>
   </data>
+  <data name="lbNotSavedMsgUserRole" xml:space="preserve">
+    <value>ewfwefwe</value>
+  </data>
   <data name="lbNotUpdate" xml:space="preserve">
     <value>Not modified</value>
   </data>
@@ -236,6 +266,9 @@
   </data>
   <data name="lbNotUpdateMsgUser" xml:space="preserve">
     <value>The user has not been modified</value>
+  </data>
+  <data name="lbNotUpdateMsgUserRole" xml:space="preserve">
+    <value>ffffwec</value>
   </data>
   <data name="lbOk" xml:space="preserve">
     <value>OK</value>
@@ -264,6 +297,9 @@
   <data name="lbSelectUserRole" xml:space="preserve">
     <value>Select the role</value>
   </data>
+  <data name="lbSuccess" xml:space="preserve">
+    <value>edwe</value>
+  </data>
   <data name="lbTextMsgDelete" xml:space="preserve">
     <value>You won't be able to undo this!!</value>
   </data>
@@ -272,6 +308,9 @@
   </data>
   <data name="lbTitleEdit" xml:space="preserve">
     <value>Edit Role</value>
+  </data>
+  <data name="lbTitleEditCategory" xml:space="preserve">
+    <value>tgtrgtr</value>
   </data>
   <data name="lbTitleMsgDelete" xml:space="preserve">
     <value>Are you sure?</value>

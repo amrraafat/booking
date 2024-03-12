@@ -14,33 +14,39 @@ namespace booking.Controllers
 {
  
     [Authorize]
-
-    public class HomeController : Controller
+    public class Customers : Controller
     {
-        private readonly BookingDbContext context;
+        private readonly BookingDbContext _dbContext;
 
-        public HomeController( BookingDbContext context)
+        public Customers( BookingDbContext context)
         {
-            this.context = context;
+            _dbContext = context;
         }
         [Authorize(Roles = "superadmin, admin, user")]
         public IActionResult CreateCustomer()
         {
             return View();
         }
-
+        // -------------------------------------------------------------------Add the new customer
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateCustomer([Bind("CustomerId,CustomerName,Gender,Address,NationalId,NationalIdImage")] Customer customer)
         {
             if (ModelState.IsValid)
             {
-                // Add the new customer to the database
-                context.Add(customer);
-                await context.SaveChangesAsync();
+                 
+                _dbContext.Add(customer);
+                await _dbContext.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(customer);
+        }
+
+        public IActionResult CurrentCustomer()
+        {
+            List<Customer> customers = _dbContext.Customers.ToList();
+
+            return View(customers);
         }
     }
 }

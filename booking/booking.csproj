@@ -36,6 +36,9 @@
     <EmbeddedResource Update="Resources\Controllers\Accounts.en.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Accounts\Register.en.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

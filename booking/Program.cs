@@ -17,7 +17,7 @@ builder.Services.AddControllersWithViews()
         .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
         .AddDataAnnotationsLocalization()
         .AddApplicationPart(typeof(AccountsController).Assembly)
-        .AddApplicationPart(typeof(HomeController).Assembly);
+        .AddApplicationPart(typeof(Customers).Assembly);
 
 
 builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
