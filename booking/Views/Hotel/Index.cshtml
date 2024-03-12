@@ -1,0 +1,65 @@
+﻿@model List<HotelViewModel>
+
+@{
+    ViewData["Title"] = "Hotels";
+    var currentCulture = ViewBag.currentCulture;
+}
+
+<div class="container">
+    <h1>Hotels</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.First().hotel.HotelNameFL)</th>
+                        <th>@Html.DisplayNameFor(model => model.First().hotel.HotelLocation)</th>
+                        <th>@Html.DisplayNameFor(model => model.First().hotel.HotelRate)</th>
+                        <th>Photo</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var hotelViewModel in Model)
+                    {
+                        <tr>
+                            <td>
+                                @if (currentCulture == "ar")
+                                {
+                                    @hotelViewModel.hotel.HotelNameFL
+                                }
+                                else
+                                {
+                                    @hotelViewModel.hotel.HotelNameSL
+                                }
+                            </td>
+                            <td>@hotelViewModel.hotel.HotelLocation</td>
+                            <td>@hotelViewModel.hotel.HotelRate</td>
+                            <td>
+                                @if (hotelViewModel.file != null)
+                                {
+                                    var imageSrc = $"~/path/to/your/images/{hotelViewModel.file.FileName}";
+                                    <img src="@Url.Content(imageSrc)" alt="Hotel Image" width="100" height="100" />
+                                }
+                                else
+                                {
+                                    <span>No Photo Available</span>
+                                }
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Details", "Hotel", new { id = hotelViewModel.hotel.HotelId })" class="btn btn-info">Preview</a>
+                                <a href="@Url.Action("Edit", "Hotel", new { id = hotelViewModel.hotel.HotelId })" class="btn btn-warning">Edit</a>
+                                <a href="@Url.Action("Delete", "Hotel", new { id = hotelViewModel.hotel.HotelId })" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <a href="@Url.Action("Create", "Hotel")" class="btn btn-success">Create New Hotel</a>
+        </div>
+    </div>
+</div>

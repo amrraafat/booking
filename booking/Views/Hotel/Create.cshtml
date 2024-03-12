@@ -1,0 +1,30 @@
+﻿@model HotelViewModel
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="hotel.HotelNameFL"></label>
+        <input asp-for="hotel.HotelNameFL" class="form-control" />
+        <span asp-validation-for="hotel.HotelNameFL" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="hotel.HotelNameSL"></label>
+        <input asp-for="hotel.HotelNameSL" class="form-control" />
+        <span asp-validation-for="hotel.HotelNameSL" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="hotel.HotelRate"></label>
+        <input asp-for="hotel.HotelRate" class="form-control" />
+        <span asp-validation-for="hotel.HotelRate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="hotel.HotelLocation"></label>
+        <input asp-for="hotel.HotelLocation" class="form-control" />
+        <span asp-validation-for="hotel.HotelLocation" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="file"></label>
+        <input type="file" name="file" class="form-control-file" />
+        <span asp-validation-for="file" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>

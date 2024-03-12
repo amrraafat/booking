@@ -10,7 +10,7 @@
         cancelButtonText: lbcancelButtonText
     }).then((result) => {
         if (result.isConfirmed) {
-            window.location.href = `/Admin/Accounts/DeleteUser?Id=${id}`;
+            window.location.href = `/Accounts/DeleteUser?Id=${id}`;
             Swal.fire(
                 lbTitleDeletedOk,
                 lbMsgDeletedOkRole,
