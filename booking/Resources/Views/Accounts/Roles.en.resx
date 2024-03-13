@@ -195,6 +195,9 @@
   <data name="lbImageUser" xml:space="preserve">
     <value>User image </value>
   </data>
+  <data name="lbManageBook" xml:space="preserve">
+    <value>booking manegment</value>
+  </data>
   <data name="lbMsgDeletedOkRegister" xml:space="preserve">
     <value>User deleted successfully </value>
   </data>

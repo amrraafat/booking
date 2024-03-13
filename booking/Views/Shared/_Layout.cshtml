@@ -1,6 +1,4 @@
-﻿@inject UserManager<ApplicationUser> userManager
-@inject SignInManager<ApplicationUser> signInManager
-@inject IViewLocalizer Localizer
+﻿
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,6 +43,7 @@
     <link rel="stylesheet" href="~/Admin/dist/css/custom.css">
     <!-- Responsive RTL -->
     <link rel="stylesheet" href="~/Admin/dist/css/responsive-rtl.css">
+    <link href="c:\users\mango\source\repos\booking\booking\wwwroot\css\site.css" rel="stylesheet" />
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -204,36 +203,66 @@
                 @{
                     if (User.Identity.IsAuthenticated && User.IsInRole("superadmin"))
                     {
-                        <nav class="mt-2">
-                            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                                <!-- Add icons to the links using the .nav-icon class
-                                 with font-awesome or any other icon font library -->
-                                <li class="nav-item has-treeview menu-open">
-                                    <a href="/" class="nav-link active">
-                                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                                        <p>
-                                            Dashboard
-                                            <i class="right fas fa-angle-left"></i>
-                                        </p>
-                                    </a>
-                                    <ul class="nav nav-treeview">
-                                        <li class="nav-item">
-                                            <a href="/Accounts/Roles" class="nav-link active">
-                                                <i class="far fa-circle nav-icon"></i>
-                                                <p>@Localizer["lbRoles"]</p>
+                        <!---------------------------------------------------------------------------- ussers ----------------------------------------------->
+                        <div class="accordion" id="accordionMenu">
+                            <!-- Dashboard Section -->
+                            <div class="card custom-card">
+                                <div class="card-header" id="dashboardSection">
+                                    <h5 class="mb-0">
+                                        <button class="btn" type="button" data-toggle="collapse" data-target="#collapseDashboard" aria-expanded="true" aria-controls="collapseDashboard">
+                                            @Localizer["lbUserName"]
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseDashboard" class="collapse show" aria-labelledby="dashboardSection" data-parent="#accordionMenu">
+                                    <div class="card-body">
+                                        <!-- Links for the Dashboard section -->
+                                        <ul class="nav nav-pills nav-treeview">
+                                            <li class="nav-item">
+                                                <a href="/Accounts/Roles" class="nav-link">
+                                                    <p>@Localizer["lbRoles"]</p>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="/Accounts/Register" class="nav-link">
+                                                    <p>@Localizer["lbCurrentRegisters"]</p>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
 
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="/Accounts/Register" class="nav-link">
-                                                <i class="far fa-circle nav-icon"></i>
-                                                <p>@Localizer["lbRegisters"]</p>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </nav>
+                            <!-- Customers Section -->
+                            <div class="card custom-card">
+                                <div class="card-header" id="customersSection">
+                                    <h5 class="mb-0">
+                                        <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseCustomers" aria-expanded="false" aria-controls="collapseCustomers">
+                                            @Localizer["lbCustomer"]
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseCustomers" class="collapse" aria-labelledby="customersSection" data-parent="#accordionMenu">
+                                    <div class="card-body">
+                                        <!-- Links for the Customers section -->
+                                        <ul class="nav nav-pills nav-treeview">
+                                            <li class="nav-item">
+                                                <a href="/Customers/CreateCustomer" class="nav-link">
+                                                    <p>@Localizer["lbCreateCustomer"]</p>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="/Customers/CurrentCustomer" class="nav-link">
+                                                    <p>@Localizer["lbCurrentCustomers"]</p>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                     }
                     else
                     {
@@ -267,6 +296,21 @@
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
+    <style>
+        .custom-card {
+            background-color: #f2f2f2; /* Set your desired gray color */
+            border: 1px solid #d8d8d8; /* Set a border color if needed */
+
+        }
+
+            .custom-card .card-header button {
+                font-size: 18px; /* Set your desired font size */
+            }
+
+            .custom-card .nav-link p {
+                font-size: 16px; /* Set your desired font size */
+            }
+    </style>
     <!-- jQuery -->
     <script src="~/Admin/plugins/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
@@ -337,6 +381,7 @@
     <script src="~/Admin/dist/js/pages/dashboard.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
 
     @await RenderSectionAsync("Script", required: false);
 </body>

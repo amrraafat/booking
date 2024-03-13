@@ -22,6 +22,8 @@ namespace Infarstuructre.Domin
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Package> Packages { get; set; }
         public DbSet<Hotel> Hotels { get; set; }
+
+
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
         //    base.OnModelCreating(modelBuilder);

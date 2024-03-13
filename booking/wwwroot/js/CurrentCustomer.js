@@ -5,8 +5,7 @@
     });
 });
 
-
-function Delete(id) {
+delet = (id) => {
     Swal.fire({
         title: lbTitleMsgDelete,
         text: lbTextMsgDelete,

@@ -20,3 +20,11 @@ html {
 body {
   margin-bottom: 60px;
 }
+.accordion-card {
+    max-width: 50px; /* Adjust the maximum width as needed */
+    margin-bottom: 10px; /* Add some margin for spacing */
+}
+
+    .accordion-card .card-header {
+        padding: 0.5rem;
+    }

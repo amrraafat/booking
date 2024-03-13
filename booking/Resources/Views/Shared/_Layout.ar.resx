@@ -168,6 +168,18 @@
   <data name="lbconfirmButtonText" xml:space="preserve">
     <value>نعم ، احذفها</value>
   </data>
+  <data name="lbCreateCustomer" xml:space="preserve">
+    <value>عميل جديد</value>
+  </data>
+  <data name="lbCurrentCustomers" xml:space="preserve">
+    <value>العملاء الحاليين</value>
+  </data>
+  <data name="lbCurrentRegisters" xml:space="preserve">
+    <value>المستخدمين الحليين</value>
+  </data>
+  <data name="lbCustomer" xml:space="preserve">
+    <value>العملاء</value>
+  </data>
   <data name="lbDate" xml:space="preserve">
     <value>التاريخ</value>
   </data>

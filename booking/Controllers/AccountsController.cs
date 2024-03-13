@@ -332,7 +332,7 @@ namespace booking.Controllers
                 var Result = await _signInManager.PasswordSignInAsync(model.Eamil,
                     model.Password, model.RememberMy, false);
                 if (Result.Succeeded)
-                    return RedirectToAction("CreateCustomer", "Home");
+                    return RedirectToAction("CreateCustomer", "Customers");
                 else
                     ViewBag.ErrorLogin = false;
             }

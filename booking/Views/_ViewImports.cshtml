@@ -14,5 +14,7 @@
 @await Html.PartialAsync("_LanguageSwitch")
 @inject IViewLocalizer Localizer
 @inject IOptions<RequestLocalizationOptions> locOption
+@inject UserManager<ApplicationUser> userManager
+@inject SignInManager<ApplicationUser> signInManager
 
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
