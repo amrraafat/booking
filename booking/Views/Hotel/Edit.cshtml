@@ -1,0 +1,51 @@
+﻿@model HotelViewModel
+
+@{
+    ViewData["Title"] = "Edit Hotel";
+    var currentCulture = ViewBag.currentCulture;
+}
+
+<div class="container">
+    <h1>Edit Hotel</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                <input type="hidden" asp-for="hotel.HotelId" />
+                <div class="form-group">
+                    <label asp-for="hotel.HotelNameFL">Hotel Name (First Language)</label>
+                    <input asp-for="hotel.HotelNameFL" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="hotel.HotelNameSL">Hotel Name (Second Language)</label>
+                    <input asp-for="hotel.HotelNameSL" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="hotel.HotelLocation">Hotel Location</label>
+                    <input asp-for="hotel.HotelLocation" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="hotel.HotelRate">Hotel Rate</label>
+                    <input asp-for="hotel.HotelRate" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="ImageFileName">Hotel Image</label>
+                    @if (!string.IsNullOrEmpty(Model.ImageFileName))
+                    {
+                        var imageSrc = Url.Action("GetImage", "Hotel", new { id = Model.hotel.HotelId });
+                        <img src="@imageSrc" alt="Hotel Image" width="100" height="100" />
+                    }
+                    else
+                    {
+                        <span>No Photo Available</span>
+                    }
+                </div>
+                <div class="form-group">
+                    <label asp-for="file">Upload New Image</label>
+                    <input asp-for="file" type="file" class="form-control-file" />
+                </div>
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+                <a href="@Url.Action("Index", "Hotel")" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>

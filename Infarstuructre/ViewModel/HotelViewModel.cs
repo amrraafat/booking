@@ -12,5 +12,6 @@ namespace Infarstuructre.ViewModel
     {
         public Hotel hotel { get; set; }
         public IFormFile file { get; set; }
+        public string? ImageFileName { get; set; }
     }
 }

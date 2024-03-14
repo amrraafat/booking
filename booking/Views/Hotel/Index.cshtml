@@ -36,10 +36,10 @@
                             <td>@hotelViewModel.hotel.HotelLocation</td>
                             <td>@hotelViewModel.hotel.HotelRate</td>
                             <td>
-                                @if (hotelViewModel.file != null)
+                                @if (!string.IsNullOrEmpty(hotelViewModel.ImageFileName))
                                 {
-                                    var imageSrc = $"~/path/to/your/images/{hotelViewModel.file.FileName}";
-                                    <img src="@Url.Content(imageSrc)" alt="Hotel Image" width="100" height="100" />
+                                    var imageSrc = Url.Action("GetImage", "Hotel", new { id = hotelViewModel.hotel.HotelId });
+                                    <img src="@imageSrc" alt="Hotel Image" width="100" height="100" />
                                 }
                                 else
                                 {
@@ -47,9 +47,9 @@
                                 }
                             </td>
                             <td>
-                                <a href="@Url.Action("Details", "Hotel", new { id = hotelViewModel.hotel.HotelId })" class="btn btn-info">Preview</a>
+                                @*<a href="@Url.Action("Details", "Hotel", new { id = hotelViewModel.hotel.HotelId })" class="btn btn-info">Preview</a>*@
                                 <a href="@Url.Action("Edit", "Hotel", new { id = hotelViewModel.hotel.HotelId })" class="btn btn-warning">Edit</a>
-                                <a href="@Url.Action("Delete", "Hotel", new { id = hotelViewModel.hotel.HotelId })" class="btn btn-danger">Delete</a>
+                                <button class="btn btn-danger" onclick="deleteHotel(@hotelViewModel.hotel.HotelId)">Delete</button>
                             </td>
                         </tr>
                     }
@@ -63,3 +63,22 @@
         </div>
     </div>
 </div>
+<script>
+    function deleteHotel(hotelId) {
+        if (confirm("Are you sure you want to delete this hotel?")) {
+            $.ajax({
+                url: "hotel/Delete",
+                type: 'POST', // Or 'DELETE' depending on your server configuration
+                data: { id: hotelId },
+                success: function (result) {
+                    // Handle success, e.g., refresh the page or update UI
+                    location.reload(); // Reload the page after successful deletion
+                },
+                error: function (xhr, status, error) {
+                    // Handle error
+                    console.error(error);
+                }
+            });
+        }
+    }
+</script>
