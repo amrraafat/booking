@@ -117,64 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lbAddress" xml:space="preserve">
-    <value>العنوان</value>
+  <data name="lbadded" xml:space="preserve">
+    <value>تم الاضافه </value>
   </data>
-  <data name="lbAreyousure" xml:space="preserve">
-    <value>هل انت متاكد ؟</value>
+  <data name="lbaddedfeild" xml:space="preserve">
+    <value>خطأ في إضافه العميل الرجاء مراجعة جميع الحقول</value>
   </data>
-  <data name="lbbtnDelete" xml:space="preserve">
-    <value>مسح</value>
+  <data name="lbaddingNotCompleted" xml:space="preserve">
+    <value>لم يتم إضافه العميل بنجاح</value>
   </data>
-  <data name="lbbtnEdit" xml:space="preserve">
-    <value>تعديل</value>
+  <data name="lbsddedSuccessfully" xml:space="preserve">
+    <value>تم إضافه العميل بنجاح</value>
   </data>
-  <data name="lbbtnSave" xml:space="preserve">
-    <value>حفظ</value>
+  <data name="lbUpated" xml:space="preserve">
+    <value>تم التحديث</value>
   </data>
-  <data name="lbbtnSaveNewUser" xml:space="preserve">
-    <value>إضافه عميل جديد</value>
+  <data name="lbUpdatedSuccessfully" xml:space="preserve">
+    <value>تم تحديث العميل بنجاح</value>
   </data>
-  <data name="lbCanback" xml:space="preserve">
-    <value>لايمكنك التراجع في هذه الخطوة </value>
+  <data name="lbUpdatefeild" xml:space="preserve">
+    <value>خطأ في تحديث العميل الرجاء مراجعة جميع الحقول</value>
   </data>
-  <data name="lbcancelButtonText" xml:space="preserve">
-    <value>إلغاء</value>
-  </data>
-  <data name="lbCurrentCustomer" xml:space="preserve">
-    <value>العملاء الحاليين</value>
-  </data>
-  <data name="lbCustomerName" xml:space="preserve">
-    <value>إسم العميل</value>
-  </data>
-  <data name="lbEditCustomers" xml:space="preserve">
-    <value>تعديل بينات المستخدم </value>
-  </data>
-  <data name="lbEvents" xml:space="preserve">
-    <value>الأحداث</value>
-  </data>
-  <data name="lbFemale" xml:space="preserve">
-    <value>انثى</value>
-  </data>
-  <data name="lbGender" xml:space="preserve">
-    <value>الجنس </value>
-  </data>
-  <data name="lbHomePage" xml:space="preserve">
-    <value>الصفحة الرئيسيه</value>
-  </data>
-  <data name="lbID" xml:space="preserve">
-    <value>ID</value>
-  </data>
-  <data name="lbMale" xml:space="preserve">
-    <value>ذكر</value>
-  </data>
-  <data name="lbMangeCustomer" xml:space="preserve">
-    <value>إدارة العملاء</value>
-  </data>
-  <data name="lbNationalId" xml:space="preserve">
-    <value>الرقم القومي </value>
-  </data>
-  <data name="lbYesdelete" xml:space="preserve">
-    <value>نعم إمسح </value>
+  <data name="lbUpdateNotCompleted" xml:space="preserve">
+    <value>لم يتم تحديث العميل بنجاح</value>
   </data>
 </root>

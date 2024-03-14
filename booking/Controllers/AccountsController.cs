@@ -47,7 +47,7 @@ namespace booking.Controllers
             
 
         }
-        //-------------------------------------------------------------------------- calling Users to Viwe
+        //-------------------------------------------------------------------------- calling Users to Viwe -----------------------------------------------------\\
         [Authorize(Roles = "superadmin")]
         public IActionResult Register()
         {
@@ -55,7 +55,7 @@ namespace booking.Controllers
             {
                 NewRegister = new NewRegister(),
                 Roles = _roleManager.Roles.OrderBy(x => x.Name).ToList(),
-                Users = _context.VwUsers.OrderBy(x => x.Role).ToList() 
+                Users = _context.VwUsers.OrderBy(x => x.Role).ToList()
                 /*_userManager.Users.OrderBy(x => x.Name).ToList() */
             };
             return View(model);
@@ -63,7 +63,7 @@ namespace booking.Controllers
 
         }
 
-        //--------------------------------------------------------------------------locliazetion
+        //--------------------------------------------------------------------------locliazetion -----------------------------------------------------\\
 
         public IActionResult SelectLanguage(string culture, string returnURL)
         {
@@ -79,7 +79,7 @@ namespace booking.Controllers
         }
 
 
-        //--------------------------------------------------------------------------create New Users
+        //--------------------------------------------------------------------------create New Users -----------------------------------------------------\\
         [HttpPost]
         
         public async Task <IActionResult> Register( RegisterViweModel model)
@@ -118,14 +118,14 @@ namespace booking.Controllers
                         var Role = await _userManager.AddToRoleAsync(User, model.NewRegister.RoleName);
                         if (Role.Succeeded)
                         {
-                            HttpContext.Session.SetString("msgType", _localizer["lbSuccess"].Value);
+                            HttpContext.Session.SetString("msgType", "success");
                             HttpContext.Session.SetString("titel", _localizer["lbNotSaved"].Value );
                             HttpContext.Session.SetString("msg", _localizer["lbSaveMsgRole"].Value );
 
                         }
                         else
                         {
-                            HttpContext.Session.SetString("msgType", _localizer["lbNotSaved"].Value);
+                            HttpContext.Session.SetString("msgType", " erorr");
                             HttpContext.Session.SetString("titel", _localizer["lbMsgDuplicateName"].Value);
                             HttpContext.Session.SetString("msg", _localizer["lbNotSavedMsgUserRole"].Value);
                         }
@@ -167,7 +167,7 @@ namespace booking.Controllers
                                     }
                                     else
                                     {
-                                        HttpContext.Session.SetString("msgType", "لم يتم التحديث");
+                                        HttpContext.Session.SetString("msgType", "erorr");
                                         HttpContext.Session.SetString("titel", "خطأ في تحديث الدور");
                                         HttpContext.Session.SetString("msg", "لم يتم تحديث مستخدم بنجاح");
                                     }
@@ -176,7 +176,7 @@ namespace booking.Controllers
                         }
                         else
                         {
-                            HttpContext.Session.SetString("msgType", "لم يتم التحديث");
+                            HttpContext.Session.SetString("msgType", "erorr");
                             HttpContext.Session.SetString("titel", "خطأ في تحديث المستخدم");
                             HttpContext.Session.SetString("msg", "لم يتم تحديث مستخدم بنجاح");
                         }
@@ -249,13 +249,13 @@ namespace booking.Controllers
                         var errors = string.Join(", ", errorList.Select(e => e.Description));
                         if (result.Errors.Any(x=>x.Code == "DuplicateRoleName"))
                         {
-                            HttpContext.Session.SetString("msgType", " لم يتم الحفظ");
+                            HttpContext.Session.SetString("msgType", "erorr");
                             HttpContext.Session.SetString("titel", "اسم المستخدم مستخدم من قبل");
                             HttpContext.Session.SetString("msg", _localizer["lbNotSavedMsgRole"].Value);
                         }
                         else
                         {
-                            HttpContext.Session.SetString("msgType", " لم يتم الحفظ");
+                            HttpContext.Session.SetString("msgType", "erorr");
                             HttpContext.Session.SetString("titel", errors);
                             HttpContext.Session.SetString("msg", "لم يتم مجموعة المستخدم ");
                         }                         
@@ -280,7 +280,7 @@ namespace booking.Controllers
                     }
                     else
                     {
-                        HttpContext.Session.SetString("msgType", " erorr");
+                        HttpContext.Session.SetString("msgType", "erorr");
                         HttpContext.Session.SetString("titel", "لم يتم الحفظ");
                         HttpContext.Session.SetString("msg", "لم يتم مجموعة المستخدم ");
                         return RedirectToAction("Roles");
@@ -332,7 +332,7 @@ namespace booking.Controllers
                 var Result = await _signInManager.PasswordSignInAsync(model.Eamil,
                     model.Password, model.RememberMy, false);
                 if (Result.Succeeded)
-                    return RedirectToAction("CreateCustomer", "Customers");
+                    return RedirectToAction("CurrentCustomer", "Customers");
                 else
                     ViewBag.ErrorLogin = false;
             }
