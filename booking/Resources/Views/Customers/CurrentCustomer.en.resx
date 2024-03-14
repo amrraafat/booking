@@ -120,17 +120,35 @@
   <data name="lbAddress" xml:space="preserve">
     <value>Address</value>
   </data>
+  <data name="lbAreyousure" xml:space="preserve">
+    <value>Are you sure?</value>
+  </data>
   <data name="lbbtnDelete" xml:space="preserve">
     <value>Delete</value>
   </data>
   <data name="lbbtnEdit" xml:space="preserve">
     <value>Edit</value>
   </data>
+  <data name="lbbtnSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="lbbtnSaveNewUser" xml:space="preserve">
+    <value>Add New Customer</value>
+  </data>
+  <data name="lbCanback" xml:space="preserve">
+    <value>You won't be able to revert this!</value>
+  </data>
+  <data name="lbcancelButtonText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="lbCurrentCustomer" xml:space="preserve">
     <value>Current Customer</value>
   </data>
   <data name="lbCustomerName" xml:space="preserve">
     <value>Customer Name</value>
+  </data>
+  <data name="lbEditCustomers" xml:space="preserve">
+    <value>Edit customer data</value>
   </data>
   <data name="lbEvents" xml:space="preserve">
     <value>Events</value>
@@ -155,5 +173,8 @@
   </data>
   <data name="lbNationalId" xml:space="preserve">
     <value>National ID</value>
+  </data>
+  <data name="lbYesdelete" xml:space="preserve">
+    <value>Yes, delete it!</value>
   </data>
 </root>

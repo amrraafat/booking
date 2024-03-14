@@ -5,51 +5,13 @@
     });
 });
 
-delet = (id) => {
-    Swal.fire({
-        title: lbTitleMsgDelete,
-        text: lbTextMsgDelete,
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: lbconfirmButtonText,
-        cancelButtonText: lbcancelButtonText
-    }).then((result) => {
-        if (result.isConfirmed) {
-            window.location.href = `/Accounts/DeleteUser?Id=${id}`;
-            Swal.fire(
-                lbTitleDeletedOk,
-                lbMsgDeletedOkRole,
-                lbSuccess
-            )
-        }
-    })
-}
 
-Edit = (id,name,image,Email,ActiveUser,Role) => {
-    document.getElementById("title").innerHTML = lbTitleEdit;
-    document.getElementById("btnSave").value = lbEdit;
-    document.getElementById("userId").value = id;
-    document.getElementById("userName").value = name;
-    document.getElementById("userEmail").value = Email;
-    document.getElementById("image").hidden = false;
-    document.getElementById("image").src = "/Images/Users/" + image;
-    document.getElementById("imageHide").value = image;
-    document.getElementById("ddluserRole").value = Role;
-    $('#grPassword').hide();
-    $('#grcomPassword').hide();
-    var Active = document.getElementById("userActive");
-    if (ActiveUser == "True")
-        Active.checked = true;
-    else Active.checked = false;
-    document.getElementById("userPassword").value = "********";
-    document.getElementById("userCompare").value = "********";
-    document.getElementById("image").hidden = false;
-
-
-  
-    
+Edit = (CustomerId, CustomerName, Gender, Address, NationalId) => {
+    document.getElementById("CustomerId").value = CustomerId;
+    document.getElementById("CustomerName").value = CustomerName;
+    document.getElementById("gender").value = Gender;
+    document.getElementById("Address").value = Address;
+    document.getElementById("NationalId").value = NationalId
 }
 
 

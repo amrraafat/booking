@@ -13,7 +13,7 @@ namespace Domin.Entity
         public int CustomerId { get; set; }
         public required string CustomerName { get; set; }
         public byte Gender { get; set; }
-        public string? Address { get; set; }
+        public required string Address { get; set; }
         public int NationalId { get; set; }
         public byte[]? NationalIdImage { get; set; }
     }

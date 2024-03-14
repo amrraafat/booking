@@ -15,6 +15,9 @@ namespace booking.Controllers
         {
             _context = context;
         }
+
+
+
         public async Task<IActionResult> Index()
         {
             List<HotelViewModel> hotelViewModelList = new List<HotelViewModel>();
@@ -38,6 +41,11 @@ namespace booking.Controllers
 
             return View(hotelViewModelList);
         }
+
+
+
+
+
         public async Task<IActionResult> Detail(int HotelId)
         {
             Hotel hotel=new Hotel();
@@ -52,6 +60,10 @@ namespace booking.Controllers
         {
             return View();
         }
+
+
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(HotelViewModel viewModel)
