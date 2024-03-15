@@ -172,6 +172,7 @@ namespace booking.Controllers
             _context.Hotels.Remove(hotel);
             await _context.SaveChangesAsync();
 
+
             return RedirectToAction(nameof(Index));
         }
 
