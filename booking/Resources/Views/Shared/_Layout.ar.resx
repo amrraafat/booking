@@ -198,6 +198,9 @@
   <data name="lbHomePage" xml:space="preserve">
     <value>الصفحة الرئيسية</value>
   </data>
+  <data name="lbHotels" xml:space="preserve">
+    <value>الفنادق</value>
+  </data>
   <data name="lbImageUser" xml:space="preserve">
     <value>صورة المستخدم</value>
   </data>

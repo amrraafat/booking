@@ -29,7 +29,7 @@ namespace booking.Controllers
                 HotelViewModel hotelViewModel = new HotelViewModel
                 {
                     hotel = hotel,
-                    ImageFileName = hotel.HotelImage != null ? "hotelImage.jpg" : null // Set the ImageFileName property
+                    ImageFileName = hotel.HotelImage != null ? "hotelImage.jpg" : null 
                 };
 
                 hotelViewModelList.Add(hotelViewModel);

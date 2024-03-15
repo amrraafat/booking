@@ -198,6 +198,9 @@
   <data name="lbHomePage" xml:space="preserve">
     <value>Home page</value>
   </data>
+  <data name="lbHotels" xml:space="preserve">
+    <value>Hotels</value>
+  </data>
   <data name="lbImageUser" xml:space="preserve">
     <value>User image </value>
   </data>

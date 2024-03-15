@@ -178,28 +178,14 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
-
-                <span class="brand-text font-weight-light">booking app</span>
+                <img src="~/Images/Logo/WhatsApp Image 2024-03-15 at 2.19.04 AM.jpeg" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8;">
+                <span class="brand-text font-weight-light">الهضبه تـورز</span>
             </a>
 
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    @if (signInManager.IsSignedIn(User))
-                    {
 
-                        <div class="info">
-                            <a href="#" class="d-block">@((await userManager.GetUserAsync(User)).Name)</a>
-
-                            <form asp-action="Logout" asp-controller="Accounts" method="post">
-                                <input type="submit" value="تسجيل الخروج" style="border:none; color:orange;background-color:#343a40">
-                            </form>
-                        </div>
-                    }
-
-
-                </div>
                 @{
                     if (User.Identity.IsAuthenticated && User.IsInRole("superadmin"))
                     {
@@ -255,6 +241,27 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="card custom-card">
+                                <div class="card-header" id="hotelsSection">
+                                    <h5 class="mb-0">
+                                        <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseHotels" aria-expanded="false" aria-controls="collapseHotels">
+                                            @Localizer["lbHotels"]
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseHotels" class="collapse" aria-labelledby="hotelsSection" data-parent="#accordionMenu">
+                                    <div class="card-body">
+                                        <!-- Links for the Hotels section -->
+                                        <ul class="nav nav-pills nav-treeview">
+                                            <li class="nav-item">
+                                                <a href="/Hotel/Index" class="nav-link">
+                                                    <p>@Localizer["lbHotels"]</p>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
 
@@ -268,7 +275,21 @@
                     }
                 }
                 <!-- Sidebar Menu -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    @if (signInManager.IsSignedIn(User))
+                    {
 
+                        <div class="info">
+                            <a href="#" class="d-block">@((await userManager.GetUserAsync(User)).Name)</a>
+
+                            <form asp-action="Logout" asp-controller="Accounts" method="post">
+                                <input type="submit" value="تسجيل الخروج" style="border:none; color:orange;background-color:#343a40">
+                            </form>
+                        </div>
+                    }
+
+
+                </div>
             </div>
 
             <!-- /.sidebar -->

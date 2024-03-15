@@ -10,6 +10,6 @@ namespace Infarstuructre.ViewModel
     public class PackageViewModel
     {
         public Package Package { get; set; }
-        public List<Hotel> hotels { get; set; }
+        public Hotel? Hotel { get; set; }
     }
 }
