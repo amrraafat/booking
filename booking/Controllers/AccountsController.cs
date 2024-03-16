@@ -14,20 +14,23 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Localization;
+using Microsoft.EntityFrameworkCore;
+
+
 
 namespace booking.Controllers
 {
     
     [Authorize]
-    public class AccountsController : Controller
+    public class Accounts : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly IStringLocalizer<ApplicationUser> _localizer;
+        private readonly IStringLocalizer<Accounts> _localizer;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly BookingDbContext _context;
 
-        public AccountsController(RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> UserManager , IStringLocalizer<ApplicationUser> localizer, SignInManager<ApplicationUser> signInManager, BookingDbContext context)
+        public Accounts(RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> UserManager , IStringLocalizer<Accounts> localizer, SignInManager<ApplicationUser> signInManager, BookingDbContext context)
         {
             _roleManager = roleManager;
             _userManager = UserManager;
@@ -81,7 +84,6 @@ namespace booking.Controllers
 
         //--------------------------------------------------------------------------create New Users -----------------------------------------------------\\
         [HttpPost]
-        
         public async Task <IActionResult> Register( RegisterViweModel model)
         {
             if (ModelState.IsValid)
@@ -119,21 +121,23 @@ namespace booking.Controllers
                         if (Role.Succeeded)
                         {
                             HttpContext.Session.SetString("msgType", "success");
-                            HttpContext.Session.SetString("titel", _localizer["lbNotSaved"].Value );
-                            HttpContext.Session.SetString("msg", _localizer["lbSaveMsgRole"].Value );
+                            HttpContext.Session.SetString("titel", _localizer["lbadded"].Value);
+                            HttpContext.Session.SetString("msg", _localizer["lbSavedSuccessfully"].Value);
 
                         }
                         else
                         {
                             HttpContext.Session.SetString("msgType", " erorr");
                             HttpContext.Session.SetString("titel", _localizer["lbMsgDuplicateName"].Value);
-                            HttpContext.Session.SetString("msg", _localizer["lbNotSavedMsgUserRole"].Value);
+                            HttpContext.Session.SetString("msg", _localizer["lbNotSaved"].Value);
                         }
 
                     }
                     else
                     {
-
+                        HttpContext.Session.SetString("msgType", " erorr");
+                        HttpContext.Session.SetString("titel", _localizer["lbMsgDuplicateName"].Value);
+                        HttpContext.Session.SetString("msg", _localizer["lbNotSaved"].Value);
                     }
                 }
                else
@@ -251,7 +255,7 @@ namespace booking.Controllers
                         {
                             HttpContext.Session.SetString("msgType", "erorr");
                             HttpContext.Session.SetString("titel", "اسم المستخدم مستخدم من قبل");
-                            HttpContext.Session.SetString("msg", _localizer["lbNotSavedMsgRole"].Value);
+                            HttpContext.Session.SetString("msg", _localizer["lbNotSavedMsgRo"].Value);
                         }
                         else
                         {

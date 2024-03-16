@@ -214,7 +214,6 @@
 
 @section Script
 {
-
     @if (!string.IsNullOrEmpty(Context.Session.GetString("msgType")))
     {
         if (Context.Session.GetString("msgType") == "success")
@@ -244,12 +243,11 @@
         }
         Context.Session.SetString("msgType", "");
     }
-
     <script>
         function confirmDelete(customerId) {
             Swal.fire({
                 title: '@Localizer["lbAreyousure"]',
-                text: "@Localizer["lbCanback"]",
+                text: '@Localizer["lbCanback"]',
                 icon: 'warning',
                 showCancelButton: true,
                 cancelButtonText: '@Localizer["lbcancelButtonText"]',

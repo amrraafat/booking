@@ -135,11 +135,17 @@
   <data name="lbAddNewUser" xml:space="preserve">
     <value>اضف مستخدم جديدة</value>
   </data>
+  <data name="lbAreyousure" xml:space="preserve">
+    <value>هل انت متاكد ؟</value>
+  </data>
   <data name="lbbtnChangePassword" xml:space="preserve">
     <value>تغير كلمة المرور</value>
   </data>
   <data name="lbbtnDelete" xml:space="preserve">
     <value>حذف</value>
+  </data>
+  <data name="lbbtnDelete1" xml:space="preserve">
+    <value>مسح</value>
   </data>
   <data name="lbbtnEdit" xml:space="preserve">
     <value>تعديل</value>
@@ -159,8 +165,14 @@
   <data name="lbbtnSaveNewUser" xml:space="preserve">
     <value>اضافة مستخدم جديد</value>
   </data>
+  <data name="lbCanback" xml:space="preserve">
+    <value>لايمكنك التراجع في هذه الخطوة </value>
+  </data>
   <data name="lbcancelButtonText" xml:space="preserve">
     <value>الغاء</value>
+  </data>
+  <data name="lbcancelButtonText1" xml:space="preserve">
+    <value>إلغاء</value>
   </data>
   <data name="lbCategories" xml:space="preserve">
     <value>مجموعة الفئات</value>
@@ -332,6 +344,9 @@
   </data>
   <data name="lbUserName" xml:space="preserve">
     <value>المستخدم</value>
+  </data>
+  <data name="lbYesdelete" xml:space="preserve">
+    <value>نعم إمسح </value>
   </data>
   <data name="RoleName" xml:space="preserve">
     <value>المستخدم</value>

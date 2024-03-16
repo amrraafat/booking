@@ -5,12 +5,7 @@
     });
 });
 
-
-
-
 Edit = (id,name,image,Email,ActiveUser,Role) => {
-    document.getElementById("title").innerHTML = lbTitleEdit;
-    document.getElementById("btnSave").value = lbEdit;
     document.getElementById("userId").value = id;
     document.getElementById("userName").value = name;
     document.getElementById("userEmail").value = Email;
@@ -27,33 +22,8 @@ Edit = (id,name,image,Email,ActiveUser,Role) => {
     document.getElementById("userPassword").value = "********";
     document.getElementById("userCompare").value = "********";
     document.getElementById("image").hidden = false;
-
-
-  
-    
+   
 }
-
-
-Rest = () => {
-    document.getElementById("title").innerHTML = lbAddNewRole;
-    document.getElementById("btnSave").value = lbbtnSave;
-    document.getElementById("userId").value = "";
-    document.getElementById("userName").value = "";
-    document.getElementById("userEmail").value = "";
-    //document.getElementById("userImage").value = "";
-    document.getElementById("ddluserRole").value = "";
-    document.getElementById("userActive").checked = false;
-    $('#grPassword').show();
-    $('#grcomPassword').show();
-    document.getElementById("userPassword").value = "";
-    document.getElementById("userCompare").value = "";
-    document.getElementById("image").hidden = true;
-    document.getElementById("imgeHide").value = "";
-
-
-}
-
-
 
 ChangePassword = (Id) => {
     document.getElementById("ChangePasswordId").value = Id;

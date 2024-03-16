@@ -16,7 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews()
         .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
         .AddDataAnnotationsLocalization()
-        .AddApplicationPart(typeof(AccountsController).Assembly)
+        .AddApplicationPart(typeof(Accounts).Assembly)
         .AddApplicationPart(typeof(Customers).Assembly);
 
 

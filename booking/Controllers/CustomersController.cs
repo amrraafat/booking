@@ -36,7 +36,11 @@ namespace booking.Controllers
         {
             return View();
         }
+
+
         // ------------------------------------------------------------------- Add the new customer -----------------------------------------------------\\
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateCustomer([Bind("CustomerId,CustomerName,Gender,Address,NationalId,NationalIdImage")] Customer customer)
@@ -48,6 +52,7 @@ namespace booking.Controllers
                 {
                     _dbContext.Add(customer);
                     await _dbContext.SaveChangesAsync();
+
                     HttpContext.Session.SetString("msgType", "success");
                     HttpContext.Session.SetString("titel", _localizer["lbadded"].Value);
                     HttpContext.Session.SetString("msg", _localizer["lbsddedSuccessfully"].Value);

@@ -171,8 +171,14 @@
   <data name="lbMangeCustomer" xml:space="preserve">
     <value>إدارة العملاء</value>
   </data>
+  <data name="lbMsgDuplicateName" xml:space="preserve">
+    <value>لايستطيع الحفظ لان اسم موجود</value>
+  </data>
   <data name="lbNationalId" xml:space="preserve">
     <value>الرقم القومي </value>
+  </data>
+  <data name="lbNotSavedMsgUserRole" xml:space="preserve">
+    <value>لم يتم حفظ مجموعة المستخدم</value>
   </data>
   <data name="lbYesdelete" xml:space="preserve">
     <value>نعم إمسح </value>

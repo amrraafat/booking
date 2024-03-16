@@ -117,70 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lbAddress" xml:space="preserve">
-    <value>Address</value>
+  <data name="lbCreate" xml:space="preserve">
+    <value>Create</value>
   </data>
-  <data name="lbAreyousure" xml:space="preserve">
-    <value>Are you sure?</value>
+  <data name="lbEditHotel" xml:space="preserve">
+    <value>Edit Hotel</value>
   </data>
-  <data name="lbbtnDelete" xml:space="preserve">
-    <value>Delete</value>
+  <data name="lbfile" xml:space="preserve">
+    <value>File</value>
   </data>
-  <data name="lbbtnEdit" xml:space="preserve">
-    <value>Edit</value>
+  <data name="lbHotelImage" xml:space="preserve">
+    <value>Hotel Image</value>
   </data>
-  <data name="lbbtnSave" xml:space="preserve">
-    <value>Save</value>
+  <data name="lbHotelLocation" xml:space="preserve">
+    <value>Hotel Location</value>
   </data>
-  <data name="lbbtnSaveNewUser" xml:space="preserve">
-    <value>Add New Customer</value>
+  <data name="lbHotelNameFL" xml:space="preserve">
+    <value>Hotel name Fl</value>
   </data>
-  <data name="lbCanback" xml:space="preserve">
-    <value>You won't be able to revert this!</value>
+  <data name="lbHotelNameSL" xml:space="preserve">
+    <value>Hotel Name SL</value>
   </data>
-  <data name="lbcancelButtonText" xml:space="preserve">
-    <value>Cancel</value>
+  <data name="lbHotelRate" xml:space="preserve">
+    <value>Hotel Rate</value>
   </data>
-  <data name="lbCurrentCustomer" xml:space="preserve">
-    <value>Current Customer</value>
+  <data name="lbNoPhotoAvailable" xml:space="preserve">
+    <value>No Photo Available</value>
   </data>
-  <data name="lbCustomerName" xml:space="preserve">
-    <value>Customer Name</value>
+  <data name="lbSaveChanges" xml:space="preserve">
+    <value>Save Changes</value>
   </data>
-  <data name="lbEditCustomers" xml:space="preserve">
-    <value>Edit customer data</value>
-  </data>
-  <data name="lbEvents" xml:space="preserve">
-    <value>Events</value>
-  </data>
-  <data name="lbFemale" xml:space="preserve">
-    <value>Female</value>
-  </data>
-  <data name="lbGender" xml:space="preserve">
-    <value>Gender</value>
-  </data>
-  <data name="lbHomePage" xml:space="preserve">
-    <value>Home Page</value>
-  </data>
-  <data name="lbID" xml:space="preserve">
-    <value>ID</value>
-  </data>
-  <data name="lbMale" xml:space="preserve">
-    <value>Male</value>
-  </data>
-  <data name="lbMangeCustomer" xml:space="preserve">
-    <value>Mange Customer</value>
-  </data>
-  <data name="lbMsgDuplicateName" xml:space="preserve">
-    <value>you can't save this name is already using</value>
-  </data>
-  <data name="lbNationalId" xml:space="preserve">
-    <value>National ID</value>
-  </data>
-  <data name="lbNotSavedMsgRole" xml:space="preserve">
-    <value>Role not saved</value>
-  </data>
-  <data name="lbYesdelete" xml:space="preserve">
-    <value>Yes, delete it!</value>
+  <data name="lbUploadNewImage" xml:space="preserve">
+    <value>Upload New Image</value>
   </data>
 </root>

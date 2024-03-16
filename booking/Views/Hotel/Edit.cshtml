@@ -6,29 +6,29 @@
 }
 
 <div class="container">
-    <h1>Edit Hotel</h1>
+    <h1>@Localizer["lbEditHotel"]</h1>
     <div class="row">
         <div class="col-md-12">
             <form asp-action="Edit" method="post" enctype="multipart/form-data">
                 <input type="hidden" asp-for="hotel.HotelId" />
                 <div class="form-group">
-                    <label asp-for="hotel.HotelNameFL">Hotel Name (First Language)</label>
+                    <label asp-for="hotel.HotelNameFL">@Localizer["lbHotelNameFL"] </label>
                     <input asp-for="hotel.HotelNameFL" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <label asp-for="hotel.HotelNameSL">Hotel Name (Second Language)</label>
+                    <label asp-for="hotel.HotelNameSL">@Localizer["lbHotelNameSL"]</label>
                     <input asp-for="hotel.HotelNameSL" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <label asp-for="hotel.HotelLocation">Hotel Location</label>
+                    <label asp-for="hotel.HotelLocation"> @Localizer["lbHotelLocation"]</label>
                     <input asp-for="hotel.HotelLocation" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <label asp-for="hotel.HotelRate">Hotel Rate</label>
+                    <label asp-for="hotel.HotelRate"> @Localizer["lbHotelRate"]</label>
                     <input asp-for="hotel.HotelRate" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <label asp-for="ImageFileName">Hotel Image</label>
+                    <label asp-for="ImageFileName"> @Localizer["lbHotelImage"]</label>
                     @if (!string.IsNullOrEmpty(Model.ImageFileName))
                     {
                         var imageSrc = Url.Action("GetImage", "Hotel", new { id = Model.hotel.HotelId });
@@ -36,14 +36,14 @@
                     }
                     else
                     {
-                        <span>No Photo Available</span>
+                        <span>@Localizer["lbNoPhotoAvailable"]</span>
                     }
                 </div>
                 <div class="form-group">
-                    <label asp-for="file">Upload New Image</label>
+                    <label asp-for="file"> @Localizer["lbUploadNewImage"]</label>
                     <input asp-for="file" type="file" class="form-control-file" />
                 </div>
-                <button type="submit" class="btn btn-primary">Save Changes</button>
+                <button type="submit" class="btn btn-primary"> @Localizer["lbSaveChanges"]</button>
                 <a href="@Url.Action("Index", "Hotel")" class="btn btn-secondary">Cancel</a>
             </form>
         </div>

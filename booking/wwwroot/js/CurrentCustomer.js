@@ -15,24 +15,6 @@ Edit = (CustomerId, CustomerName, Gender, Address, NationalId) => {
 }
 
 
-Rest = () => {
-    document.getElementById("title").innerHTML = lbAddNewRole;
-    document.getElementById("btnSave").value = lbbtnSave;
-    document.getElementById("userId").value = "";
-    document.getElementById("userName").value = "";
-    document.getElementById("userEmail").value = "";
-    //document.getElementById("userImage").value = "";
-    document.getElementById("ddluserRole").value = "";
-    document.getElementById("userActive").checked = false;
-    $('#grPassword').show();
-    $('#grcomPassword').show();
-    document.getElementById("userPassword").value = "";
-    document.getElementById("userCompare").value = "";
-    document.getElementById("image").hidden = true;
-    document.getElementById("imgeHide").value = "";
-
-
-}
 
 
 

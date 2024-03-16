@@ -117,187 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CreateNewRole" xml:space="preserve">
-    <value>Create new role</value>
+  <data name="lbadded" xml:space="preserve">
+    <value>aa</value>
   </data>
-  <data name="lbActionName" xml:space="preserve">
-    <value>Action name</value>
-  </data>
-  <data name="lbActiveUser" xml:space="preserve">
-    <value>Active user</value>
-  </data>
-  <data name="lbAddNewCategory" xml:space="preserve">
-    <value>Add new category</value>
-  </data>
-  <data name="lbAddNewRole" xml:space="preserve">
-    <value>Add new role</value>
-  </data>
-  <data name="lbAddNewUser" xml:space="preserve">
-    <value>Add new user</value>
-  </data>
-  <data name="lbbtnChangePassword" xml:space="preserve">
-    <value>Change password</value>
-  </data>
-  <data name="lbbtnDelete" xml:space="preserve">
-    <value>Delete</value>
-  </data>
-  <data name="lbbtnEdit" xml:space="preserve">
-    <value>Edit</value>
-  </data>
-  <data name="lbbtnPermissions" xml:space="preserve">
-    <value>Permissions</value>
-  </data>
-  <data name="lbbtnSave" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="lbbtnSaveNewCategory" xml:space="preserve">
-    <value>Save new category</value>
-  </data>
-  <data name="lbbtnSaveNewRole" xml:space="preserve">
-    <value>Save new role</value>
-  </data>
-  <data name="lbbtnSaveNewUser" xml:space="preserve">
-    <value>Save new user</value>
-  </data>
-  <data name="lbcancelButtonText" xml:space="preserve">
-    <value>cancel</value>
-  </data>
-  <data name="lbCategories" xml:space="preserve">
-    <value>Categories</value>
-  </data>
-  <data name="lbclose" xml:space="preserve">
-    <value>close</value>
-  </data>
-  <data name="lbComparePassword" xml:space="preserve">
-    <value>Compare password</value>
-  </data>
-  <data name="lbconfirmButtonText" xml:space="preserve">
-    <value> yes delete </value>
-  </data>
-  <data name="lbDate" xml:space="preserve">
-    <value>Date</value>
-  </data>
-  <data name="lbDescription" xml:space="preserve">
-    <value>Description</value>
-  </data>
-  <data name="lbEdit" xml:space="preserve">
-    <value>Edit</value>
-  </data>
-  <data name="lbEmailUser" xml:space="preserve">
-    <value>Email</value>
-  </data>
-  <data name="lbEvents" xml:space="preserve">
-    <value>Events</value>
-  </data>
-  <data name="lbHomePage" xml:space="preserve">
-    <value>Home page</value>
-  </data>
-  <data name="lbImageUser" xml:space="preserve">
-    <value>User image </value>
-  </data>
-  <data name="lbMsgDeletedOkRegister" xml:space="preserve">
-    <value>User deleted successfully </value>
-  </data>
-  <data name="lbMsgDeletedOkRole" xml:space="preserve">
-    <value>Role deleted successfully</value>
-  </data>
-  <data name="lbMsgDenied" xml:space="preserve">
-    <value>you don't have permission to access</value>
+  <data name="lbMsgDuplicateNam" xml:space="preserve">
+    <value>csc</value>
   </data>
   <data name="lbMsgDuplicateName" xml:space="preserve">
-    <value>you can't save this name is already using</value>
-  </data>
-  <data name="lbMsgErrorLogin" xml:space="preserve">
-    <value>Username or password is incorrect</value>
-  </data>
-  <data name="lbMsgNotSavedCategory" xml:space="preserve">
-    <value>Category not saved</value>
-  </data>
-  <data name="lbMsgNotSavedChangePassword" xml:space="preserve">
-    <value>The password has not been changed</value>
-  </data>
-  <data name="lbMsgSavedChangePassword" xml:space="preserve">
-    <value>The password has been changed successfully</value>
-  </data>
-  <data name="lbNameRole" xml:space="preserve">
-    <value>Role name </value>
-  </data>
-  <data name="lbNameUser" xml:space="preserve">
-    <value>User name </value>
+    <value>wedwed</value>
   </data>
   <data name="lbNotSaved" xml:space="preserve">
-    <value>Not saved</value>
+    <value>ewdwe</value>
   </data>
-  <data name="lbNotSavedMsgRole" xml:space="preserve">
-    <value>Role not saved</value>
+  <data name="lbNotSavedMsgUserRol" xml:space="preserve">
+    <value>cscss</value>
   </data>
-  <data name="lbNotSavedMsgUser" xml:space="preserve">
-    <value>User not saved</value>
-  </data>
-  <data name="lbNotUpdate" xml:space="preserve">
-    <value>Not modified</value>
-  </data>
-  <data name="lbNotUpdateMsgRole" xml:space="preserve">
-    <value>The Role has not been updated</value>
-  </data>
-  <data name="lbNotUpdateMsgUser" xml:space="preserve">
-    <value>The user has not been modified</value>
-  </data>
-  <data name="lbOk" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="lbPassword" xml:space="preserve">
-    <value>Password</value>
-  </data>
-  <data name="lbRegisters" xml:space="preserve">
-    <value>Registers</value>
-  </data>
-  <data name="lbRoles" xml:space="preserve">
-    <value>Roles</value>
-  </data>
-  <data name="lbRoleUser" xml:space="preserve">
-    <value>User role</value>
-  </data>
-  <data name="lbSave" xml:space="preserve">
-    <value>saved</value>
+  <data name="lbNotSavedMsgUserRole" xml:space="preserve">
+    <value>scsdcs</value>
   </data>
   <data name="lbSaveMsgRole" xml:space="preserve">
-    <value>Role saved successfully</value>
+    <value>cwcsd</value>
   </data>
-  <data name="lbSaveMsgUser" xml:space="preserve">
-    <value>A new user has been saved successfully</value>
-  </data>
-  <data name="lbSelectUserRole" xml:space="preserve">
-    <value>Select the role</value>
-  </data>
-  <data name="lbTextMsgDelete" xml:space="preserve">
-    <value>You won't be able to undo this!!</value>
-  </data>
-  <data name="lbTitleDeletedOk" xml:space="preserve">
-    <value>Deleted!</value>
-  </data>
-  <data name="lbTitleEdit" xml:space="preserve">
-    <value>Edit Role</value>
-  </data>
-  <data name="lbTitleMsgDelete" xml:space="preserve">
-    <value>Are you sure?</value>
-  </data>
-  <data name="lbUpdate" xml:space="preserve">
-    <value>Modified</value>
-  </data>
-  <data name="lbUpdateMsgRole" xml:space="preserve">
-    <value>The role has been successfully modified</value>
-  </data>
-  <data name="lbUpdateMsgUser" xml:space="preserve">
-    <value>User has been modified successfully</value>
-  </data>
-  <data name="lbUser" xml:space="preserve">
-    <value>Current users</value>
-  </data>
-  <data name="lbUserName" xml:space="preserve">
-    <value>users</value>
-  </data>
-  <data name="RoleName" xml:space="preserve">
-    <value>role</value>
+  <data name="lbsddedSuccessfully" xml:space="preserve">
+    <value>cac</value>
   </data>
 </root>
