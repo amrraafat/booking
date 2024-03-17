@@ -265,7 +265,7 @@
     <value>Registers</value>
   </data>
   <data name="lbRoles" xml:space="preserve">
-    <value>Roles</value>
+    <value>Users Roles </value>
   </data>
   <data name="lbRoleUser" xml:space="preserve">
     <value>User role</value>

@@ -13,11 +13,3 @@ Edit = (CustomerId, CustomerName, Gender, Address, NationalId) => {
     document.getElementById("Address").value = Address;
     document.getElementById("NationalId").value = NationalId
 }
-
-
-
-
-
-ChangePassword = (Id) => {
-    document.getElementById("ChangePasswordId").value = Id;
-}
