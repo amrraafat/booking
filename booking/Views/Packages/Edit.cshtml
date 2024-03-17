@@ -1,0 +1,55 @@
+﻿@model PackageViewModel
+@{
+    ViewData["Title"] = "Edit Package";
+
+    var hotelList = ViewBag.HotelList as SelectList;
+}
+
+<h2>Edit Package</h2>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Package.PackageId" />
+    <div class="form-group">
+        <label asp-for="Package.PackageName">Package Name</label>
+        <input asp-for="Package.PackageName" class="form-control" />
+        <span asp-validation-for="Package.PackageName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Package.StartDate">Start Date</label>
+        <input asp-for="Package.StartDate" class="form-control" type="date" />
+        <span asp-validation-for="Package.StartDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Package.EndDate">End Date</label>
+        <input asp-for="Package.EndDate" class="form-control" type="date" />
+        <span asp-validation-for="Package.EndDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Package.AdultPrice">Adult Price</label>
+        <input asp-for="Package.AdultPrice" class="form-control" type="number" />
+        <span asp-validation-for="Package.AdultPrice" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Package.KidPrice">Kid Price</label>
+        <input asp-for="Package.KidPrice" class="form-control" type="number"  />
+        <span asp-validation-for="Package.KidPrice" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Package.HotelId">Select Hotel</label>
+        <select asp-for="Package.HotelId" class="form-control">
+            @foreach (var hotel in hotelList)
+            {
+                <option value="@hotel.Value">@hotel.Text</option>
+            }
+        </select>
+        <span asp-validation-for="Package.HotelId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Edit" class="btn btn-primary" />
+    </div>
+</form>
