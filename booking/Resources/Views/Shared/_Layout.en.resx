@@ -255,6 +255,9 @@
   <data name="lbOk" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="lbPackages" xml:space="preserve">
+    <value>Packages</value>
+  </data>
   <data name="lbPassword" xml:space="preserve">
     <value>Password</value>
   </data>

@@ -136,7 +136,7 @@
     <value>Save</value>
   </data>
   <data name="lbCanback" xml:space="preserve">
-    <value>You won't be able to revert this!</value>
+    <value>You won't be able to revert this! and any package for this hotel will be removed</value>
   </data>
   <data name="lbcancelButtonText" xml:space="preserve">
     <value>Cancel</value>

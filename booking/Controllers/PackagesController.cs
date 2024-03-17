@@ -4,6 +4,7 @@ using Infarstuructre.ViewModel;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 
 namespace booking.Controllers
@@ -80,6 +81,77 @@ namespace booking.Controllers
 
             return View(model);
         }
+        public IActionResult Edit(int Id)
+        {
 
+            PackageViewModel package = new PackageViewModel();
+            package.Package = _context.Packages.Find(Id);
+            if (package != null)
+            {
+                var requestCultureFeature = HttpContext.Features.Get<IRequestCultureFeature>();
+                var requestCulture = requestCultureFeature?.RequestCulture;
+                var hotels = _context.Hotels.ToList(); // Fetch the list of hotels from the database
+                if (requestCulture.Culture.Name == "en")
+                {
+                    ViewBag.HotelList = new SelectList(hotels, "HotelId", "HotelNameSL");
+                }
+                else
+                {
+                    ViewBag.HotelList = new SelectList(hotels, "HotelId", "HotelNameFL");
+                }
+                return View(package);
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(PackageViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Retrieve the existing package from the database
+                var package = await _context.Packages.FindAsync(model.Package.PackageId);
+
+                if (package == null)
+                {
+                    return NotFound(); // Or handle the case where the package is not found
+                }
+
+                // Update the properties of the existing package
+                package.PackageName = model.Package.PackageName;
+                package.StartDate = model.Package.StartDate;
+                package.EndDate = model.Package.EndDate;
+                package.AdultPrice = model.Package.AdultPrice;
+                package.KidPrice = model.Package.KidPrice;
+                package.HotelId = model.Package.HotelId;
+
+                // Update the package in the context
+                _context.Update(package);
+
+                // Save changes to the database
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction(nameof(Index));
+            }
+            return View(model);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            // Retrieve the hotel by ID
+            Package package = await _context.Packages.FindAsync(id);
+
+            if (package == null)
+            {
+                return NotFound();
+            }
+            _context.Packages.Remove(package);
+            await _context.SaveChangesAsync();
+
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

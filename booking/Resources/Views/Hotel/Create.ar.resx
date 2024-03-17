@@ -130,10 +130,10 @@
     <value>عنوان الفندق</value>
   </data>
   <data name="lbHotelNameFL" xml:space="preserve">
-    <value>اسم الفندق ar</value>
+    <value>اسم الفندق (عربى)</value>
   </data>
   <data name="lbHotelNameSL" xml:space="preserve">
-    <value>اسم الفندق en</value>
+    <value>اسم الفندق (English)</value>
   </data>
   <data name="lbHotelRate" xml:space="preserve">
     <value>تقييم الفندق</value>

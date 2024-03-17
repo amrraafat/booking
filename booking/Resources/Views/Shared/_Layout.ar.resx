@@ -288,6 +288,9 @@
   <data name="lbOk" xml:space="preserve">
     <value>حسناً</value>
   </data>
+  <data name="lbPackages" xml:space="preserve">
+    <value>العروض</value>
+  </data>
   <data name="lbPassword" xml:space="preserve">
     <value>كلمة المرور</value>
   </data>
