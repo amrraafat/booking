@@ -118,27 +118,18 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lbadded" xml:space="preserve">
-    <value>aa</value>
-  </data>
-  <data name="lbMsgDuplicateNam" xml:space="preserve">
-    <value>csc</value>
+    <value>Added</value>
   </data>
   <data name="lbMsgDuplicateName" xml:space="preserve">
-    <value>wedwed</value>
+    <value>Email already exists</value>
   </data>
   <data name="lbNotSaved" xml:space="preserve">
-    <value>ewdwe</value>
-  </data>
-  <data name="lbNotSavedMsgUserRol" xml:space="preserve">
-    <value>cscss</value>
+    <value>Not saved</value>
   </data>
   <data name="lbNotSavedMsgUserRole" xml:space="preserve">
-    <value>scsdcs</value>
+    <value>The new user has not been saved</value>
   </data>
-  <data name="lbSaveMsgRole" xml:space="preserve">
-    <value>cwcsd</value>
-  </data>
-  <data name="lbsddedSuccessfully" xml:space="preserve">
-    <value>cac</value>
+  <data name="lbSavedSuccessfully" xml:space="preserve">
+    <value>Successfully saved</value>
   </data>
 </root>

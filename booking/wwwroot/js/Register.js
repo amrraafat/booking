@@ -5,6 +5,7 @@
     });
 });
 
+
 Edit = (id,name,image,Email,ActiveUser,Role) => {
     document.getElementById("userId").value = id;
     document.getElementById("userName").value = name;
@@ -24,6 +25,7 @@ Edit = (id,name,image,Email,ActiveUser,Role) => {
     document.getElementById("image").hidden = false;
    
 }
+
 
 ChangePassword = (Id) => {
     document.getElementById("ChangePasswordId").value = Id;

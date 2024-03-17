@@ -177,7 +177,7 @@
   <data name="lbNationalId" xml:space="preserve">
     <value>National ID</value>
   </data>
-  <data name="lbNotSavedMsgRole" xml:space="preserve">
+  <data name="lbNotSavedMsgUserRole" xml:space="preserve">
     <value>Role not saved</value>
   </data>
   <data name="lbYesdelete" xml:space="preserve">
