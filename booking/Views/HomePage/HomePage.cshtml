@@ -1,15 +1,15 @@
 ﻿@model List<HomePageViewModel>
 
 <div class="container">
-    <div class="row">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach (var hotelViewModel in Model)
         {
-            <div class="col-md-4">
-                <div class="card mb-3">
+            <div class="col">
+                <div class="card bg-secondary">
                     @if (!string.IsNullOrEmpty(hotelViewModel.ImageFileName))
                     {
                         var imageSrc = Url.Action("GetImage", "Hotel", new { id = hotelViewModel.Hotel.HotelId });
-                        <img src="@imageSrc" alt="Hotel Image" width="250" height="250" />
+                        <img src="@imageSrc" class="card-img-top" alt="Hotel Image" width="250" height="250" />
                     }
                     else
                     {
@@ -20,19 +20,51 @@
                         <p class="card-text">@hotelViewModel.Hotel.HotelLocation</p>
                         <p class="card-text">Rate: @hotelViewModel.Hotel.HotelRate</p>
                         <!-- Display associated packages as dropdown list -->
-                        <h6 class="card-subtitle mb-2 text-muted">Packages</h6>
-                        <select class="form-select" aria-label="Select Package">
-                            @foreach (var package in hotelViewModel.Packages)
-                            {
-                                <option>@package.PackageName</option>
-                            }
-                        </select>
-                        <!-- Other hotel information -->
-                        <a href="@Url.Action("Details", "Hotel", new { id = hotelViewModel.Hotel.HotelId })" class="btn btn-primary">Details</a>
-                    </div>
+                        <h6 class="selectpicker">Packages</h6>
 
+                        <!-- Form for reservation -->
+                        <form id="reservationForm-@hotelViewModel.Hotel.HotelId" asp-action="Reservation" asp-controller="HomePage" method="post">
+                            <input type="hidden" id="hotelId" name="hotelId" value="@hotelViewModel.Hotel.HotelId" />
+                            <select class="form-select" aria-label="Select Package" id="packageSelect-@hotelViewModel.Hotel.HotelId">
+                                @foreach (var package in hotelViewModel.Packages)
+                                {
+                                    <option value="@package.PackageId">@package.PackageName</option>
+                                }
+                            </select>
+                            <button type="button" class="btn btn-light m-3" onclick="submitReservation('@hotelViewModel.Hotel.HotelId')">Make Reservation</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         }
     </div>
 </div>
+
+
+
+<style>
+    /* Style for the select element */
+    .form-select {
+        appearance: none; /* Remove default appearance */
+        -webkit-appearance: none; /* For older versions of Chrome/Safari */
+        -moz-appearance: none; /* For older versions of Firefox */
+        background-color: #f5f5f5; /* Background color */
+        border: 1px solid #ccc; /* Border */
+        padding: 8px 12px; /* Padding */
+        font-size: 16px; /* Font size */
+        border-radius: 5px; /* Border radius */
+        width: 200px; /* Width */
+    }
+
+        
+        .form-select option {
+            background-color: #f5f5f5; /* Background color */
+            color: #333; /* Text color */
+        }
+
+
+</style>
+
+<script src="~/js/homepage.js"></script>
+
+<!-- Your select element -->>

@@ -54,5 +54,11 @@ namespace booking.Controllers
         }
 
 
+        [HttpPost]
+        public IActionResult Reservation(int hotelId, int selectedPackageId)
+        {
+            return View();
+        }
+
     }
 }
