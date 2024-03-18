@@ -24,12 +24,12 @@ namespace Infarstuructre.Domin
         public DbSet<Hotel> Hotels { get; set; }
 
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    base.OnModelCreating(modelBuilder);
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
 
-        //    // Ignore the YourViewModel class, preventing it from being included in the migration
-        //    modelBuilder.Ignore<VwUser>();
-        //}
-    }
+            //Ignore the YourViewModel class, preventing it from being included in the migration
+            modelBuilder.Ignore<VwUser>();
+        }
+}
 }

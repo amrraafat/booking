@@ -1,0 +1,36 @@
+﻿@model ReservationViewModel
+
+@{
+    var hotelList = ViewBag.HotelList as SelectList;
+    var packageList = ViewBag.PackageList as SelectList;
+}
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="@Model.reservation.HotelId">Select Hotel</label>
+        <select asp-for="@Model.reservation.HotelId" class="form-control" onchange="LoadPachages();" id="hotelSelect">
+            @foreach (var hotel in hotelList)
+            {
+                <option value="@hotel.Value">@hotel.Text</option>
+            }
+        </select>
+        <span asp-validation-for="@Model.reservation.HotelId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.reservation.PackageId">Select Package</label>
+        <select asp-for="@Model.reservation.PackageId" class="form-control" id="packageSelect">
+            @foreach (var package in packageList)
+            {
+                <option value="@package.Value">@package.Text</option>
+            }
+        </select>
+        <span asp-validation-for="@Model.reservation.PackageId" class="text-danger"></span>
+    </div>
+</form>
+
+<script>
+
+</script>
+
+<script src="~/js/Reservation.js"></script>

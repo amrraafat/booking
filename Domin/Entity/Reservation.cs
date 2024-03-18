@@ -17,9 +17,14 @@ namespace Domin.Entity
         public int CustomerId { get; set; }
         public int AdultNo { get; set; }
         public int KidNo { get; set; }
+        public DateTime? ReservationDateTime { get; set; }
         public decimal TotalPrice { get; set; }
         public decimal Discount { get; set; }
         public decimal Paid { get; set; }
         public decimal Remain { get; set; }
+        public DateTime? LastModify { get; set; } 
+        public string? UserName { get; set; }
+        public bool IsDeleted { get; set; } = false;
+        public string DeleteReason { get; set; }
     }
 }
