@@ -1,0 +1,38 @@
+﻿@model List<HomePageViewModel>
+
+<div class="container">
+    <div class="row">
+        @foreach (var hotelViewModel in Model)
+        {
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    @if (!string.IsNullOrEmpty(hotelViewModel.ImageFileName))
+                    {
+                        var imageSrc = Url.Action("GetImage", "Hotel", new { id = hotelViewModel.Hotel.HotelId });
+                        <img src="@imageSrc" alt="Hotel Image" width="250" height="250" />
+                    }
+                    else
+                    {
+                        <span>No Photo Available</span>
+                    }
+                    <div class="card-body">
+                        <h5 class="card-title">@hotelViewModel.Hotel.HotelNameFL</h5>
+                        <p class="card-text">@hotelViewModel.Hotel.HotelLocation</p>
+                        <p class="card-text">Rate: @hotelViewModel.Hotel.HotelRate</p>
+                        <!-- Display associated packages as dropdown list -->
+                        <h6 class="card-subtitle mb-2 text-muted">Packages</h6>
+                        <select class="form-select" aria-label="Select Package">
+                            @foreach (var package in hotelViewModel.Packages)
+                            {
+                                <option>@package.PackageName</option>
+                            }
+                        </select>
+                        <!-- Other hotel information -->
+                        <a href="@Url.Action("Details", "Hotel", new { id = hotelViewModel.Hotel.HotelId })" class="btn btn-primary">Details</a>
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+</div>

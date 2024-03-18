@@ -45,7 +45,6 @@ namespace booking.Controllers
 
 
 
-
         public async Task<IActionResult> Detail(int HotelId)
         {
             Hotel hotel=new Hotel();

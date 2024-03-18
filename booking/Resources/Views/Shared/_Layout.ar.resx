@@ -195,6 +195,9 @@
   <data name="lbEvents" xml:space="preserve">
     <value>الاحداث</value>
   </data>
+  <data name="lbHomepag" xml:space="preserve">
+    <value />
+  </data>
   <data name="lbHomePage" xml:space="preserve">
     <value>الصفحة الرئيسية</value>
   </data>
