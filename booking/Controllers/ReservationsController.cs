@@ -47,6 +47,7 @@ namespace booking.Controllers
             var requestCulture = requestCultureFeature?.RequestCulture;
             var hotels = _context.Hotels.ToList();
             var packages = _context.Packages.ToList();
+            var customers = _context.Customers.ToList();
             if (requestCulture.Culture.Name == "en")
             {
                 ViewBag.HotelList = new SelectList(hotels, "HotelId", "HotelNameSL");
@@ -56,12 +57,20 @@ namespace booking.Controllers
                 ViewBag.HotelList = new SelectList(hotels, "HotelId", "HotelNameFL");
             }
             ViewBag.PackageList = new SelectList(packages, "PackageId", "PackageName");
+            ViewBag.CustomerList = new SelectList(customers);
             return View();
         }
         [HttpGet]
         public IActionResult GetPackagesByHotelId(int hotelId)
         {
-            var packages = _context.Packages.Where(p => p.HotelId == hotelId).ToList();
+            var packages = new List<Package>();
+            if (hotelId > 0) { 
+                packages = _context.Packages.Where(p => p.HotelId == hotelId).ToList();
+            }
+            else
+            {
+                packages = _context.Packages.ToList();
+            }
             return Json(packages);
         }
         [HttpPost]
@@ -93,6 +102,10 @@ namespace booking.Controllers
 
             }
             return View(viewModel);
+        }
+        public IActionResult GetPackageData(int packageId)
+        {
+            return Json(_context.Packages.Find(packageId));
         }
     }
 }

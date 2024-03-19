@@ -3,12 +3,14 @@
 @{
     var hotelList = ViewBag.HotelList as SelectList;
     var packageList = ViewBag.PackageList as SelectList;
+    var customerList = ViewBag.CustomerList as SelectList;
 }
 
 <form asp-action="Create">
     <div class="form-group">
         <label asp-for="@Model.reservation.HotelId">Select Hotel</label>
         <select asp-for="@Model.reservation.HotelId" class="form-control" onchange="LoadPachages();" id="hotelSelect">
+            <option value="0">Select Hotel</option>
             @foreach (var hotel in hotelList)
             {
                 <option value="@hotel.Value">@hotel.Text</option>
@@ -19,7 +21,8 @@
 
     <div class="form-group">
         <label asp-for="@Model.reservation.PackageId">Select Package</label>
-        <select asp-for="@Model.reservation.PackageId" class="form-control" id="packageSelect">
+        <select asp-for="@Model.reservation.PackageId" class="form-control" onchange="packageChange()" id="packageSelect">
+            <option value="0">Select Package</option>
             @foreach (var package in packageList)
             {
                 <option value="@package.Value">@package.Text</option>
@@ -27,10 +30,44 @@
         </select>
         <span asp-validation-for="@Model.reservation.PackageId" class="text-danger"></span>
     </div>
+    <div class="form-group">
+        <label asp-for="@Model.customer.CustomerName">Customer Name</label>
+        <input type="text" asp-for="@Model.customer.CustomerName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.customer.NationalId">Customer National ID</label> 
+        <input type="number" asp-for="@Model.customer.NationalId" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.reservation.AdultNo">Adults Count</label>
+        <input type="number" asp-for="@Model.reservation.AdultNo " class="form-control" value="1" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.reservation.KidNo">Kids Count</label>
+        <input type="number" asp-for="@Model.reservation.KidNo " class="form-control" value="0" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.reservation.TotalPrice">Total Price</label>
+        <input type="number" asp-for="@Model.reservation.TotalPrice " class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.reservation.Discount">Discount</label>
+        <input type="number" asp-for="@Model.reservation.Discount " class="form-control" />
+    </div>
+    <div class="form-group">
+        <label >Price After Discount</label>
+        <input type="number" class="form-control"  id="priceAfterDiscount"/>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.reservation.Paid">Paid</label>
+        <input type="number" asp-for="@Model.reservation.Paid " class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.reservation.Remain">Remian</label>
+        <input type="number" asp-for="@Model.reservation.Remain " class="form-control" />
+    </div>
 </form>
 
-<script>
-
-</script>
 
 <script src="~/js/Reservation.js"></script>
