@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /booking/appsettings.Development.json
 /booking/wwwroot/Images/Users
+/booking/appsettings.Development.json

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using Newtonsoft.Json.Converters;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -14,22 +15,17 @@ namespace booking.Controllers
     public class HomePageController : Controller
     {
         private readonly BookingDbContext _context;
-        public HomePageController(BookingDbContext context)
+        private readonly IStringLocalizer<Customers> _localizer;
+        public HomePageController(BookingDbContext context, IStringLocalizer<Customers> localizer)
         {
             _context = context;
+            _localizer = localizer;
         }
 
-        public async Task<IActionResult> HomePage()
+        public async Task<IActionResult> HomePage(Customer customer)
         {
             var hotelViewModelList = new List<HomePageViewModel>();
 
-            // Retrieve hotels with their associated packages using a join operation
-            //var hotelPackagesQuery =
-            //    from hotel in _context.Hotels
-            //    join package in _context.Packages on hotel.HotelId equals package.HotelId into packages
-            //    select new { Hotel = hotel, Packages = packages };
-
-            // Execute the query asynchronously
             var hotelPackages = await _context.Hotels.ToListAsync();
             
             foreach (var item in hotelPackages)
@@ -48,11 +44,44 @@ namespace booking.Controllers
                 
                 hotelViewModelList.Add(hotelViewModel);
             }
-
+            ViewBag.Customer = customer;
             // Pass hotel view models to the view
             return View(hotelViewModelList);
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateCustomer([Bind("CustomerId,CustomerName,Gender,Address,NationalId,NationalIdImage")] Customer customer)
+        {
+            try
+            {
 
+                if (ModelState.IsValid)
+                {
+                    _context.Add(customer);
+                    await _context.SaveChangesAsync();
+
+                    HttpContext.Session.SetString("msgType", "success");
+                    HttpContext.Session.SetString("titel", _localizer["lbadded"].Value);
+                    HttpContext.Session.SetString("msg", _localizer["lbsddedSuccessfully"].Value);
+                }
+                else
+                {
+                    HttpContext.Session.SetString("msgType", "erorr");
+                    HttpContext.Session.SetString("titel", _localizer["lbaddedfeild"].Value);
+                    HttpContext.Session.SetString("msg", _localizer["lbaddingNotCompleted"].Value);
+                }
+                return RedirectToAction("HomePage", "HomePage");
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "An error occurred while updating customer information: " + ex.Message;
+                HttpContext.Session.SetString("msgType", "erorr");
+                HttpContext.Session.SetString("titel", _localizer["lbaddedfeild"].Value);
+                HttpContext.Session.SetString("msg", _localizer["lbaddingNotCompleted"].Value);
+                return RedirectToAction("HomePage", "HomePage");
+            }
+
+        }
 
         [HttpPost]
         public IActionResult Reservation(int hotelId, int selectedPackageId)

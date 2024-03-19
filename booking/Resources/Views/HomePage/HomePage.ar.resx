@@ -118,27 +118,72 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lbAddress" xml:space="preserve">
-    <value>Address</value>
+    <value>العنوان</value>
   </data>
-  <data name="lbCreate" xml:space="preserve">
-    <value>Create</value>
+  <data name="lbAreyousure" xml:space="preserve">
+    <value>هل انت متاكد ؟</value>
   </data>
-  <data name="lbCreateCustomer" xml:space="preserve">
-    <value>Create New Customer</value>
+  <data name="lbbtnDelete" xml:space="preserve">
+    <value>مسح</value>
+  </data>
+  <data name="lbbtnEdit" xml:space="preserve">
+    <value>تعديل</value>
+  </data>
+  <data name="lbbtnSave" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="lbbtnSaveNewUser" xml:space="preserve">
+    <value>إضافه عميل جديد</value>
+  </data>
+  <data name="lbCanback" xml:space="preserve">
+    <value>لايمكنك التراجع في هذه الخطوة </value>
+  </data>
+  <data name="lbcancelButtonText" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
+  <data name="lbCurrentCustomer" xml:space="preserve">
+    <value>العملاء الحاليين</value>
   </data>
   <data name="lbCustomerName" xml:space="preserve">
-    <value>Customer Name</value>
+    <value>إسم العميل</value>
+  </data>
+  <data name="lbEditCustomers" xml:space="preserve">
+    <value>تعديل بينات المستخدم </value>
+  </data>
+  <data name="lbEvents" xml:space="preserve">
+    <value>الأحداث</value>
   </data>
   <data name="lbFemale" xml:space="preserve">
-    <value>Female</value>
+    <value>انثى</value>
   </data>
   <data name="lbGender" xml:space="preserve">
-    <value>Gender</value>
+    <value>الجنس </value>
+  </data>
+  <data name="lbHomePage" xml:space="preserve">
+    <value>الصفحة الرئيسيه</value>
+  </data>
+  <data name="lbHotelReservation" xml:space="preserve">
+    <value>الفنادق</value>
+  </data>
+  <data name="lbID" xml:space="preserve">
+    <value>ID</value>
   </data>
   <data name="lbMale" xml:space="preserve">
-    <value>Male</value>
+    <value>ذكر</value>
+  </data>
+  <data name="lbMangeCustomer" xml:space="preserve">
+    <value>إدارة العملاء</value>
+  </data>
+  <data name="lbMsgDuplicateName" xml:space="preserve">
+    <value>لايستطيع الحفظ لان اسم موجود</value>
   </data>
   <data name="lbNationalId" xml:space="preserve">
-    <value>National ID</value>
+    <value>الرقم القومي </value>
+  </data>
+  <data name="lbNotSavedMsgUserRole" xml:space="preserve">
+    <value>لم يتم حفظ مجموعة المستخدم</value>
+  </data>
+  <data name="lbYesdelete" xml:space="preserve">
+    <value>نعم إمسح </value>
   </data>
 </root>
