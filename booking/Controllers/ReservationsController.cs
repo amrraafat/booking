@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Security.Claims;
 
 namespace booking.Controllers
 {
@@ -19,7 +20,7 @@ namespace booking.Controllers
 
         public async Task<IActionResult> Index()
         {
-            List < ReservationViewModel> viewModelList = new List<ReservationViewModel>();
+            List<ReservationViewModel> viewModelList = new List<ReservationViewModel>();
             List<Reservation> reservations = new List<Reservation>();
             reservations = await _context.Reservations.ToListAsync();
             foreach (var reservation in reservations)
@@ -64,7 +65,8 @@ namespace booking.Controllers
         public IActionResult GetPackagesByHotelId(int hotelId)
         {
             var packages = new List<Package>();
-            if (hotelId > 0) { 
+            if (hotelId > 0)
+            {
                 packages = _context.Packages.Where(p => p.HotelId == hotelId).ToList();
             }
             else
@@ -75,33 +77,32 @@ namespace booking.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(ReservationViewModel viewModel) 
+        public async Task<IActionResult> Create(ReservationViewModel viewModel)
         {
-            if (ModelState.IsValid) 
+            string loggedInUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            string loggedInUserName = User.FindFirstValue(ClaimTypes.Name);
+            Reservation reservation = new Reservation
             {
-                Reservation reservation = new Reservation
-                {
-                    EmployeeId = 0,
-                    HotelId = viewModel.hotel.HotelId,
-                    PackageId = viewModel.package.PackageId,
-                    CustomerId = viewModel.customer.CustomerId,
-                    AdultNo = viewModel.reservation.AdultNo,
-                    KidNo = viewModel.reservation.KidNo,
-                    ReservationDateTime = DateTime.UtcNow,
-                    TotalPrice = viewModel.reservation.TotalPrice,
-                    Discount = viewModel.reservation.Discount,
-                    Paid = viewModel.reservation.Paid,
-                    Remain = viewModel.reservation.Remain,
-                    LastModify = DateTime.UtcNow,
-                    IsDeleted = false,
-                    DeleteReason = ""
-                };
-                _context.Add(reservation);
-                _context.SaveChanges();
-                return RedirectToAction(nameof(Index));
-
-            }
-            return View(viewModel);
+                EmployeeId = loggedInUserId,
+                HotelId = viewModel.reservation.HotelId,
+                PackageId = viewModel.reservation.PackageId,
+                CustomerId = 7,
+                //CustomerId = viewModel.customer.CustomerId,
+                AdultNo = viewModel.reservation.AdultNo,
+                KidNo = viewModel.reservation.KidNo,
+                ReservationDateTime = DateTime.UtcNow,
+                TotalPrice = viewModel.reservation.TotalPrice,
+                Discount = viewModel.reservation.Discount,
+                Paid = viewModel.reservation.Paid,
+                Remain = viewModel.reservation.Remain,
+                LastModify = DateTime.UtcNow,
+                UserName = loggedInUserName,
+                IsDeleted = false,
+                DeleteReason = ""
+            };
+            _context.Add(reservation);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
         }
         public IActionResult GetPackageData(int packageId)
         {
