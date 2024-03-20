@@ -43,10 +43,19 @@ namespace booking.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateCustomer([Bind("CustomerId,CustomerName,Gender,Address,NationalId,NationalIdImage")] Customer customer)
+        public async Task<IActionResult> CreateCustomer([Bind("CustomerId,CustomerName,Gender,Address,NationalId,NationalIdImage")] Customer customer , IFormFile file)
         {
             try
             {
+                if (file != null && file.Length > 0)
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        file.CopyTo(memoryStream);
+
+                        customer.NationalIdImage = memoryStream.ToArray();
+                    }
+                }
 
                 if (ModelState.IsValid)
                 {
@@ -104,14 +113,23 @@ namespace booking.Controllers
         }
         // ------------------------------------------------------------------- Edit Current customer -----------------------------------------------------\\
         [HttpPost]
-        public async Task<IActionResult> EditCustomer(CustomerViewModel updatedCustomer)
+        public async Task<IActionResult> EditCustomer(CustomerViewModel updatedCustomer , IFormFile file)
         {
             try
             {
                
 
                 var existingCustomer = await _dbContext.Customers.FindAsync(updatedCustomer.customer.CustomerId);
-               
+
+                if (file != null && file.Length > 0)
+                {
+                    // Read the uploaded file into a byte array
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await file.CopyToAsync(memoryStream);
+                        existingCustomer.NationalIdImage = memoryStream.ToArray();
+                    }
+                }
                 if (ModelState.IsValid && existingCustomer != null)
                 {
                     existingCustomer.CustomerName = updatedCustomer.customer.CustomerName;

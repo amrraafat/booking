@@ -144,6 +144,9 @@
   <data name="lbCurrentHotel" xml:space="preserve">
     <value>Hoteles</value>
   </data>
+  <data name="lbfile" xml:space="preserve">
+    <value>add Photo</value>
+  </data>
   <data name="lbHomePage" xml:space="preserve">
     <value>Home Page</value>
   </data>

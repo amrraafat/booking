@@ -17,7 +17,7 @@
     });
 }
 function packageChange() {
-    debugger
+    //debugger
     var packageId = $('#packageSelect').val();
     if (packageId >0 ) {
         $.ajax({

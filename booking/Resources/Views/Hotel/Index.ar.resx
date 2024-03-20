@@ -144,6 +144,9 @@
   <data name="lbCurrentHotel" xml:space="preserve">
     <value>الفنادق</value>
   </data>
+  <data name="lbfile" xml:space="preserve">
+    <value>اضافه صورة </value>
+  </data>
   <data name="lbHomePage" xml:space="preserve">
     <value>الصفحة الرئيسيه</value>
   </data>

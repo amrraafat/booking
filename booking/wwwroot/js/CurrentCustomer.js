@@ -6,10 +6,12 @@
 });
 
 
-Edit = (CustomerId, CustomerName, Gender, Address, NationalId) => {
+Edit = (CustomerId, CustomerName, Gender, Address, NationalId, NationalIdImage) => {
     document.getElementById("CustomerId").value = CustomerId;
     document.getElementById("CustomerName").value = CustomerName;
     document.getElementById("gender").value = Gender;
     document.getElementById("Address").value = Address;
-    document.getElementById("NationalId").value = NationalId
+    document.getElementById("NationalId").value = NationalId;
+    document.getElementById("ImageId").value = NationalIdImage;
+    
 }

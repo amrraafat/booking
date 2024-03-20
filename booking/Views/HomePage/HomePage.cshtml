@@ -2,17 +2,7 @@
 @{
     var customer = ViewBag.Customer as Customer;
 }
-<style>
-    .card {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-    }
 
-    .card-body {
-        flex-grow: 1;
-    }
-</style>
 <div class="card-header d-flex align-items-center justify-content-start">
     <h3 class="card-title" style="margin-left:20px">@Localizer["lbHotelReservation"]</h3>
 
@@ -25,35 +15,36 @@
 </div>
 
 <div class="container">
-    <div class="row row-cols-1 row-cols-md-3 g-4" style="padding-top:2%">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach (var hotelViewModel in Model)
         {
-            <div class="col" style="padding-bottom:2%">
-                <div class="card">
-                    <div class="card-header">
-                        @if (!string.IsNullOrEmpty(hotelViewModel.ImageFileName))
-                        {
-                            var imageSrc = Url.Action("GetImage", "Hotel", new { id = hotelViewModel.Hotel.HotelId });
-                            <img src="@imageSrc" class="card-img-top" alt="Hotel Image" />
-                        }
-                        else
-                        {
-                            <span>No Photo Available</span>
-                        }
-                    </div>
+            <div class="col">
+                <div class="card bg-secondary">
+                    @if (!string.IsNullOrEmpty(hotelViewModel.ImageFileName))
+                    {
+                        var imageSrc = Url.Action("GetImage", "Hotel", new { id = hotelViewModel.Hotel.HotelId });
+                        <img src="@imageSrc" class="card-img-top" alt="Hotel Image" width="250" height="250" />
+                    }
+                    else
+                    {
+                        <span>No Photo Available</span>
+                    }
                     <div class="card-body">
                         <h5 class="card-title">@hotelViewModel.Hotel.HotelNameFL</h5>
                         <p class="card-text">@hotelViewModel.Hotel.HotelLocation</p>
                         <p class="card-text">Rate: @hotelViewModel.Hotel.HotelRate</p>
-                        <div class="form-group">
-                            <label for="packageSelect-@hotelViewModel.Hotel.HotelId">Packages</label>
-                            <select class="form-select" id="packageSelect-@hotelViewModel.Hotel.HotelId">
-                                @foreach (var package in hotelViewModel.Packages)
-                                {
-                                    <option value="@package.PackageId">@package.PackageName</option>
-                                }
-                            </select>
-                        </div>
+                        <!-- Display associated packages as dropdown list -->
+                        <h6 class="selectpicker">Packages</h6>
+
+                        <!-- Form for reservation -->
+
+                        <select class="form-select" aria-label="Select Package" id="packageSelect-@hotelViewModel.Hotel.HotelId">
+                            @foreach (var package in hotelViewModel.Packages)
+                            {
+                                <option value="@package.PackageId">@package.PackageName</option>
+                            }
+                        </select>
+
                     </div>
                 </div>
             </div>
@@ -167,4 +158,4 @@
 
 <script src="~/js/homepage.js"></script>
 
-<!-- Your select element -->
+<!-- Your select element -->>

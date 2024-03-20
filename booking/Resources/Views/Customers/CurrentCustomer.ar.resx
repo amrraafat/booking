@@ -156,6 +156,9 @@
   <data name="lbFemale" xml:space="preserve">
     <value>انثى</value>
   </data>
+  <data name="lbfile" xml:space="preserve">
+    <value>إضافه صورة </value>
+  </data>
   <data name="lbGender" xml:space="preserve">
     <value>الجنس </value>
   </data>
@@ -176,6 +179,9 @@
   </data>
   <data name="lbNationalId" xml:space="preserve">
     <value>الرقم القومي </value>
+  </data>
+  <data name="lbNationalIdImage" xml:space="preserve">
+    <value>صورة بطاقه </value>
   </data>
   <data name="lbNotSavedMsgUserRole" xml:space="preserve">
     <value>لم يتم حفظ مجموعة المستخدم</value>

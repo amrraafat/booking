@@ -47,6 +47,7 @@
                                     <td>@Localizer["lbID"]</td>
                                     <td>@Localizer["lbAddress"]</td>
                                     <td>@Localizer["lbNationalId"]</td>
+                                    <td>@Localizer["lbNationalIdImage"]</td>
                                     <td>@Localizer["lbGender"]</td>
                                     
                                     <td>@Localizer["lbEvents"]</td>
@@ -64,6 +65,12 @@
 
                                         <td>@Customer.Address</td>
                                         <td>@Customer.NationalId</td>
+                                        <td>
+                                            @if (Customer.NationalIdImage != null && Customer.NationalIdImage.Length > 0)
+                                            {
+                                                <img id="existingImage" class="preview-image" src="data:image/png;base64,@(Convert.ToBase64String(Customer.NationalIdImage))" alt="National ID Image" width="50" height="50" />
+                                            }
+                                        </td>
                                         <td>
                                             @if (Customer.Gender == 1)
                                             {
@@ -111,7 +118,19 @@
     <!-- /.content -->
 </div>
 
-
+<div id="imageModal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Image Preview</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img id="previewImage" src="#" alt="National ID Image" style="max-width: 100%;" />
+            </div>
+        </div>
+    </div>
+</div>
 <!------------------------------------------ Popup Form To edit current customer  ----------------------------------------->
 
 
@@ -150,6 +169,11 @@
                             <option value="2">@Localizer["lbFemale"]</option>
                         </select>
                         <span asp-validation-for="customer.Gender" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>@Localizer["lbfile"]</label>
+                        <input type="file" name="file" class="form-control-file" id="EditImageId" />
+                        <span class="text-danger"></span>
                     </div>
                     <div class="modal-footer-rtl" style="padding:0 15px 15px 0">
                         <input type="submit" class="btn btn-success" value="@Localizer["lbbtnSave"]"  />
@@ -200,6 +224,12 @@
                         </select>
                         <span asp-validation-for="customer.Gender" class="text-danger"></span>
                     </div>
+                           <div class="form-group">
+                        <label>@Localizer["lbfile"]</label>
+                        <input type="file" name="file" class="form-control-file" />
+                        <span  class="text-danger"></span>
+                    </div>
+                    
                     <div class="modal-footer-rtl" style="padding:0 15px 15px 0">
                         <input type="submit" class="btn btn-success" value="@Localizer["lbbtnSave"]" />
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -243,6 +273,20 @@
         }
         Context.Session.SetString("msgType", "");
     }
+    <script>
+        // When the document is ready
+        $(document).ready(function () {
+            // Attach click event to each preview image
+            $('.preview-image').on('click', function () {
+                // Get the source of the clicked image
+                var src = $(this).attr('src');
+                // Set the source of the modal's image
+                $('#previewImage').attr('src', src);
+                // Show the modal
+                $('#imageModal').modal('show');
+            });
+        });
+    </script>
     <script>
         function confirmDelete(customerId) {
             Swal.fire({

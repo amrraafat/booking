@@ -13,7 +13,7 @@ namespace Infarstuructre.ViewModel
   public class RegisterViweModel
     {
         public List <VwUser>? Users { get; set; }
-        public  NewRegister NewRegister { get; set; }
+        public  NewRegister? NewRegister { get; set; }
         public List <IdentityRole>? Roles { get; set; }
         public ChangePasswordViweModel? changePassword { get; set; }
 
