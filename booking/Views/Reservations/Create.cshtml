@@ -5,7 +5,11 @@
     var packageList = ViewBag.PackageList as SelectList;
     var customerList = ViewBag.CustomerList as SelectList;
 }
-
+<style>
+    label{
+        margin:0px;
+    }
+</style>
 <form asp-action="Create">
     <div class="form-group">
         <label asp-for="@Model.reservation.HotelId">Select Hotel</label>
@@ -30,14 +34,25 @@
         </select>
         <span asp-validation-for="@Model.reservation.PackageId" class="text-danger"></span>
     </div>
-    <div class="form-group">
-        <label asp-for="@Model.customer.CustomerName">Customer Name</label>
-        <input type="text" asp-for="@Model.customer.CustomerName" class="form-control" />
-    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="@Model.customer.CustomerName">Customer Name</label>
+                <input type="text" asp-for="@Model.customer.CustomerName" class="form-control" />
+            </div>
+        </div>
 
-    <div class="form-group">
-        <label asp-for="@Model.customer.NationalId">Customer National ID</label> 
-        <input type="number" asp-for="@Model.customer.NationalId" class="form-control" />
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="@Model.customer.NationalId">Customer National ID</label>
+                <input type="number" asp-for="@Model.customer.NationalId" class="form-control" />
+            </div>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-outline-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#CrateNew">
+                @Localizer["Select Customer"]
+            </button>
+        </div>
     </div>
     <div class="form-group">
         <label asp-for="@Model.reservation.AdultNo">Adults Count</label>
@@ -61,11 +76,11 @@
     </div>
     <div class="form-group">
         <label asp-for="@Model.reservation.Paid">Paid</label>
-        <input type="number" asp-for="@Model.reservation.Paid " class="form-control" />
+        <input type="number" asp-for="@Model.reservation.Paid" class="form-control" />
     </div>
     <div class="form-group">
         <label asp-for="@Model.reservation.Remain">Remian</label>
-        <input type="number" asp-for="@Model.reservation.Remain " class="form-control" />
+        <input type="number" asp-for="@Model.reservation.Remain" class="form-control" />
     </div>
 </form>
 
