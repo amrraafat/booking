@@ -4,6 +4,8 @@
     var hotelList = ViewBag.HotelList as SelectList;
     var packageList = ViewBag.PackageList as SelectList;
     var customerList = ViewBag.CustomerList as SelectList;
+    var selectedHotelId = ViewBag.hotelId;
+    var selectedPackageId = ViewBag.packageId;
 }
 <style>
     label {
@@ -19,7 +21,12 @@
             <option value="0">Select Hotel</option>
             @foreach (var hotel in hotelList)
             {
-                <option value="@hotel.Value">@hotel.Text</option>
+                if (hotel.Value == selectedHotelId)
+                {
+                    <option value="@hotel.Value" selected>@hotel.Text</option>
+                }else{
+                    <option value="@hotel.Value">@hotel.Text</option>
+                }
             }
         </select>
         <span asp-validation-for="@Model.reservation.HotelId" class="text-danger"></span>
@@ -31,7 +38,13 @@
             <option value="0">Select Package</option>
             @foreach (var package in packageList)
             {
-                <option value="@package.Value">@package.Text</option>
+                if (package.Value == selectedPackageId)
+                {
+                    <option value="@package.Value" selected>@package.Text</option>
+                }else{
+                    <option value="@package.Value">@package.Text</option>
+                }
+                
             }
         </select>
         <span asp-validation-for="@Model.reservation.PackageId" class="text-danger"></span>

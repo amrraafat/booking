@@ -22,7 +22,7 @@ namespace booking.Controllers
         {
             List<ReservationViewModel> viewModelList = new List<ReservationViewModel>();
             List<Reservation> reservations = new List<Reservation>();
-            reservations = await _context.Reservations.ToListAsync();
+            reservations = await _context.Reservations.Where(r=>r.IsDeleted != false).ToListAsync();
             foreach (var reservation in reservations)
             {
                 Hotel hotel = await _context.Hotels.FindAsync(reservation.HotelId);
@@ -42,7 +42,7 @@ namespace booking.Controllers
             ViewBag.currentCulture = requestCulture.Culture.Name;
             return View(viewModelList);
         }
-        public async Task<IActionResult> Create()
+        public async Task<IActionResult> Create(int hotelId=0,int packageId=0)
         {
             var requestCultureFeature = HttpContext.Features.Get<IRequestCultureFeature>();
             var requestCulture = requestCultureFeature?.RequestCulture;
@@ -59,6 +59,9 @@ namespace booking.Controllers
             }
             ViewBag.PackageList = new SelectList(packages, "PackageId", "PackageName");
             ViewBag.CustomerList = new SelectList(customers);
+            ViewBag.packageId = packageId.ToString();
+            ViewBag.hotelId = hotelId.ToString();
+
             return View();
         }
         [HttpGet]
