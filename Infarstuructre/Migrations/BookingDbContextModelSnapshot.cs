@@ -136,9 +136,8 @@ namespace Infarstuructre.Migrations
                     b.Property<decimal>("Discount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("EmployeeId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int");
 
                     b.Property<int>("HotelId")
                         .HasColumnType("int");
@@ -149,7 +148,7 @@ namespace Infarstuructre.Migrations
                     b.Property<int>("KidNo")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("LastModify")
+                    b.Property<DateTime>("LastModify")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("PackageId")
@@ -161,13 +160,14 @@ namespace Infarstuructre.Migrations
                     b.Property<decimal>("Remain")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<DateTime?>("ReservationDateTime")
+                    b.Property<DateTime>("ReservationDateTime")
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("UserName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ReservationId");

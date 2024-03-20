@@ -3,25 +3,13 @@
     ViewData["title"] = "Reservations";
     var currentCulture = ViewBag.currentCulture;
 }
-<style>
-    .table-responsive {
-        overflow-x: auto;
-    }
-
-    #tableRole td,
-    #tableRole th {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-</style>
 <div class="wrapper">
     <!--Content-Header-->
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">@ViewData["title"]</h1>
+                    <h1 class="m-0 text-dark">@Localizer["lbCurrentReservation"]</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -36,66 +24,70 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header d-flex align-items-center justify-content-between">
+                    <div class="card-header d-flex align-items-center justify-content-start">
                         <h3 class="card-title" style="margin-left:20px">@Localizer["lbCurrentReservation"]</h3>
+
                         <div class="row">
                             <div class="col-md-12">
-                                <a href="@Url.Action("Create", "Reservations")" class="btn btn-success">@Localizer["lbbtAddNewReservation"]</a>
+                                <a href="@Url.Action("Create", "Reservation")" class="btn btn-success">@Localizer["lbbtAddNewReservation"]</a>
                             </div>
                         </div>
-                        <div class="card-tools">
+                        <div class="card-tools ">
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <table id="tableRole" class="table table-bordered table-hover">
-                                <thead>
+                        <table id="tableRole" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                   <th>Customer Name</th>
+                                   <th>Hotel Name</th>
+                                   <th>Package Name</th>
+                                   <th>Reservation Date</th>
+                                   <th>Adults Count</th>
+                                   <th>Kids Count</th>
+                                   <th>Total Price</th>
+                                   <th>Discount Amount</th>
+                                   <th>Price After Discount</th>
+                                   <th>Paid</th>
+                                   <th>Remain</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var reservation in Model)
+                                {
                                     <tr>
-                                        <th>Customer Name</th>
-                                        <th>Hotel Name</th>
-                                        <th>Package Name</th>
-                                        <th>Reservation Date</th>
-                                        <th>Adults Count</th>
-                                        <th>Kids Count</th>
-                                        <th>Total Price</th>
-                                        <th>Discount Amount</th>
-                                        <th>Price After Discount</th>
-                                        <th>Paid</th>
-                                        <th>Remain</th>
+                                        <td>@reservation.customer.CustomerName</td>
+                                        <td>
+                                            @if (currentCulture == "ar")
+                                            {
+                                                @reservation.hotel.HotelNameFL
+                                            }
+                                            else
+                                            {
+                                                @reservation.hotel.HotelNameSL
+                                            }
+                                        </td>
+                                        <td>@reservation.package.PackageName</td>
+                                        <td>@reservation.reservation.ReservationDateTime</td>
+                                        <td>@reservation.reservation.AdultNo</td>
+                                        <td>@reservation.reservation.KidNo</td>
+                                        <td>@reservation.reservation.TotalPrice</td>
+                                        <td>@reservation.reservation.Discount</td>
+                                        <td>@reservation.reservation.TotalPrice - @reservation.reservation.Discount</td>
+                                        <td>@reservation.reservation.Paid</td>
+                                        <td>@reservation.reservation.Remain</td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var reservation in Model)
-                                    {
-                                        <tr>
-                                            <td>@reservation.customer.CustomerName</td>
-                                            <td>
-                                                @if (currentCulture == "ar")
-                                                {
-                                                    @reservation.hotel.HotelNameFL
-                                                }
-                                                else
-                                                {
-                                                    @reservation.hotel.HotelNameSL
-                                                }
-                                            </td>
-                                            <td>@reservation.package.PackageName</td>
-                                            <td>@reservation.reservation.ReservationDateTime</td>
-                                            <td>@reservation.reservation.AdultNo</td>
-                                            <td>@reservation.reservation.KidNo</td>
-                                            <td>@Math.Floor(reservation.reservation.TotalPrice)</td>
-                                            <td>@Math.Floor(reservation.reservation.Discount)</td>
-                                            <td>@Math.Floor((reservation.reservation.TotalPrice - reservation.reservation.Discount))</td>
-                                            <td>@Math.Floor(reservation.reservation.Paid)</td>
-                                            <td>@Math.Floor(reservation.reservation.Remain)</td>
-                                        </tr>
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
+                                }
+                            </tbody>
+                        </table>
                     </div>
+                    <!-- /.card-body -->
                 </div>
+                <!-- /.card -->
+                <!-- /.card -->
             </div>
+            <!-- /.col -->
         </div>
+        <!-- /.row -->
     </section>
 </div>
