@@ -11,7 +11,7 @@ namespace Domin.Entity
     {
         [Key]
         public int ReservationId { get; set; }
-        public int EmployeeId { get; set; }
+        public string EmployeeId { get; set; }
         public int HotelId { get; set; }
         public int PackageId { get; set; }
         public int CustomerId { get; set; }

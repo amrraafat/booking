@@ -10,8 +10,6 @@
         margin:0px;
     }
 </style>
-<input type="hidden" id="AdultPrice" />
-<input type="hidden" id="KidPrice" />
 <form asp-action="Create">
     <div class="form-group">
         <label asp-for="@Model.reservation.HotelId">Select Hotel</label>
@@ -40,14 +38,14 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label asp-for="@Model.customer.CustomerName">Customer Name</label>
-                <input type="text" asp-for="@Model.customer.CustomerName" class="form-control" disabled="disabled" />
+                <input type="text" asp-for="@Model.customer.CustomerName" class="form-control" />
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="form-group">
                 <label asp-for="@Model.customer.NationalId">Customer National ID</label>
-                <input type="number" asp-for="@Model.customer.NationalId" class="form-control" disabled="disabled" />
+                <input type="number" asp-for="@Model.customer.NationalId" class="form-control" />
             </div>
         </div>
         <div class="col-md-2">
@@ -58,34 +56,31 @@
     </div>
     <div class="form-group">
         <label asp-for="@Model.reservation.AdultNo">Adults Count</label>
-        <input type="number" id="AdultNo" asp-for="@Model.reservation.AdultNo " class="form-control" value="1" onchange="changeCounts()" />
+        <input type="number" asp-for="@Model.reservation.AdultNo " class="form-control" value="1" />
     </div>
     <div class="form-group">
         <label asp-for="@Model.reservation.KidNo">Kids Count</label>
-        <input type="number" id="KidNo" asp-for="@Model.reservation.KidNo " class="form-control" value="0" onchange="changeCounts()" />
+        <input type="number" asp-for="@Model.reservation.KidNo " class="form-control" value="0" />
     </div>
     <div class="form-group">
         <label asp-for="@Model.reservation.TotalPrice">Total Price</label>
-        <input type="number" id="TotalPrice" asp-for="@Model.reservation.TotalPrice " class="form-control" disabled="disabled" />
+        <input type="number" asp-for="@Model.reservation.TotalPrice " class="form-control" />
     </div>
     <div class="form-group">
         <label asp-for="@Model.reservation.Discount">Discount</label>
-        <input type="number" id="Discount" asp-for="@Model.reservation.Discount " class="form-control" value="0"  onchange="caluclateDiscount();"/>
+        <input type="number" asp-for="@Model.reservation.Discount " class="form-control" />
     </div>
     <div class="form-group">
         <label >Price After Discount</label>
-        <input type="number" class="form-control" id="priceAfterDiscount" disabled="disabled" />
+        <input type="number" class="form-control"  id="priceAfterDiscount"/>
     </div>
     <div class="form-group">
         <label asp-for="@Model.reservation.Paid">Paid</label>
-        <input type="number" asp-for="@Model.reservation.Paid" id="Paid" class="form-control" onchange="changePaid();" />
+        <input type="number" asp-for="@Model.reservation.Paid" class="form-control" />
     </div>
     <div class="form-group">
         <label asp-for="@Model.reservation.Remain">Remian</label>
-        <input type="number" asp-for="@Model.reservation.Remain" id="Remain" class="form-control" disabled="disabled" />
-    </div>
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">Save</button>
+        <input type="number" asp-for="@Model.reservation.Remain" class="form-control" />
     </div>
 </form>
 

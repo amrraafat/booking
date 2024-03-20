@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Security.Claims;
 
 namespace booking.Controllers
 {
@@ -78,30 +77,31 @@ namespace booking.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ReservationViewModel viewModel) 
         {
-            string loggedInUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            string loggedInUserName = User.FindFirstValue(ClaimTypes.Name);
-            Reservation reservation = new Reservation
+            if (ModelState.IsValid) 
             {
-                EmployeeId = loggedInUserId,
-                HotelId = viewModel.reservation.HotelId,
-                PackageId = viewModel.reservation.PackageId,
-                CustomerId = 7,
-                //CustomerId = viewModel.customer.CustomerId,
-                AdultNo = viewModel.reservation.AdultNo,
-                KidNo = viewModel.reservation.KidNo,
-                ReservationDateTime = DateTime.UtcNow,
-                TotalPrice = viewModel.reservation.TotalPrice,
-                Discount = viewModel.reservation.Discount,
-                Paid = viewModel.reservation.Paid,
-                Remain = viewModel.reservation.Remain,
-                LastModify = DateTime.UtcNow,
-                UserName = loggedInUserName,
-                IsDeleted = false,
-                DeleteReason = ""
-            };
-            _context.Add(reservation);
-            _context.SaveChanges();
-            return RedirectToAction(nameof(Index));
+                Reservation reservation = new Reservation
+                {
+                    EmployeeId = 0,
+                    HotelId = viewModel.hotel.HotelId,
+                    PackageId = viewModel.package.PackageId,
+                    CustomerId = viewModel.customer.CustomerId,
+                    AdultNo = viewModel.reservation.AdultNo,
+                    KidNo = viewModel.reservation.KidNo,
+                    ReservationDateTime = DateTime.UtcNow,
+                    TotalPrice = viewModel.reservation.TotalPrice,
+                    Discount = viewModel.reservation.Discount,
+                    Paid = viewModel.reservation.Paid,
+                    Remain = viewModel.reservation.Remain,
+                    LastModify = DateTime.UtcNow,
+                    IsDeleted = false,
+                    DeleteReason = ""
+                };
+                _context.Add(reservation);
+                _context.SaveChanges();
+                return RedirectToAction(nameof(Index));
+
+            }
+            return View(viewModel);
         }
         public IActionResult GetPackageData(int packageId)
         {
