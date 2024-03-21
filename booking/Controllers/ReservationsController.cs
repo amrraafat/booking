@@ -42,6 +42,9 @@ namespace booking.Controllers
             ViewBag.currentCulture = requestCulture.Culture.Name;
             return View(viewModelList);
         }
+
+
+
         public async Task<IActionResult> Create(int hotelId=0,int packageId=0)
         {
             var requestCultureFeature = HttpContext.Features.Get<IRequestCultureFeature>();
@@ -49,6 +52,7 @@ namespace booking.Controllers
             var hotels = _context.Hotels.ToList();
             var packages = _context.Packages.ToList();
             var customers = _context.Customers.ToList();
+
             if (requestCulture.Culture.Name == "en")
             {
                 ViewBag.HotelList = new SelectList(hotels, "HotelId", "HotelNameSL");
@@ -58,7 +62,7 @@ namespace booking.Controllers
                 ViewBag.HotelList = new SelectList(hotels, "HotelId", "HotelNameFL");
             }
             ViewBag.PackageList = new SelectList(packages, "PackageId", "PackageName");
-            ViewBag.CustomerList = new SelectList(customers);
+            ViewBag.CustomerList = customers.ToList();
             ViewBag.packageId = packageId.ToString();
             ViewBag.hotelId = hotelId.ToString();
 

@@ -18,12 +18,9 @@
 }
 function packageChange() {
     //debugger
-<<<<<<< HEAD
-=======
     var AdultsCount = $("#AdultNo").val();
     var KidsCount = $("#KidNo").val();
 
->>>>>>> c413622dbf35ab66d56e94ecc958d53bbdbca4b0
     var packageId = $('#packageSelect').val();
     if (packageId > 0) {
         $.ajax({
@@ -76,4 +73,13 @@ function changePaid() {
     } else {
         $('#Remain').val(priceAfterDiscount - paid)
     }
+}
+
+ SelectCustomer = (CustomerName, NationalId) => {
+
+    document.getElementById("CustomerName").value = CustomerName;
+     document.getElementById("NationalId").value = NationalId;
+     $('#CrateNew').modal('hide');
+
+
 }

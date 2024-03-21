@@ -3,7 +3,7 @@
 @{
     var hotelList = ViewBag.HotelList as SelectList;
     var packageList = ViewBag.PackageList as SelectList;
-    var customerList = ViewBag.CustomerList as SelectList;
+    var customerList = ViewBag.CustomerList;
     var selectedHotelId = ViewBag.hotelId;
     var selectedPackageId = ViewBag.packageId;
 }
@@ -53,21 +53,23 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label asp-for="@Model.customer.CustomerName">Customer Name</label>
-                <input type="text" asp-for="@Model.customer.CustomerName" class="form-control" disabled="disabled" />
+                <input type="text" asp-for="@Model.customer.CustomerName" class="form-control" disabled="disabled" id="CustomerName" />
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="form-group">
                 <label asp-for="@Model.customer.NationalId">Customer National ID</label>
-                <input type="number" asp-for="@Model.customer.NationalId" class="form-control" disabled="disabled" />
+                <input type="number" asp-for="@Model.customer.NationalId" class="form-control" disabled="disabled" id="NationalId" />
             </div>
         </div>
         <div class="col-md-2">
-            <button type="button" class="btn btn-outline-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#CrateNew">
-                @Localizer["Select Customer"]
+            <button type="button" style="margin-top:-5px"
+                    class="btn btn-outline-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#CrateNew">
+                @Localizer["lbbtnSelectCustomer"]
             </button>
         </div>
+        
     </div>
     <div class="form-group">
         <label asp-for="@Model.reservation.AdultNo">Adults Count</label>
@@ -102,5 +104,61 @@
     </div>
 </form>
 
+<div class="modal fade" id="CrateNew" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">@Localizer["lbbtnSelectCustomer"]</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <section class="content">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex align-items-center justify-content-start">
+                                    <h3 class="card-title" style="margin-left:20px">@Localizer["lbCurrentCustomer"]</h3>
+                                    <div class="card-tools ">
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <table id="tableRole" class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>@Localizer["lbID"]</th>
+                                                <th>@Localizer["lbCustomerName"]</th>
+                                                <th>@Localizer["lbNationalId"]</th>
+                                                <th>@Localizer["lbbtnAction"]</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var customer in customerList)
+                                            {
+                                                <tr>
+                                                    <td>@customer.CustomerId</td>
+                                                    <td>@customer.CustomerName</td>
+                                                    <td>@customer.NationalId</td>
+                                                    <td>
+                                                        <div class="col-3">
+                                                            <input type="button" class="btn btn-info btn-sm" onclick="SelectCustomer('@customer.CustomerName','@customer.NationalId')" value="@Localizer["lbbtnSelectCustomer"]" data-bs-toggle="modal" />
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
 
-<script src="~/js/Reservation.js"></script>
+
+
+
+<script src="~/js/reservation.js"></script>
+

@@ -3,13 +3,13 @@
     var customer = ViewBag.Customer as Customer;
 }
 
-<div class="card-header d-flex align-items-center justify-content-start">
+<div class="card-header d-flex align-items-center justify-content-start m-3">
     <h3 class="card-title" style="margin-left:20px">@Localizer["lbHotelReservation"]</h3>
 
-    <button type="button" style="margin-top:-5px"
-            class="btn btn-outline-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#CrateNew" onclick="Rest()">
+    @* <button type="button" style="margin-top:-5px"
+            class="btn btn-outline-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#CrateNew">
         @Localizer["lbbtnSaveNewUser"]
-    </button>
+    </button> *@
     <div class="card-tools ">
     </div>
 </div>

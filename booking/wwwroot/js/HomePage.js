@@ -6,3 +6,8 @@
     console.log("Selected Package ID:", packageId);
     console.log("Hotel ID:", hotelId);
     });
+
+function setPachageValue() {
+    var changesValue = $('#packageSelect').val();
+    $('#packageSelectForController').val(changesValue);
+}
