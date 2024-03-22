@@ -83,3 +83,14 @@ function changePaid() {
 
 
 }
+
+Edit = (ReservationId, CustomerName, Discount, AdultNo, KidNo, EmployeeId) => {
+    document.getElementById("ReservationId").value = ReservationId;
+    document.getElementById("EmployeeId").value = EmployeeId;
+    document.getElementById("CustomerName").value = CustomerName;
+    document.getElementById("Discount").value = Discount;
+    document.getElementById("AdultNo").value = AdultNo;
+    document.getElementById("KidNo").value = KidNo;
+
+
+}

@@ -11,7 +11,7 @@ namespace Domin.Entity
     {
         [Key]
         public int ReservationId { get; set; }
-        public string EmployeeId { get; set; }
+        public string? EmployeeId { get; set; }
         public int HotelId { get; set; }
         public int PackageId { get; set; }
         public int CustomerId { get; set; }
@@ -25,6 +25,6 @@ namespace Domin.Entity
         public DateTime? LastModify { get; set; } 
         public string? UserName { get; set; }
         public bool IsDeleted { get; set; } = false;
-        public string DeleteReason { get; set; }
+        public string? DeleteReason { get; set; }
     }
 }

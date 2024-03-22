@@ -2,6 +2,7 @@
 @{
     ViewData["title"] = "Reservations";
     var currentCulture = ViewBag.currentCulture;
+    var reservationpag = ViewBag.Reservationpag as Reservation;
 }
 <style>
     .table-responsive {
@@ -62,6 +63,7 @@
                                         <th>Price After Discount</th>
                                         <th>Paid</th>
                                         <th>Remain</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -88,6 +90,19 @@
                                             <td>@Math.Floor((reservation.reservation.TotalPrice - reservation.reservation.Discount))</td>
                                             <td>@Math.Floor(reservation.reservation.Paid)</td>
                                             <td>@Math.Floor(reservation.reservation.Remain)</td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <input type="button" class="btn btn-info btn-sm" onclick="Edit('@reservation.reservation.ReservationId','@reservation.customer.CustomerName','@Math.Floor(reservation.reservation.Discount)','@reservation.reservation.AdultNo','@reservation.reservation.KidNo','@reservation.reservation.EmployeeId')" value="@Localizer["lbbtnEdit"]" data-bs-toggle="modal" data-bs-target="#exampleModal" />
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <form id="deleteForm-@reservation.reservation.ReservationId" asp-action="DeleteReservation" asp-controller="Reservations" method="post">
+                                                            <input type="hidden" name="id" value="@reservation.reservation.ReservationId" />
+                                                            <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete('@reservation.reservation.ReservationId')">@Localizer["lbbtnDelete"]</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </td>
                                         </tr>
                                     }
                                 </tbody>
@@ -99,3 +114,105 @@
         </div>
     </section>
 </div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog card card-success card-outline">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">@Localizer["lbEditCustomers"]</h5>
+                <a href="#" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</a>
+            </div>
+            <div class="modal-body">
+                <form asp-action="EditReservation" asp-controller="Reservations" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input type="text" hidden class="form-control" asp-for="@reservationpag.ReservationId" id="ReservationId" />
+                        <input type="text" hidden class="form-control" asp-for="@reservationpag.EmployeeId" id="EmployeeId" />
+                        <label  class="control-lable">@Localizer["lbCustomerName"]</label>
+                        <input type="text" class="form-control" disabled="disabled" id="CustomerName" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@reservationpag.Discount" class="control-lable">@Localizer["lbAddress"]</label>
+                        <input asp-for="@reservationpag.Discount" class="form-control" asp-for="customer.Address" id="Discount" />
+                        <span asp-validation-for="@reservationpag.Discount" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@reservationpag.AdultNo" class="control-lable">@Localizer["lbAddress"]</label>
+                        <input asp-for="@reservationpag.AdultNo" class="form-control" asp-for="customer.Address" id="AdultNo" />
+                        <span asp-validation-for="@reservationpag.AdultNo" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="@reservationpag.KidNo" class="control-lable">@Localizer["lbAddress"]</label>
+                        <input asp-for="@reservationpag.KidNo" class="form-control" asp-for="customer.Address" id="KidNo" />
+                        <span asp-validation-for="@reservationpag.KidNo" class="text-danger"></span>
+                    </div>
+
+                    
+                    <div class="modal-footer-rtl" style="padding:0 15px 15px 0">
+                        <input type="submit" class="btn btn-success" value="@Localizer["lbbtnSave"]" />
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Script
+{
+    @if (!string.IsNullOrEmpty(Context.Session.GetString("msgType")))
+    {
+        if (Context.Session.GetString("msgType") == "success")
+        {
+            <script>
+                Swal.fire({
+                    icon: "success",
+                    title: ' @Context.Session.GetString("titel")',
+                    text: '@Html.Raw(Context.Session.GetString("msg"))',
+                    showConfirmButton: 'حسناً',
+                });
+            </script>
+        }
+        else
+        {
+            <script>
+                Swal.fire({
+                    icon: "error",
+                    title: '@Context.Session.GetString("titel")',
+                    text: '@Html.Raw(Context.Session.GetString("msg"))',
+                    showConfirmButton: 'حسناً',
+
+
+                });
+
+            </script>
+        }
+        Context.Session.SetString("msgType", "");
+    }
+
+
+    <script>
+        function confirmDelete(customerId) {
+            Swal.fire({
+                title: '@Localizer["lbAreyousure"]',
+                text: "@Localizer["lbCanback"]",
+                icon: 'warning',
+                showCancelButton: true,
+                cancelButtonText: '@Localizer["lbcancelButtonText"]',
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: '@Localizer["lbYesdelete"]'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // If confirmed, submit the form
+                    document.getElementById('deleteForm-' + customerId).submit();
+                }
+            });
+        }
+    </script>
+
+    <script src="~/js/Reservation.js"></script>
+
+}

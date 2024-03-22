@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Reporting.WebForms;
 using System.Collections.Generic;
 using System.Data;
 using System.Security.Claims;
@@ -17,14 +16,17 @@ namespace booking.Controllers
     public class ReservationsController : Controller
     {
         protected readonly BookingDbContext _context;
+        private readonly IStringLocalizer<ReservationsController> _localizer;
+        public ReservationsController(BookingDbContext Context , IStringLocalizer<ReservationsController> localizer)
         protected readonly IWebHostEnvironment _webHostEnvironment;
         public ReservationsController(BookingDbContext Context, IWebHostEnvironment webHostEnvironment)
         {
             _context = Context;
+            _localizer = localizer;
             _webHostEnvironment = webHostEnvironment;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(Reservation reservationpag)
         {
             List<ReservationViewModel> viewModelList = new List<ReservationViewModel>();
             List<Reservation> reservations = new List<Reservation>();
@@ -46,6 +48,8 @@ namespace booking.Controllers
             var requestCultureFeature = HttpContext.Features.Get<IRequestCultureFeature>();
             var requestCulture = requestCultureFeature?.RequestCulture;
             ViewBag.currentCulture = requestCulture.Culture.Name;
+
+            ViewBag.Reservation = reservationpag;
             return View(viewModelList);
         }
 
@@ -164,6 +168,69 @@ namespace booking.Controllers
             // Step 4: Return the rendered report as a file
             return File(renderedBytes, mimeType);
 
+        }
+
+
+        // ------------------------------------------------------------------- Edit reservation customer -----------------------------------------------------\\
+        [HttpPost]
+        public async Task<IActionResult> EditReservation(Reservation updatedReservation)
+        {
+            try
+            {
+
+                var existingreservation = await _context.Reservations.FindAsync(updatedReservation.ReservationId);
+
+
+                if (ModelState.IsValid && existingreservation != null)
+                {
+                    existingreservation.Discount = updatedReservation.Discount;
+                    existingreservation.KidNo = updatedReservation.KidNo;
+                    existingreservation.AdultNo = updatedReservation.AdultNo;
+                    
+
+                    await _context.SaveChangesAsync();
+
+                    HttpContext.Session.SetString("msgType", "success");
+                    HttpContext.Session.SetString("titel", _localizer["lbUpated"].Value);
+                    HttpContext.Session.SetString("msg", _localizer["lbUpdatedSuccessfully"].Value);
+                }
+
+                else
+                {
+                    HttpContext.Session.SetString("msgType", "erorr");
+                    HttpContext.Session.SetString("titel", _localizer["lbUpdatefeild"].Value);
+                    HttpContext.Session.SetString("msg", _localizer["lbUpdateNotCompleted"].Value);
+                }
+
+                return RedirectToAction("index" , "Reservations");
+            }
+            catch (Exception ex)
+            {
+
+                TempData["ErrorMessage"] = "An error occurred while updating customer information: " + ex.Message;
+                HttpContext.Session.SetString("msgType", "erorr");
+                HttpContext.Session.SetString("titel", _localizer["lbUpdatefeild"].Value);
+                HttpContext.Session.SetString("msg", _localizer["lbUpdateNotCompleted"].Value);
+                return RedirectToAction("index", "Reservations");
+            }
+        }
+
+
+        // ------------------------------------------------------------------- delete reservation customer -----------------------------------------------------\\
+        [HttpPost]
+        public IActionResult DeleteReservation(int id)
+        {
+            Reservation reservation = _context.Reservations.Find(id);
+
+
+            if (ModelState.IsValid && reservation == null)
+            {
+                return NotFound();
+            }
+
+            _context.Reservations.Remove(reservation);
+            _context.SaveChanges();
+            return RedirectToAction("index");
         }
     }
 }
