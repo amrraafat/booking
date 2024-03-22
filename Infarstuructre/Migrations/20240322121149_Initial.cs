@@ -111,19 +111,19 @@ namespace Infarstuructre.Migrations
                 {
                     ReservationId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EmployeeId = table.Column<int>(type: "int", nullable: false),
+                    EmployeeId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     HotelId = table.Column<int>(type: "int", nullable: false),
                     PackageId = table.Column<int>(type: "int", nullable: false),
                     CustomerId = table.Column<int>(type: "int", nullable: false),
                     AdultNo = table.Column<int>(type: "int", nullable: false),
                     KidNo = table.Column<int>(type: "int", nullable: false),
-                    ReservationDateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ReservationDateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     TotalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Discount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Paid = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Remain = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    LastModify = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastModify = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     DeleteReason = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },

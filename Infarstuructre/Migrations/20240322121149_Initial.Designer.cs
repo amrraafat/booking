@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infarstuructre.Migrations
 {
     [DbContext(typeof(BookingDbContext))]
-    [Migration("20240317181119_Initial")]
+    [Migration("20240322121149_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -139,8 +139,9 @@ namespace Infarstuructre.Migrations
                     b.Property<decimal>("Discount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("EmployeeId")
-                        .HasColumnType("int");
+                    b.Property<string>("EmployeeId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("HotelId")
                         .HasColumnType("int");
@@ -151,7 +152,7 @@ namespace Infarstuructre.Migrations
                     b.Property<int>("KidNo")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("LastModify")
+                    b.Property<DateTime?>("LastModify")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("PackageId")
@@ -163,19 +164,48 @@ namespace Infarstuructre.Migrations
                     b.Property<decimal>("Remain")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<DateTime>("ReservationDateTime")
+                    b.Property<DateTime?>("ReservationDateTime")
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("UserName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ReservationId");
 
                     b.ToTable("Reservations");
+                });
+
+            modelBuilder.Entity("Domin.Entity.VwUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("ActiveUser")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable((string)null);
+
+                    b.ToView("VwUsers", (string)null);
                 });
 
             modelBuilder.Entity("Infarstuructre.ViewModel.ApplicationUser", b =>
