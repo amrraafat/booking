@@ -22,7 +22,7 @@ namespace booking.Controllers
         {
             List<ReservationViewModel> viewModelList = new List<ReservationViewModel>();
             List<Reservation> reservations = new List<Reservation>();
-            reservations = await _context.Reservations.Where(r=>r.IsDeleted != false).ToListAsync();
+            reservations = await _context.Reservations.Where(r=>r.IsDeleted == false).ToListAsync();
             foreach (var reservation in reservations)
             {
                 Hotel hotel = await _context.Hotels.FindAsync(reservation.HotelId);
@@ -88,13 +88,16 @@ namespace booking.Controllers
         {
             string loggedInUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             string loggedInUserName = User.FindFirstValue(ClaimTypes.Name);
+            if (string.IsNullOrEmpty(loggedInUserId) || string.IsNullOrEmpty(loggedInUserName))
+            {
+                return RedirectToAction("Logout", "Accounts");
+            }
             Reservation reservation = new Reservation
             {
                 EmployeeId = loggedInUserId,
                 HotelId = viewModel.reservation.HotelId,
                 PackageId = viewModel.reservation.PackageId,
-                CustomerId = 7,
-                //CustomerId = viewModel.customer.CustomerId,
+                CustomerId = viewModel.reservation.CustomerId,
                 AdultNo = viewModel.reservation.AdultNo,
                 KidNo = viewModel.reservation.KidNo,
                 ReservationDateTime = DateTime.UtcNow,

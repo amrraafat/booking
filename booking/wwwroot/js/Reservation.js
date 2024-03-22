@@ -75,8 +75,8 @@ function changePaid() {
     }
 }
 
- SelectCustomer = (CustomerName, NationalId) => {
-
+ SelectCustomer = (CustomerName, NationalId,CustomerId) => {
+     document.getElementById("CustomerId").value = CustomerId;
     document.getElementById("CustomerName").value = CustomerName;
      document.getElementById("NationalId").value = NationalId;
      $('#CrateNew').modal('hide');

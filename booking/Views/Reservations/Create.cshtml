@@ -69,7 +69,7 @@
                 @Localizer["lbbtnSelectCustomer"]
             </button>
         </div>
-        
+        <input hidden="hidden" asp-for="@Model.reservation.CustomerId" id="CustomerId" />
     </div>
     <div class="form-group">
         <label asp-for="@Model.reservation.AdultNo">Adults Count</label>
@@ -81,7 +81,7 @@
     </div>
     <div class="form-group">
         <label asp-for="@Model.reservation.TotalPrice">Total Price</label>
-        <input type="number" id="TotalPrice" asp-for="@Model.reservation.TotalPrice " class="form-control" disabled="disabled" />
+        <input type="number" id="TotalPrice" asp-for="@Model.reservation.TotalPrice " class="form-control"/>
     </div>
     <div class="form-group">
         <label asp-for="@Model.reservation.Discount">Discount</label>
@@ -140,7 +140,7 @@
                                                     <td>@customer.NationalId</td>
                                                     <td>
                                                         <div class="col-3">
-                                                            <input type="button" class="btn btn-info btn-sm" onclick="SelectCustomer('@customer.CustomerName','@customer.NationalId')" value="@Localizer["lbbtnSelectCustomer"]" data-bs-toggle="modal" />
+                                                            <input type="button" class="btn btn-info btn-sm" onclick="SelectCustomer('@customer.CustomerName','@customer.NationalId',@customer.CustomerId)" value="@Localizer["lbbtnSelectCustomer"]" data-bs-toggle="modal" />
                                                         </div>
                                                     </td>
                                                 </tr>

@@ -68,7 +68,7 @@
                                     @foreach (var reservation in Model)
                                     {
                                         <tr>
-                                            <td>@reservation.customer</td>
+                                            <td>@reservation.customer.CustomerName</td>
                                             <td>
                                                 @if (currentCulture == "ar")
                                                 {
