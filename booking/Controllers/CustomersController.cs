@@ -136,6 +136,7 @@ namespace booking.Controllers
                     existingCustomer.Gender = updatedCustomer.customer.Gender;
                     existingCustomer.Address = updatedCustomer.customer.Address;
                     existingCustomer.NationalId = updatedCustomer.customer.NationalId;
+                    existingCustomer.MobileNumber = updatedCustomer.customer.MobileNumber;
 
                     await _dbContext.SaveChangesAsync();
 

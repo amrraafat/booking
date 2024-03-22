@@ -4,29 +4,26 @@
     var hotelList = ViewBag.HotelList as SelectList;
     var packageList = ViewBag.PackageList as SelectList;
     var customerList = ViewBag.CustomerList;
-    var selectedHotelId = ViewBag.hotelId;
-    var selectedPackageId = ViewBag.packageId;
 }
 <style>
     label {
         margin: 0px;
     }
 </style>
-<input type="hidden" id="AdultPrice" />
-<input type="hidden" id="KidPrice" />
-<form asp-action="Create">
+<input type="hidden" id="AdultPrice" value="@(Math.Floor(Model.package.AdultPrice))" />
+<input type="hidden" id="KidPrice" value="@(Math.Floor(Model.package.KidPrice))" />
+<form asp-action="Edit" onkeydown="return event.key != 'Enter';">
+    <input type="hidden" asp-for="@Model.reservation.ReservationDateTime" />
+    <input type="hidden" asp-for="@Model.reservation.EmployeeId" />
+    <input type="hidden" asp-for="@Model.reservation.ReservationId" />
     <div class="form-group">
         <label asp-for="@Model.reservation.HotelId">Select Hotel</label>
         <select asp-for="@Model.reservation.HotelId" class="form-control" onchange="LoadPachages();" id="hotelSelect">
             <option value="0">Select Hotel</option>
             @foreach (var hotel in hotelList)
             {
-                if (hotel.Value == selectedHotelId)
-                {
-                    <option value="@hotel.Value" selected>@hotel.Text</option>
-                }else{
+
                     <option value="@hotel.Value">@hotel.Text</option>
-                }
             }
         </select>
         <span asp-validation-for="@Model.reservation.HotelId" class="text-danger"></span>
@@ -38,13 +35,8 @@
             <option value="0">Select Package</option>
             @foreach (var package in packageList)
             {
-                if (package.Value == selectedPackageId)
-                {
-                    <option value="@package.Value" selected>@package.Text</option>
-                }else{
                     <option value="@package.Value">@package.Text</option>
-                }
-                
+
             }
         </select>
         <span asp-validation-for="@Model.reservation.PackageId" class="text-danger"></span>
@@ -73,11 +65,11 @@
     </div>
     <div class="form-group">
         <label asp-for="@Model.reservation.AdultNo">Adults Count</label>
-        <input type="number" id="AdultNo" asp-for="@Model.reservation.AdultNo " class="form-control" value="1" onchange="changeCounts()" />
+        <input type="number" id="AdultNo" asp-for="@Model.reservation.AdultNo " class="form-control" onchange="changeCounts()" />
     </div>
     <div class="form-group">
         <label asp-for="@Model.reservation.KidNo">Kids Count</label>
-        <input type="number" id="KidNo" asp-for="@Model.reservation.KidNo " class="form-control" value="0" onchange="changeCounts()" />
+        <input type="number" id="KidNo" asp-for="@Model.reservation.KidNo " class="form-control" onchange="changeCounts()" />
     </div>
     <div class="form-group">
         <label asp-for="@Model.reservation.TotalPrice">Total Price</label>
@@ -86,11 +78,11 @@
     </div>
     <div class="form-group">
         <label asp-for="@Model.reservation.Discount">Discount</label>
-        <input type="number" id="Discount" asp-for="@Model.reservation.Discount " class="form-control" value="0" onchange="caluclateDiscount();" />
+        <input type="number" id="Discount" asp-for="@Model.reservation.Discount " class="form-control" onchange="caluclateDiscount();" />
     </div>
     <div class="form-group">
         <label>Price After Discount</label>
-        <input type="number" class="form-control" id="priceAfterDiscount" disabled="disabled" />
+        <input type="number" class="form-control" value="@(Math.Floor(Model.reservation.TotalPrice) - Math.Floor(Model.reservation.Discount))" id="priceAfterDiscount" disabled="disabled" />
     </div>
     <div class="form-group">
         <label asp-for="@Model.reservation.Paid">Paid</label>
@@ -98,7 +90,7 @@
     </div>
     <div class="form-group">
         <label asp-for="@Model.reservation.Remain">Remian</label>
-        <input type="number" asp-for="@Model.reservation.Remain" id="Remain" class="form-control" disabled="disabled"/>
+        <input type="number" asp-for="@Model.reservation.Remain" id="Remain" class="form-control" disabled="disabled" />
         <input type="hidden" asp-for="@Model.reservation.Remain" id="RemainHidden" />
 
     </div>
@@ -106,7 +98,6 @@
         <button type="submit" class="btn btn-primary">Save</button>
     </div>
 </form>
-
 <div class="modal fade" id="CrateNew" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -160,4 +151,13 @@
     </div>
 </div>
 <script src="~/js/reservation.js"></script>
+<script>
+    window.onload = function () {
+        //debugger;
+        document.getElementById('TotalPriceHidden').value = @(Math.Floor(Model.reservation.TotalPrice));
+        document.getElementById('TotalPrice').value = @(Math.Floor(Model.reservation.TotalPrice));
+        document.getElementById('RemainHidden').value = @(Math.Floor(Model.reservation.Discount));
+        document.getElementById('Remain').value = @(Math.Floor(Model.reservation.Discount));
 
+    };
+</script>

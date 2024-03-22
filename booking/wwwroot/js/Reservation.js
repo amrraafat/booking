@@ -32,6 +32,7 @@ function packageChange() {
                 $('#AdultPrice').val(data.adultPrice)
                 $('#KidPrice').val(data.kidPrice)
                 $('#TotalPrice').val(data.adultPrice * AdultsCount + data.kidPrice * KidsCount)
+                $('#TotalPriceHidden').val(data.adultPrice * AdultsCount + data.kidPrice * KidsCount)
                 caluclateDiscount();
             },
             error: function (xhr, status, error) {
@@ -50,9 +51,11 @@ function caluclateDiscount() {
     } else {
         $('#priceAfterDiscount').val(totalPrice - discount)
     }
+    changePaid();
 }
 
 function changeCounts() {
+    //debugger
     var AdultsCount = $("#AdultNo").val();
     var KidsCount = $("#KidNo").val();
     var adultPrice = $('#AdultPrice').val()
@@ -60,18 +63,25 @@ function changeCounts() {
     var discount = $('#Discount').val();
     var totalPrice = adultPrice * AdultsCount + kidPrice * KidsCount;
     $('#TotalPrice').val(totalPrice - discount)
+    $('#TotalPriceHidden').val(totalPrice - discount)
     caluclateDiscount();
+    changePaid();
 }
 
 function changePaid() {
     var priceAfterDiscount = $('#priceAfterDiscount').val();
+    var discount = $('#Discount').val();
+    var totalPrice = $('#TotalPrice').val();
     var paid = $('#Paid').val();
-    if (priceAfterDiscount - paid < 0) {
-        $('#Paid').val(0);
-        alert("Paid must be less that the total price");
+    if (paid > 0) {
+        if ((totalPrice - discount) - paid < 0) {
+            $('#Paid').val(0);
+            alert("Paid must be less that the total price");
 
-    } else {
-        $('#Remain').val(priceAfterDiscount - paid)
+        } else {
+            $('#Remain').val(priceAfterDiscount - paid)
+            $('#RemainHidden').val(priceAfterDiscount - paid)
+        }
     }
 }
 
