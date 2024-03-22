@@ -44,6 +44,7 @@ namespace booking.Controllers
                 
                 hotelViewModelList.Add(hotelViewModel);
             }
+
             ViewBag.Customer = customer;
             // Pass hotel view models to the view
             return View(hotelViewModelList);
