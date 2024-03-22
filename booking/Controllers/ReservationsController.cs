@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Security.Claims;
 using System.IO;
+using Microsoft.Extensions.Localization;
+using Microsoft.Reporting.WebForms;
 
 namespace booking.Controllers
 {
@@ -17,9 +19,8 @@ namespace booking.Controllers
     {
         protected readonly BookingDbContext _context;
         private readonly IStringLocalizer<ReservationsController> _localizer;
-        public ReservationsController(BookingDbContext Context , IStringLocalizer<ReservationsController> localizer)
         protected readonly IWebHostEnvironment _webHostEnvironment;
-        public ReservationsController(BookingDbContext Context, IWebHostEnvironment webHostEnvironment)
+        public ReservationsController(BookingDbContext Context, IWebHostEnvironment webHostEnvironment, IStringLocalizer<ReservationsController> localizer)
         {
             _context = Context;
             _localizer = localizer;
