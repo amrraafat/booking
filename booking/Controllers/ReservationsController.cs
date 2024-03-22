@@ -1,21 +1,27 @@
 ﻿using Domin.Entity;
 using Infarstuructre.Domin;
 using Infarstuructre.ViewModel;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Reporting.WebForms;
 using System.Collections.Generic;
+using System.Data;
 using System.Security.Claims;
+using System.IO;
 
 namespace booking.Controllers
 {
     public class ReservationsController : Controller
     {
         protected readonly BookingDbContext _context;
-        public ReservationsController(BookingDbContext Context)
+        protected readonly IWebHostEnvironment _webHostEnvironment;
+        public ReservationsController(BookingDbContext Context, IWebHostEnvironment webHostEnvironment)
         {
             _context = Context;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public async Task<IActionResult> Index()
@@ -117,6 +123,47 @@ namespace booking.Controllers
         public IActionResult GetPackageData(int packageId)
         {
             return Json(_context.Packages.Find(packageId));
+        }
+        public IActionResult Print()
+        {
+            // Step 1: Create DataTable and Populate with Data
+            DataTable dataTable = new DataTable("MyDataSet");
+            dataTable.Columns.Add("ID", typeof(int));
+            dataTable.Columns.Add("Name", typeof(string));
+            dataTable.Rows.Add(1, "John");
+            dataTable.Rows.Add(2, "Alice");
+            dataTable.Rows.Add(3, "Bob");
+
+            // Step 2: Set up Report Viewer
+            LocalReport localReport = new LocalReport();
+            localReport.ReportPath = Path.Combine(_webHostEnvironment.WebRootPath, "Reports", "Report.rdlc");
+
+            // Add dataset to report data sources
+            var rds = new ReportDataSource();
+            rds.Name = "DeviceSalesReport";
+            rds.Value = dataTable;
+
+            localReport.DataSources.Add(rds);
+
+            // Step 3: Render the Report
+            string mimeType;
+            string encoding;
+            string filenameExtension;
+            string[] streams;
+            Warning[] warnings;
+
+            byte[] renderedBytes = localReport.Render(
+                "PDF", // PDF, Excel, Word, etc.
+                null,
+                out mimeType,
+                out encoding,
+                out filenameExtension,
+                out streams,
+                out warnings);
+
+            // Step 4: Return the rendered report as a file
+            return File(renderedBytes, mimeType);
+
         }
     }
 }
