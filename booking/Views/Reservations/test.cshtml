@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A4 Size Page</title>
+
+    <link href="~/css/A4.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="a4-container" id="print-content">
+        <h1>Your Content Title</h1>
+        <p>Your content goes here. You can add text, images, tables, etc.</p>
+    </div>
+    <button onclick="printContent()">Print</button> <!-- Button to trigger printing -->
+    <script src="script.js"></script> <!-- Assuming you have a separate JavaScript file -->
+</body>
+</html>
+
+<script>
+    function printContent() {
+        window.print();
+    }
+</script>

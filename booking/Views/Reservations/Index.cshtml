@@ -54,10 +54,10 @@
                                     <tr>
                                         <th>Customer Name</th>
                                         <th>Hotel Name</th>
-                                        <th>Package Name</th>
+                                       @*  <th>Package Name</th>
                                         <th>Reservation Date</th>
                                         <th>Adults Count</th>
-                                        <th>Kids Count</th>
+                                        <th>Kids Count</th> *@
                                         <th>Total Price</th>
                                         <th>Discount Amount</th>
                                         <th>Price After Discount</th>
@@ -81,10 +81,10 @@
                                                         @reservation.hotel.HotelNameSL
                                                     }
                                                 </td>
-                                                <td>@reservation.package.PackageName</td>
+                                                @* <td>@reservation.package.PackageName</td>
                                                 <td>@reservation.reservation.ReservationDateTime</td>
                                                 <td>@reservation.reservation.AdultNo</td>
-                                                <td>@reservation.reservation.KidNo</td>
+                                                <td>@reservation.reservation.KidNo</td> *@
                                                 <td>@Math.Floor(reservation.reservation.TotalPrice)</td>
                                                 <td>@Math.Floor(reservation.reservation.Discount)</td>
                                                 <td>@Math.Floor((reservation.reservation.TotalPrice - reservation.reservation.Discount))</td>
@@ -92,6 +92,10 @@
                                                 <td>@Math.Floor(reservation.reservation.Remain)</td>
                                                 <td>
                                                     <div class="row">
+                                                    <div class="col-3">
+                                                        <!-- Button to trigger modal -->
+                                                        <button type="button" class="btn btn-info btn-sm" onclick="displayReservationDetails('@reservation.customer.CustomerName', '@reservation.hotel.HotelNameFL', '@reservation.package.PackageName', '@reservation.reservation.ReservationDateTime', '@reservation.reservation.AdultNo', '@reservation.reservation.KidNo', '@reservation.reservation.TotalPrice', '@reservation.reservation.Discount', '@(reservation.reservation.TotalPrice - reservation.reservation.Discount)', '@reservation.reservation.Paid', '@reservation.reservation.Remain')" data-bs-toggle="modal" data-bs-target="#reservationModal">@Localizer["lbbtnViewDetails"]</button>
+                                                    </div>
                                                         <div class="col-3">
                                                             <a href="@Url.Action("Edit", "Reservations", new { id = reservation.reservation.ReservationId })" class="btn btn-warning btn-sm">@Localizer["lbbtnEdit"]</a>
                                                         </div>
@@ -107,6 +111,8 @@
                                                     </div>
                                                 </td>
                                             </tr>
+                                      
+
                                         }
                                 </tbody>
                             </table>
@@ -116,6 +122,70 @@
             </div>
         </div>
     </section>
+</div>
+
+<div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="reservationModalLabel">@Localizer["lbReservationDetails"]</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr>
+                                <th scope="row">Customer Name</th>
+                                <td><span id="customerName"></span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Hotel Name</th>
+                                <td><span id="hotelName"></span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Package Name</th>
+                                <td><span id="packageName"></span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Reservation Date</th>
+                                <td><span id="reservationDate"></span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Adults Count</th>
+                                <td><span id="adultsCount"></span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Kids Count</th>
+                                <td><span id="kidsCount"></span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Total Price</th>
+                                <td><span id="totalPrice"></span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Discount Amount</th>
+                                <td><span id="discountAmount"></span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Price After Discount</th>
+                                <td><span id="priceAfterDiscount"></span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Paid</th>
+                                <td><span id="paid"></span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Remain</th>
+                                <td><span id="remain"></span></td>
+                            </tr>
+                            <!-- Add more details here as needed -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
@@ -183,8 +253,41 @@
             });
         }
     </script>
-
+    <script>
+        // Function to show reservation details in the modal
+        function showReservationInfo(reservationId) {
+            // Perform AJAX request to fetch reservation details
+            $.get('@Url.Action("GetReservationDetails", "Reservations")', { id: reservationId })
+                .done(function (data) {
+                    // Populate modal body with reservation details
+                    $('#reservationDetails').html(data);
+                });
+        }
     </script>
+
+
+
+
+
+    <script>
+        function displayReservationDetails(customerName, hotelName, packageName, reservationDate, adultsCount, kidsCount, totalPrice, discountAmount, priceAfterDiscount, paid, remain) {
+            // Set the values in the modal form
+            document.getElementById("customerName").textContent = customerName;
+            document.getElementById("hotelName").textContent = hotelName;
+            document.getElementById("packageName").textContent = packageName;
+            document.getElementById("reservationDate").textContent = reservationDate;
+            document.getElementById("adultsCount").textContent = adultsCount;
+            document.getElementById("kidsCount").textContent = kidsCount;
+            document.getElementById("totalPrice").textContent = totalPrice;
+            document.getElementById("discountAmount").textContent = discountAmount;
+            document.getElementById("priceAfterDiscount").textContent = priceAfterDiscount;
+            document.getElementById("paid").textContent = paid;
+            document.getElementById("remain").textContent = remain;
+            // Show the modal
+            $('#reservationModal').modal('show');
+        }
+    </script>
+
 
     <script src="~/js/Reservation.js"></script>
 

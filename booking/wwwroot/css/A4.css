@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.a4-container {
+    width: 210mm; /* Width of A4 size */
+    height: 297mm; /* Height of A4 size */
+    margin: 0 auto; /* Center the content horizontally */
+    border: 1px solid black; /* Border for the A4 page */
+    padding: 20mm; /* Padding inside the A4 page */
+}
+
+/* Add additional styles for your content here */
+h1 {
+    text-align: center;
+}
+
+p {
+    text-align: justify;
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    #print-content, #print-content * {
+        visibility: visible;
+    }
+
+    #print-content {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+}

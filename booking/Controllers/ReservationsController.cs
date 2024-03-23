@@ -55,7 +55,12 @@ namespace booking.Controllers
             ViewBag.Reservation = reservationpag;
             return View(viewModelList);
         }
+        public async Task<IActionResult> test()
+        {
+           
 
+            return View();
+        }
 
 
         public async Task<IActionResult> Create(int hotelId=0,int packageId=0)
