@@ -1,4 +1,4 @@
-body {
+﻿body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -11,8 +11,27 @@ body {
     margin: 0 auto; /* Center the content horizontally */
     border: 1px solid black; /* Border for the A4 page */
     padding: 20mm; /* Padding inside the A4 page */
+
+
+    background-color: white;
+}
+.small-table {
+    width: 50%; /* Adjust as needed */
+    font-size: smaller;
 }
 
+    .small-table th,
+    .small-table td {
+        padding: 5px; /* Adjust as needed */
+        border: 1px solid #dee2e6; /* Adjust border thickness */
+    }
+.padding {
+    padding-right: 22em;
+}
+.signature-container {
+    display: flex;
+    justify-content: space-between;
+}
 /* Add additional styles for your content here */
 h1 {
     text-align: center;
@@ -36,4 +55,26 @@ p {
         left: 0;
         top: 0;
     }
+}
+/* استخدم تصميم الشبكة لتوزيع العناصر بشكل متساوٍ */
+
+
+    /* تنسيق حقل الإدخال */
+.a4-container input {
+width: 100%; /* يأخذ العرض الكامل للعنصر */
+}
+
+.a4-container input[type="text"] {
+width: calc(100% - 20px); /* يأخذ العرض الكامل للعنصر باستثناء المسافة بين الحقول */
+}
+
+/* تحكم في ارتفاع الحقول */
+.a4-container input[type="text"] {
+height: 30px; /* تحديد ارتفاع الحقل */
+line-height: 30px; /* توسيط النص عموديًا داخل الحقل */
+}
+
+.reportImage {
+    width: 100px; /* Adjust width as needed */
+    height: auto; /* To maintain aspect ratio */
 }

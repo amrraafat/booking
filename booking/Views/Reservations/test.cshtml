@@ -9,16 +9,140 @@
 </head>
 <body>
     <div class="a4-container" id="print-content">
-        <h1>Your Content Title</h1>
-        <p>Your content goes here. You can add text, images, tables, etc.</p>
+        <div class="signature-container">
+            <div>
+                <p> شركه الهضبه تورز</p>
+                <p>شرم الشيخ - الغردقة - العين السخنة الساحل الشمالي</p>
+            </div>
+        
+            <img src="~/Images/Logo/reportimage.jpeg" alt="Logo" class="reportImage">
+        </div>
+       
+
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+                <label for="inputPassword6" class="col-form-label">تاريخ الحجز  :</label>
+            </div>
+            <div class="col-auto">
+                <input type="text" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+            </div>
+        </div>
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+                <label for="inputPassword6" class="col-form-label">تاريخ الرحله :</label>
+            </div>
+            <div class="col-auto">
+                <input type="text" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+            </div>
+        </div>
+
+
+
+        <div class="row g-3 align-items-center padding">
+            <div class="col-auto">
+                <label for="inputPassword6" class="col-form-label">الفندق :</label>
+            </div>
+            <div class="col-auto">
+                <input type="text" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+            </div>
+        </div>
+        <div class="row g-3 align-items-center padding">
+            <div class="col-auto">
+                <label for="inputPassword6" class="col-form-label">الاقامه :</label>
+            </div>
+            <div class="col-auto">
+                <input type="text" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+            </div>
+        </div>
+
+        <table class="table table-bordered  text-center mt-3">
+            <thead>
+                <tr class="table-active">
+                    <th>الاسم</th>
+                    <th>عدد الافراد</th>
+                    <th>سعر الفرد</th>
+                    <th>الاجمالى</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                   
+                    <td><span id="customerName">test test</span></td>
+                    <td><span id="customerName"></span></td>
+                    <td><span id="customerName"></span></td>
+                    <td><span id="customerName"></span></td>
+                </tr>
+            <thead>
+                <tr class ="table-active">
+                    <th>رقم الهاتف</th>
+                    <th>عدد الاطفال</th>
+                    <th>السعر للطفل</th>
+                    <th>الاجمالي</th>
+                </tr>
+            </thead>
+                <tr>
+                    <td><span id="customerName">test test</span></td>
+                    <td><span id="customerName"></span></td>
+                    <td><span id="customerName"></span></td>
+                    <td><span id="customerName"></span></td>
+                </tr>
+            <thead>
+                <tr class="table-active">
+                    <th>مكان الرحله</th>
+                    <th>عدد الايام</th>
+                    <th></th>
+                    <th>ارقام الكراسى</th>
+                </tr>
+            </thead>
+                <tr>
+                    <td><span id="customerName">test test</span></td>
+                    <td><span id="customerName"></span></td>
+                    <td><span id="customerName"></span></td>
+                    <td><span id="customerName"></span></td>
+                </tr>
+
+                <!-- Add more details here as needed -->
+            </tbody>
+        </table>
+
+
+
+
+
+        <div>
+        <table class="table table-bordered text-center mt-2 small-table ">
+            <thead>
+                <tr class="table-active">
+                    <th>الاسم</th>
+                    <th>عدد الافراد</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span id="customerName">test test</span></td>
+                    <td><span id="customerName"></span></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <div>
+            <p>بنود العقد :</p>
+            <p>مقدم الحجز لا يقل عن 70% من قيمة الحجز</p>
+            <p>في حالة الغاء الحجز أو التغيير يتم خصم 30% من إجمالي المبلغ</p>
+            <p>في حالة الغاء الحجز قبل الرحلة بـ 3 أيام يتم خصم المبلغ كامل</p>
+            <p>الأوراق المطلوبة ( صورة بطاقة / صورة قسيمة الجواز / صورة شهادات المياه )</p>
+            <p>يتم اعتبار التوقيع على هذا الإيصال بمثابة موافقة على الشروط المذكورة</p>
+            <p>للشكاوي أو الإستفسارات يرجى الإتصال على : 01067246000 </p>
+            <div class="signature-container ">
+                <p >إمضاء العميل</p>
+                <p>إمضاء المستلم</p>
+            </div>
+        </div>
     </div>
-    <button onclick="printContent()">Print</button> <!-- Button to trigger printing -->
+
+
+
+    
     <script src="script.js"></script> <!-- Assuming you have a separate JavaScript file -->
 </body>
 </html>
-
-<script>
-    function printContent() {
-        window.print();
-    }
-</script>
