@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Localization;
 using System.Globalization;
 using Microsoft.AspNetCore.Mvc;
 using booking.Controllers;
+using Rotativa.AspNetCore;
 
 
 
@@ -77,4 +78,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+app.UseRotativa();
 app.Run();
+//RotativaConfiguration.Setup(builder.Environment.WebRootPath);

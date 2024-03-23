@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domin", "Domin\Domin.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infarstuructre", "Infarstuructre\Infarstuructre.csproj", "{82896DF7-FF05-4582-9589-66B0B114D13C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reporting", "Reporting\Reporting.csproj", "{479494BF-69D7-4E86-AF65-AD17F49CC2A0}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{82896DF7-FF05-4582-9589-66B0B114D13C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82896DF7-FF05-4582-9589-66B0B114D13C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82896DF7-FF05-4582-9589-66B0B114D13C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{479494BF-69D7-4E86-AF65-AD17F49CC2A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{479494BF-69D7-4E86-AF65-AD17F49CC2A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{479494BF-69D7-4E86-AF65-AD17F49CC2A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{479494BF-69D7-4E86-AF65-AD17F49CC2A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

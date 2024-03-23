@@ -14,6 +14,7 @@ using Microsoft.Extensions.Localization;
 using Microsoft.Reporting.WebForms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
 using Microsoft.Data.SqlClient;
+using Rotativa.AspNetCore;
 
 namespace booking.Controllers
 {
@@ -136,63 +137,63 @@ namespace booking.Controllers
         {
             return Json(_context.Packages.Find(packageId));
         }
-        public IActionResult Print()
-        {
-            var requestCultureFeature = HttpContext.Features.Get<IRequestCultureFeature>();
-            var requestCulture = requestCultureFeature?.RequestCulture;
-            DataTable dataTable = new DataTable();
-            using (var connection = new SqlConnection(_context.Database.GetDbConnection().ConnectionString))
-            {
-                using (var command = connection.CreateCommand())
-                {
-                    command.CommandText = "PrintReservation";
-                    command.CommandType = CommandType.StoredProcedure;
+        //public IActionResult Print()
+        //{
+        //    var requestCultureFeature = HttpContext.Features.Get<IRequestCultureFeature>();
+        //    var requestCulture = requestCultureFeature?.RequestCulture;
+        //    DataTable dataTable = new DataTable();
+        //    using (var connection = new SqlConnection(_context.Database.GetDbConnection().ConnectionString))
+        //    {
+        //        using (var command = connection.CreateCommand())
+        //        {
+        //            command.CommandText = "PrintReservation";
+        //            command.CommandType = CommandType.StoredProcedure;
 
-                    var param1 = new SqlParameter("@ReservationId", SqlDbType.Int);
-                    param1.Value = 7;
-                    command.Parameters.Add(param1);
+        //            var param1 = new SqlParameter("@ReservationId", SqlDbType.Int);
+        //            param1.Value = 7;
+        //            command.Parameters.Add(param1);
 
-                    var param2 = new SqlParameter("@Lang", SqlDbType.NVarChar);
-                    param2.Value = requestCulture;
-                    command.Parameters.Add(param2);
+        //            var param2 = new SqlParameter("@Lang", SqlDbType.NVarChar);
+        //            param2.Value = requestCulture;
+        //            command.Parameters.Add(param2);
 
-                    connection.Open();
+        //            connection.Open();
 
-                    using (var reader = command.ExecuteReader())
-                    {
+        //            using (var reader = command.ExecuteReader())
+        //            {
                         
-                        dataTable.Load(reader);
+        //                dataTable.Load(reader);
                        
-                    }
-                }
-            }
+        //            }
+        //        }
+        //    }
 
-            LocalReport localReport = new LocalReport();
-            localReport.ReportPath = Path.Combine(_webHostEnvironment.WebRootPath, "Reports", "Report.rdlc");
+        //    LocalReport localReport = new LocalReport();
+        //    localReport.ReportPath = Path.Combine(_webHostEnvironment.WebRootPath, "Reports", "Report.rdlc");
 
-            var rds = new ReportDataSource();
-            rds.Name = "DeviceSalesReport";
-            rds.Value = dataTable;
+        //    var rds = new ReportDataSource();
+        //    rds.Name = "DeviceSalesReport";
+        //    rds.Value = dataTable;
 
-            localReport.DataSources.Add(rds);
+        //    localReport.DataSources.Add(rds);
 
-            string mimeType;
-            string encoding;
-            string filenameExtension;
-            string[] streams;
-            Warning[] warnings;
+        //    string mimeType;
+        //    string encoding;
+        //    string filenameExtension;
+        //    string[] streams;
+        //    Warning[] warnings;
 
-            byte[] renderedBytes = localReport.Render(
-                "PDF", // PDF, Excel, Word, etc.
-                null,
-                out mimeType,
-                out encoding,
-                out filenameExtension,
-                out streams,
-                out warnings);
-            return File(renderedBytes, mimeType);
+        //    byte[] renderedBytes = localReport.Render(
+        //        "PDF", // PDF, Excel, Word, etc.
+        //        null,
+        //        out mimeType,
+        //        out encoding,
+        //        out filenameExtension,
+        //        out streams,
+        //        out warnings);
+        //    return File(renderedBytes, mimeType);
 
-        }
+        //}
 
 
 
@@ -260,52 +261,7 @@ namespace booking.Controllers
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
-        // ------------------------------------------------------------------- Edit reservation customer -----------------------------------------------------\\
-        //[HttpPost]
-        //public async Task<IActionResult> EditReservation(Reservation updatedReservation)
-        //{
-        //    try
-        //    {
 
-        //        var existingreservation = await _context.Reservations.FindAsync(updatedReservation.ReservationId);
-
-
-        //        if (ModelState.IsValid && existingreservation != null)
-        //        {
-        //            existingreservation.Discount = updatedReservation.Discount;
-        //            existingreservation.KidNo = updatedReservation.KidNo;
-        //            existingreservation.AdultNo = updatedReservation.AdultNo;
-
-
-        //            await _context.SaveChangesAsync();
-
-        //            HttpContext.Session.SetString("msgType", "success");
-        //            HttpContext.Session.SetString("titel", _localizer["lbUpated"].Value);
-        //            HttpContext.Session.SetString("msg", _localizer["lbUpdatedSuccessfully"].Value);
-        //        }
-
-        //        else
-        //        {
-        //            HttpContext.Session.SetString("msgType", "erorr");
-        //            HttpContext.Session.SetString("titel", _localizer["lbUpdatefeild"].Value);
-        //            HttpContext.Session.SetString("msg", _localizer["lbUpdateNotCompleted"].Value);
-        //        }
-
-        //        return RedirectToAction("index" , "Reservations");
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        TempData["ErrorMessage"] = "An error occurred while updating customer information: " + ex.Message;
-        //        HttpContext.Session.SetString("msgType", "erorr");
-        //        HttpContext.Session.SetString("titel", _localizer["lbUpdatefeild"].Value);
-        //        HttpContext.Session.SetString("msg", _localizer["lbUpdateNotCompleted"].Value);
-        //        return RedirectToAction("index", "Reservations");
-        //    }
-        //}
-
-
-        // ------------------------------------------------------------------- delete reservation customer -----------------------------------------------------\\
         [HttpPost]
         public IActionResult DeleteReservation(int id, string reason)
         {
@@ -325,6 +281,17 @@ namespace booking.Controllers
             return RedirectToAction("index");
         }
 
-
+        public IActionResult PrintReservation()
+        {
+            return View("Print");
+        }
+        public IActionResult PrintReservation(int id)
+        {
+            var report = new ViewAsPdf("Print")
+            {
+                PageMargins = { Left = 20, Bottom = 20, Right = 20, Top = 20 },
+            };
+            return report;
+        }
     }
 }
