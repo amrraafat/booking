@@ -16,7 +16,7 @@
 <input type="hidden" id="KidPrice" />
 <form asp-action="Create">
     <div class="form-group">
-        <label asp-for="@Model.reservation.HotelId">@Localizer["lbSelectHotel"]</label>
+        <label asp-for="@Model.reservation.HotelId">@Localizer["lbHotel"]</label>
         <select asp-for="@Model.reservation.HotelId" class="form-control" onchange="LoadPachages();" id="hotelSelect">
             <option value="0">@Localizer["lbSelectHotel"]</option>
             @foreach (var hotel in hotelList)
@@ -33,7 +33,7 @@
     </div>
 
     <div class="form-group">
-        <label asp-for="@Model.reservation.PackageId">@Localizer["lbSelectPackage"]</label>
+        <label asp-for="@Model.reservation.PackageId">@Localizer["lbPackage"]</label>
         <select asp-for="@Model.reservation.PackageId" class="form-control" onchange="packageChange()" id="packageSelect">
             <option value="0">@Localizer["lbSelectPackage"]</option>
             @foreach (var package in packageList)

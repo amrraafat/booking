@@ -135,6 +135,9 @@
   <data name="lbDiscount" xml:space="preserve">
     <value>قيمه الخصم</value>
   </data>
+  <data name="lbHotel" xml:space="preserve">
+    <value>فندق</value>
+  </data>
   <data name="lbID" xml:space="preserve">
     <value>ID</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="lbNationalId" xml:space="preserve">
     <value>الرقم القومي </value>
+  </data>
+  <data name="lbPackage" xml:space="preserve">
+    <value>عرض</value>
   </data>
   <data name="lbPaid" xml:space="preserve">
     <value>المدفوع</value>

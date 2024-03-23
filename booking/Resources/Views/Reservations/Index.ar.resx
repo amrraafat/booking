@@ -117,58 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lbAdultsCount" xml:space="preserve">
-    <value>Adults Count</value>
+  <data name="lbAreyousure" xml:space="preserve">
+    <value>هل انت متاكد ؟</value>
   </data>
-  <data name="lbbtnAction" xml:space="preserve">
-    <value>Action</value>
+  <data name="lbbtAddNewReservation" xml:space="preserve">
+    <value>حجز جديد</value>
   </data>
-  <data name="lbbtnSelectCustomer" xml:space="preserve">
-    <value>Select Customer</value>
+  <data name="lbBtnAction" xml:space="preserve">
+    <value>حدث</value>
   </data>
-  <data name="lbCurrentCustomer" xml:space="preserve">
-    <value>Current Customers</value>
+  <data name="lbbtnDelete" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="lbbtnEdit" xml:space="preserve">
+    <value>تعديل</value>
+  </data>
+  <data name="lbCanback" xml:space="preserve">
+    <value>لايمكنك التراجع في هذه الخطوة </value>
+  </data>
+  <data name="lbcancelButtonText" xml:space="preserve">
+    <value>إلغاء</value>
   </data>
   <data name="lbCustomerName" xml:space="preserve">
-    <value>Customer Name</value>
+    <value>إسم العميل</value>
   </data>
   <data name="lbDiscount" xml:space="preserve">
-    <value>Discount</value>
+    <value>قيمه الخصم</value>
   </data>
   <data name="lbHotel" xml:space="preserve">
-    <value>Hotel</value>
+    <value>الفندق</value>
   </data>
-  <data name="lbID" xml:space="preserve">
-    <value>ID</value>
-  </data>
-  <data name="lbKidsCount" xml:space="preserve">
-    <value>Kids Count</value>
-  </data>
-  <data name="lbNationalId" xml:space="preserve">
-    <value>National ID</value>
-  </data>
-  <data name="lbPackage" xml:space="preserve">
-    <value>Package</value>
+  <data name="lbNeedEnterReason" xml:space="preserve">
+    <value>يجب ان تدخل سبب الحذف</value>
   </data>
   <data name="lbPaid" xml:space="preserve">
-    <value>Paid</value>
+    <value>المدفوع</value>
   </data>
   <data name="lbPriceAfterDiscount" xml:space="preserve">
-    <value>Price After Discount</value>
+    <value>الاجمالى بعد حساب الخصم</value>
   </data>
   <data name="lbRemain" xml:space="preserve">
-    <value>Remain</value>
-  </data>
-  <data name="lbSave" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="lbSelectHotel" xml:space="preserve">
-    <value>Select Hotel</value>
-  </data>
-  <data name="lbSelectPackage" xml:space="preserve">
-    <value>Select Package</value>
+    <value>المتبقى</value>
   </data>
   <data name="lbTotalPrice" xml:space="preserve">
-    <value>Total Price</value>
+    <value>الاجمالى</value>
+  </data>
+  <data name="lbYesdelete" xml:space="preserve">
+    <value>نعم إمسح </value>
   </data>
 </root>
