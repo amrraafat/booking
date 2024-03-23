@@ -11,7 +11,6 @@ using System.Data;
 using System.Security.Claims;
 using System.IO;
 using Microsoft.Extensions.Localization;
-using Microsoft.Reporting.WebForms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
 using Microsoft.Data.SqlClient;
 using Rotativa.AspNetCore;
