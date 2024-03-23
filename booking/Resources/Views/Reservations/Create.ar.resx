@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="lbAdultsCount" xml:space="preserve">
+    <value>عدد الافراد</value>
+  </data>
   <data name="lbbtnAction" xml:space="preserve">
     <value>الحدث</value>
   </data>
@@ -129,10 +132,43 @@
   <data name="lbCustomerName" xml:space="preserve">
     <value>إسم العميل</value>
   </data>
+  <data name="lbDiscount" xml:space="preserve">
+    <value>قيمه الخصم</value>
+  </data>
+  <data name="lbHotel" xml:space="preserve">
+    <value>فندق</value>
+  </data>
   <data name="lbID" xml:space="preserve">
     <value>ID</value>
   </data>
+  <data name="lbKidsCount" xml:space="preserve">
+    <value>عدد الاطفال</value>
+  </data>
   <data name="lbNationalId" xml:space="preserve">
     <value>الرقم القومي </value>
+  </data>
+  <data name="lbPackage" xml:space="preserve">
+    <value>عرض</value>
+  </data>
+  <data name="lbPaid" xml:space="preserve">
+    <value>المدفوع</value>
+  </data>
+  <data name="lbPriceAfterDiscount" xml:space="preserve">
+    <value>الاجمالى بعد حساب الخصم</value>
+  </data>
+  <data name="lbRemain" xml:space="preserve">
+    <value>المتبقى</value>
+  </data>
+  <data name="lbSave" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="lbSelectHotel" xml:space="preserve">
+    <value>اختر فندق</value>
+  </data>
+  <data name="lbSelectPackage" xml:space="preserve">
+    <value>اختر عرض</value>
+  </data>
+  <data name="lbTotalPrice" xml:space="preserve">
+    <value>الاجمالى</value>
   </data>
 </root>

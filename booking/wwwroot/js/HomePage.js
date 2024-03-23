@@ -11,3 +11,14 @@ function setPachageValue() {
     var changesValue = $('#packageSelect').val();
     $('#packageSelectForController').val(changesValue);
 }
+function CheckPackage() {
+    debugger
+    var hotelId = $('#HotelId').val()
+    var packageSelect = $('#packageSelect').val()
+    if (packageSelect <= 0) {
+        alert("Select Package")
+    } else {
+        window.location.href = '@Url.Action("Create", "Reservations")' + '?hotelId=' + hotelId + '&packageId=' + packageSelect;
+    }
+}
+

@@ -117,17 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lbAdultsCount" xml:space="preserve">
-    <value>Adults Count</value>
+  <data name="lbAreyousure" xml:space="preserve">
+    <value>Are you sure?</value>
   </data>
-  <data name="lbbtnAction" xml:space="preserve">
+  <data name="lbbtAddNewReservation" xml:space="preserve">
+    <value>New Reservation</value>
+  </data>
+  <data name="lbBtnAction" xml:space="preserve">
     <value>Action</value>
   </data>
-  <data name="lbbtnSelectCustomer" xml:space="preserve">
-    <value>Select Customer</value>
+  <data name="lbbtnDelete" xml:space="preserve">
+    <value>Delete</value>
   </data>
-  <data name="lbCurrentCustomer" xml:space="preserve">
-    <value>Current Customers</value>
+  <data name="lbbtnEdit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="lbCanback" xml:space="preserve">
+    <value>You won't be able to revert this!</value>
+  </data>
+  <data name="lbcancelButtonText" xml:space="preserve">
+    <value>Cancel</value>
   </data>
   <data name="lbCustomerName" xml:space="preserve">
     <value>Customer Name</value>
@@ -138,17 +147,8 @@
   <data name="lbHotel" xml:space="preserve">
     <value>Hotel</value>
   </data>
-  <data name="lbID" xml:space="preserve">
-    <value>ID</value>
-  </data>
-  <data name="lbKidsCount" xml:space="preserve">
-    <value>Kids Count</value>
-  </data>
-  <data name="lbNationalId" xml:space="preserve">
-    <value>National ID</value>
-  </data>
-  <data name="lbPackage" xml:space="preserve">
-    <value>Package</value>
+  <data name="lbNeedEnterReason" xml:space="preserve">
+    <value>You need to enter a reason!</value>
   </data>
   <data name="lbPaid" xml:space="preserve">
     <value>Paid</value>
@@ -159,16 +159,10 @@
   <data name="lbRemain" xml:space="preserve">
     <value>Remain</value>
   </data>
-  <data name="lbSave" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="lbSelectHotel" xml:space="preserve">
-    <value>Select Hotel</value>
-  </data>
-  <data name="lbSelectPackage" xml:space="preserve">
-    <value>Select Package</value>
-  </data>
   <data name="lbTotalPrice" xml:space="preserve">
     <value>Total Price</value>
+  </data>
+  <data name="lbYesdelete" xml:space="preserve">
+    <value>Yes, delete it!</value>
   </data>
 </root>
