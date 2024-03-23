@@ -302,19 +302,24 @@ namespace booking.Controllers
 
         // ------------------------------------------------------------------- delete reservation customer -----------------------------------------------------\\
         [HttpPost]
-        public IActionResult DeleteReservation(int id)
+        public IActionResult DeleteReservation(int id, string reason)
         {
             Reservation reservation = _context.Reservations.Find(id);
 
-
-            if (ModelState.IsValid && reservation == null)
+            if (reservation == null)
             {
                 return NotFound();
             }
 
-            _context.Reservations.Remove(reservation);
+            // Set the reason for deletion in the reservation entity
+            reservation.DeleteReason = reason;
+            reservation.IsDeleted = true; // Assuming you have a property like this to mark soft deletion
+
             _context.SaveChanges();
+
             return RedirectToAction("index");
         }
+
+
     }
 }

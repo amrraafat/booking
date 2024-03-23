@@ -67,44 +67,47 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var reservation in Model)
-                                    {
-                                        <tr>
-                                            <td>@reservation.customer.CustomerName</td>
-                                            <td>
-                                                @if (currentCulture == "ar")
-                                                {
-                                                    @reservation.hotel.HotelNameFL
-                                                }
-                                                else
-                                                {
-                                                    @reservation.hotel.HotelNameSL
-                                                }
-                                            </td>
-                                            <td>@reservation.package.PackageName</td>
-                                            <td>@reservation.reservation.ReservationDateTime</td>
-                                            <td>@reservation.reservation.AdultNo</td>
-                                            <td>@reservation.reservation.KidNo</td>
-                                            <td>@Math.Floor(reservation.reservation.TotalPrice)</td>
-                                            <td>@Math.Floor(reservation.reservation.Discount)</td>
-                                            <td>@Math.Floor((reservation.reservation.TotalPrice - reservation.reservation.Discount))</td>
-                                            <td>@Math.Floor(reservation.reservation.Paid)</td>
-                                            <td>@Math.Floor(reservation.reservation.Remain)</td>
-                                            <td>
-                                                <div class="row">
-                                                    <div class="col-3">
-                                                        <a href="@Url.Action("Edit", "Reservations", new { id = reservation.reservation.ReservationId })" class="btn btn-warning btn-sm">@Localizer["lbbtnEdit"]</a>
-                                                    </div>
+                                        @foreach (var reservation in Model)
+                                        {
+                                            <tr>
+                                                <td>@reservation.customer.CustomerName</td>
+                                                <td>
+                                                    @if (currentCulture == "ar")
+                                                    {
+                                                        @reservation.hotel.HotelNameFL
+                                                    }
+                                                    else
+                                                    {
+                                                        @reservation.hotel.HotelNameSL
+                                                    }
+                                                </td>
+                                                <td>@reservation.package.PackageName</td>
+                                                <td>@reservation.reservation.ReservationDateTime</td>
+                                                <td>@reservation.reservation.AdultNo</td>
+                                                <td>@reservation.reservation.KidNo</td>
+                                                <td>@Math.Floor(reservation.reservation.TotalPrice)</td>
+                                                <td>@Math.Floor(reservation.reservation.Discount)</td>
+                                                <td>@Math.Floor((reservation.reservation.TotalPrice - reservation.reservation.Discount))</td>
+                                                <td>@Math.Floor(reservation.reservation.Paid)</td>
+                                                <td>@Math.Floor(reservation.reservation.Remain)</td>
+                                                <td>
+                                                    <div class="row">
+                                                        <div class="col-3">
+                                                            <a href="@Url.Action("Edit", "Reservations", new { id = reservation.reservation.ReservationId })" class="btn btn-warning btn-sm">@Localizer["lbbtnEdit"]</a>
+                                                        </div>
                                                     <div class="col-3">
                                                         <form id="deleteForm-@reservation.reservation.ReservationId" asp-action="DeleteReservation" asp-controller="Reservations" method="post">
                                                             <input type="hidden" name="id" value="@reservation.reservation.ReservationId" />
-                                                            <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete('@reservation.reservation.ReservationId')">@Localizer["lbbtnDelete"]</button>
+                                                            <!-- Hidden input field to store the reason for deletion -->
+                                                            <input type="hidden" id="deleteReasonInput" name="reason" />
+                                                            <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete('@reservation.reservation.ReservationId')" id="confirmButton">@Localizer["lbbtnDelete"]</button>
                                                         </form>
                                                     </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    }
+
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
                                 </tbody>
                             </table>
                         </div>
@@ -116,49 +119,7 @@
 </div>
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog card card-success card-outline">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">@Localizer["lbEditCustomers"]</h5>
-                <a href="#" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</a>
-            </div>
-            <div class="modal-body">
-                <form asp-action="EditReservation" asp-controller="Reservations" method="post" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <input type="text" hidden class="form-control" asp-for="@reservationpag.ReservationId" id="ReservationId" />
-                        <input type="text" hidden class="form-control" asp-for="@reservationpag.EmployeeId" id="EmployeeId" />
-                        <label  class="control-lable">@Localizer["lbCustomerName"]</label>
-                        <input type="text" class="form-control" disabled="disabled" id="CustomerName" />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="@reservationpag.Discount" class="control-lable">@Localizer["lbDiscount"]</label>
-                        <input asp-for="@reservationpag.Discount" class="form-control" asp-for="customer.Address" id="Discount" />
-                        <span asp-validation-for="@reservationpag.Discount" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="@reservationpag.AdultNo" class="control-lable">@Localizer["lbAdultNo"]</label>
-                        <input asp-for="@reservationpag.AdultNo" class="form-control" asp-for="customer.Address" id="AdultNo" />
-                        <span asp-validation-for="@reservationpag.AdultNo" class="text-danger"></span>
-                    </div>
 
-                    <div class="form-group">
-                        <label asp-for="@reservationpag.KidNo" class="control-lable">@Localizer["lbKidNo"]</label>
-                        <input asp-for="@reservationpag.KidNo" class="form-control" asp-for="customer.Address" id="KidNo" />
-                        <span asp-validation-for="@reservationpag.KidNo" class="text-danger"></span>
-                    </div>
-
-                    
-                    <div class="modal-footer-rtl" style="padding:0 15px 15px 0">
-                        <input type="submit" class="btn btn-success" value="@Localizer["lbbtnSave"]" />
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </form>
-            </div>
-
-        </div>
-    </div>
-</div>
 
 @section Script
 {
@@ -192,7 +153,6 @@
         Context.Session.SetString("msgType", "");
     }
 
-
     <script>
         function confirmDelete(customerId) {
             Swal.fire({
@@ -203,14 +163,27 @@
                 cancelButtonText: '@Localizer["lbcancelButtonText"]',
                 confirmButtonColor: '#d33',
                 cancelButtonColor: '#3085d6',
-                confirmButtonText: '@Localizer["lbYesdelete"]'
+                confirmButtonText: '@Localizer["lbYesdelete"]',
+                input: 'text',
+                inputPlaceholder: 'Enter reason for deletion',
+                inputValidator: (value) => {
+                    if (!value) {
+                        return 'You need to enter a reason!';
+                    }
+                }
             }).then((result) => {
                 if (result.isConfirmed) {
-                    // If confirmed, submit the form
+                    // Get the reason entered by the user
+                    var reason = result.value;
+                    // Set the value of the hidden input field
+                    document.getElementById('deleteReasonInput').value = reason;
+                    // Submit the form
                     document.getElementById('deleteForm-' + customerId).submit();
                 }
             });
         }
+    </script>
+
     </script>
 
     <script src="~/js/Reservation.js"></script>
