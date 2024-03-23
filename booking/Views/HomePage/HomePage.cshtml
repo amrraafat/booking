@@ -18,6 +18,7 @@
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach (var hotelViewModel in Model)
         {
+            <input hidden="hidden" id="HotelId" value="@hotelViewModel.Hotel.HotelId" />
             <div class="col">
                 <div class="card bg-secondary">
                     @if (!string.IsNullOrEmpty(hotelViewModel.ImageFileName))
@@ -38,13 +39,14 @@
 
                         <!-- Form for reservation -->
 
-                        <select class="form-select" aria-label="Select Package" id="packageSelect-@hotelViewModel.Hotel.HotelId">
+                        <select class="form-select" aria-label="Select Package" id="packageSelect">
+                            <option value="0">Select Package</option>
                             @foreach (var package in hotelViewModel.Packages)
                             {
                                 <option value="@package.PackageId">@package.PackageName</option>
                             }
                         </select>
-
+                        <button href="@Url.Action("Create", "Reservations", new { })" type="button" class="btn btn-primary mt-3" onclick="CheckPackage();">Book Now</button>
                     </div>
                 </div>
             </div>

@@ -16,9 +16,9 @@
 <input type="hidden" id="KidPrice" />
 <form asp-action="Create">
     <div class="form-group">
-        <label asp-for="@Model.reservation.HotelId">Select Hotel</label>
+        <label asp-for="@Model.reservation.HotelId">@Localizer["lbSelectHotel"]</label>
         <select asp-for="@Model.reservation.HotelId" class="form-control" onchange="LoadPachages();" id="hotelSelect">
-            <option value="0">Select Hotel</option>
+            <option value="0">@Localizer["lbSelectHotel"]</option>
             @foreach (var hotel in hotelList)
             {
                 if (hotel.Value == selectedHotelId)
@@ -33,9 +33,9 @@
     </div>
 
     <div class="form-group">
-        <label asp-for="@Model.reservation.PackageId">Select Package</label>
+        <label asp-for="@Model.reservation.PackageId">@Localizer["lbSelectPackage"]</label>
         <select asp-for="@Model.reservation.PackageId" class="form-control" onchange="packageChange()" id="packageSelect">
-            <option value="0">Select Package</option>
+            <option value="0">@Localizer["lbSelectPackage"]</option>
             @foreach (var package in packageList)
             {
                 if (package.Value == selectedPackageId)
@@ -52,14 +52,14 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <label asp-for="@Model.customer.CustomerName">Customer Name</label>
+                <label asp-for="@Model.customer.CustomerName">@Localizer["lbCustomerName"]</label>
                 <input type="text" asp-for="@Model.customer.CustomerName" class="form-control" disabled="disabled" id="CustomerName" />
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="form-group">
-                <label asp-for="@Model.customer.NationalId">Customer National ID</label>
+                <label asp-for="@Model.customer.NationalId">@Localizer["lbNationalId"]</label>
                 <input type="number" asp-for="@Model.customer.NationalId" class="form-control" disabled="disabled" id="NationalId" />
             </div>
         </div>
@@ -72,38 +72,38 @@
         <input hidden="hidden" asp-for="@Model.reservation.CustomerId" id="CustomerId" />
     </div>
     <div class="form-group">
-        <label asp-for="@Model.reservation.AdultNo">Adults Count</label>
+        <label asp-for="@Model.reservation.AdultNo">@Localizer["lbAdultsCount"]</label>
         <input type="number" id="AdultNo" asp-for="@Model.reservation.AdultNo " class="form-control" value="1" onchange="changeCounts()" />
     </div>
     <div class="form-group">
-        <label asp-for="@Model.reservation.KidNo">Kids Count</label>
+        <label asp-for="@Model.reservation.KidNo">@Localizer["lbKidsCount"]</label>
         <input type="number" id="KidNo" asp-for="@Model.reservation.KidNo " class="form-control" value="0" onchange="changeCounts()" />
     </div>
     <div class="form-group">
-        <label asp-for="@Model.reservation.TotalPrice">Total Price</label>
+        <label asp-for="@Model.reservation.TotalPrice">@Localizer["lbTotalPrice"]</label>
         <input type="number" id="TotalPrice" asp-for="@Model.reservation.TotalPrice " class="form-control " disabled="disabled" />
         <input type="hidden" asp-for="@Model.reservation.TotalPrice" id="TotalPriceHidden" />
     </div>
     <div class="form-group">
-        <label asp-for="@Model.reservation.Discount">Discount</label>
+        <label asp-for="@Model.reservation.Discount">@Localizer["lbDiscount"]</label>
         <input type="number" id="Discount" asp-for="@Model.reservation.Discount " class="form-control" value="0" onchange="caluclateDiscount();" />
     </div>
     <div class="form-group">
-        <label>Price After Discount</label>
+        <label>@Localizer["lbPriceAfterDiscount"]</label>
         <input type="number" class="form-control" id="priceAfterDiscount" disabled="disabled" />
     </div>
     <div class="form-group">
-        <label asp-for="@Model.reservation.Paid">Paid</label>
+        <label asp-for="@Model.reservation.Paid">@Localizer["lbPaid"]</label>
         <input type="number" asp-for="@Model.reservation.Paid" id="Paid" class="form-control" onchange="changePaid();" />
     </div>
     <div class="form-group">
-        <label asp-for="@Model.reservation.Remain">Remian</label>
+        <label asp-for="@Model.reservation.Remain">@Localizer["lbRemain"]</label>
         <input type="number" asp-for="@Model.reservation.Remain" id="Remain" class="form-control" disabled="disabled"/>
         <input type="hidden" asp-for="@Model.reservation.Remain" id="RemainHidden" />
 
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-primary">@Localizer["lbSave"]</button>
     </div>
 </form>
 
