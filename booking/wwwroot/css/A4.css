@@ -80,7 +80,9 @@ width: 300px;
 .a4-container input[type="text"] {
 height: 50px; 
 line-height: 50px; 
-margin:10px
+margin:10px;
+font-size:23px;
+color:black;
 }
 
 .reportImage {

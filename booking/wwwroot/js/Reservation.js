@@ -104,3 +104,29 @@ Edit = (ReservationId, CustomerName, Discount, AdultNo, KidNo, EmployeeId) => {
 
 
 }
+
+function printReservation(id) {
+    debugger
+    // Get the ID of the reservation you want to print
+    var reservationId = id; // Replace with the actual reservation ID
+
+    // Make an AJAX request to the PrintReservation action
+    $.ajax({
+        url: '/Reservations/PrintReservation', // Replace with the correct URL
+        type: 'GET',
+        data: { id: reservationId }, // Pass the reservation ID as a parameter
+        success: function (response) {
+            // Open the returned view in a new window
+            var newWindow = window.open("", "_blank");
+            newWindow.document.write(response);
+            newWindow.document.close();
+        },
+        error: function (xhr, status, error) {
+            de
+            console.error(xhr.responseText); // Log the responseText for debugging
+            console.error(status); // Log the status for debugging
+            console.error(error); // Log the error for debugging
+            alert('Error occurred while printing reservation.');
+        }
+    });
+}

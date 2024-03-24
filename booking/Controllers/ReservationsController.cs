@@ -295,7 +295,7 @@ namespace booking.Controllers
                     command.CommandType = CommandType.StoredProcedure;
 
                     var param1 = new SqlParameter("@ReservationId", SqlDbType.Int);
-                    param1.Value = 22;
+                    param1.Value = id;
                     command.Parameters.Add(param1);
 
                     var param2 = new SqlParameter("@Lang", SqlDbType.NVarChar);
@@ -327,11 +327,12 @@ namespace booking.Controllers
                             model.HotelLocation = reader.GetString(reader.GetOrdinal("HotelLocation"));
                         }
                     }
-                    var report = new ViewAsPdf("test", model)
-                    {
-                        
-                    };
-                    return report;
+                    //var report = new ViewAsPdf("test", model)
+                    //{
+
+                    //};
+                    //return report;
+                    return View("test", model);
                 }
             }
         }

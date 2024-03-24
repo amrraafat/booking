@@ -73,16 +73,19 @@
                                             <td>@Math.Floor(reservation.reservation.Remain)</td>
                                             <td>
                                                 <div class="row">
-                                                    <div class="col-6">
+                                                    <div class="col-4">
                                                         <a href="@Url.Action("Edit", "Reservations", new { id = reservation.reservation.ReservationId })" class="btn btn-warning btn-sm btn-block">@Localizer["lbbtnEdit"]</a>
                                                     </div>
-                                                    <div class="col-6">
+                                                    <div class="col-4">
                                                         <form id="deleteForm-@reservation.reservation.ReservationId" asp-action="DeleteReservation" asp-controller="Reservations" method="post">
                                                             <input type="hidden" name="id" value="@reservation.reservation.ReservationId" />
                                                             <!-- Hidden input field to store the reason for deletion -->
                                                             <input type="hidden" id="deleteReasonInput" name="reason" />
                                                             <button type="button" class="btn btn-danger btn-sm btn-block" onclick="confirmDelete('@reservation.reservation.ReservationId')" id="confirmButton">@Localizer["lbbtnDelete"]</button>
                                                         </form>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <button type="button" class="btn btn-primary" onclick="printReservation(@reservation.reservation.ReservationId)">Print Reservation</button>
                                                     </div>
                                                 </div>
                                             </td>
