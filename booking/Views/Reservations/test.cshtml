@@ -1,24 +1,88 @@
-﻿
-    <link href="~/css/A4.css" rel="stylesheet" />
+﻿@model Infarstuructre.Helper.PrintReservationModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AdminLTE 3 | Dashboard</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Admin/plugins/fontawesome-free/css/all.min.css">
+    <!-- Tempusdominus Bbootstrap 4 -->
+    <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/Admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="~/Admin/plugins/jqvmap/jqvmap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Admin/dist/css/adminlte.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/Admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Datetime picker -->
+    <link rel="stylesheet" href="~/Admin/plugins/datetimepicker/bootstrap-datetimepicker.min.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="~/Admin/plugins/summernote/summernote-bs4.css">
+    <!-- Bootstrap 4 RTL -->
+    <link rel="stylesheet" href="~/Admin/dist/css/bootstrap-rtl.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="~/Admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/Admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/Admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <!-- RoundSlider -->
+    <link rel="stylesheet" href="~/Admin/plugins/roundSlider-master/roundslider.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="~/Admin/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="~/Admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 
+    <!-- Sweet Aler -->
+    @*<link rel="stylesheet" href="~/Admin/plugins/sweetalert2/sweetalert2.min.css">*@
+    <link rel="stylesheet" href="~/Admin/plugins/sweetalert2/sweetalert2.min.css">
+    <!-- Custom style for RTL -->
+    <link rel="stylesheet" href="~/Admin/dist/css/custom.css">
+    <!-- Responsive RTL -->
+    <link rel="stylesheet" href="~/Admin/dist/css/responsive-rtl.css">
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/css/A4.css" rel="stylesheet" />
+</head>
 <body>
+    <style>
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .company-info {
+            text-align: right; /* Align text to the right */
+        }
+
+        .reportImage {
+            width: 100px; /* Adjust the width as needed */
+            height: auto;
+        }
+    </style>
     <div class="a4-container" id="print-content">
-        <div class="signature-container">
-            <div>
+        <div class="header">
+            <div class="company-info">
                 <p> شركه الهضبه تورز</p>
                 <p>شرم الشيخ - الغردقة - العين السخنة الساحل الشمالي</p>
             </div>
-        
-            <img src="~/Images/Logo/WhatsApp Image 2024-03-15 at 2.19.04 AM.jpeg" alt="Logo" class="reportImage">
+            <div class="logo">
+                <img src="~/Images/Logo/WhatsApp Image 2024-03-15 at 2.19.04 AM.jpeg" alt="Logo" class="reportImage">
+            </div>
         </div>
        
 
         <div class="row g-3 align-items-center">
             <div class="col-auto">
-                <label for="" class="col-form-label" >تاريخ الحجز  :</label>
+                <label  for="" class="col-form-label" >تاريخ الحجز  :</label>
             </div>
             <div class="col-auto">
-                <input type="text" id="" class="form-control" disabled="disabled" >
+                <input value="@Model.ReservationDateTime" type="text" id="" class="form-control" disabled="disabled">
             </div>
         </div>
         <div class="row g-3 align-items-center">
@@ -26,7 +90,7 @@
                 <label for="" class="col-form-label">تاريخ الرحله :</label>
             </div>
             <div class="col-auto">
-                <input type="text" id="" class="form-control" disabled="disabled">
+                <input value="@Model.StartDate"  type="text" id="" class="form-control" disabled="disabled">
             </div>
         </div>
 
@@ -37,7 +101,7 @@
                 <label for="" class="col-form-label">الفندق :</label>
             </div>
             <div class="col-auto">
-                <input type="text" id="" class="form-control" disabled="disabled">
+                <input type="text" value="@Model.HotelName" id="" class="form-control" disabled="disabled">
             </div>
         </div>
         <div class="row g-3 align-items-center padding">
@@ -45,7 +109,7 @@
                 <label for="" class="col-form-label">الاقامه :</label>
             </div>
             <div class="col-auto">
-                <input type="text" id="" class="form-control" disabled="disabled">
+                <input type="text" value="@Model.PackageName" id="" class="form-control" disabled="disabled">
             </div>
         </div>
 
@@ -61,10 +125,10 @@
             <tbody>
                 <tr>
                    
-                    <td><span id="customerName">test test</span></td>
-                    <td><span id="customerName"></span></td>
-                    <td><span id="customerName"></span></td>
-                    <td><span id="customerName"></span></td>
+                    <td>@Model.CustomerName</td>
+                    <td>@Model.AdultNo</td>
+                    <td>@Model.AdultPrice</td>
+                    <td>@Model.AdultTotal</td>
                 </tr>
             <thead>
                 <tr class ="table-active">
@@ -75,10 +139,10 @@
                 </tr>
             </thead>
                 <tr>
-                    <td><span id="customerName">test test</span></td>
-                    <td><span id="customerName"></span></td>
-                    <td><span id="customerName"></span></td>
-                    <td><span id="customerName"></span></td>
+                <td>@Model.MobileNumber</td>
+                <td>@Model.KidNo</td>
+                <td>@Model.KidPrice</td>
+                <td>@Model.KidTotal</td>
                 </tr>
             <thead>
                 <tr class="table-active">
@@ -89,10 +153,10 @@
                 </tr>
             </thead>
                 <tr>
-                    <td><span id="customerName">test test</span></td>
-                    <td><span id="customerName"></span></td>
-                    <td><span id="customerName"></span></td>
-                    <td><span id="customerName"></span></td>
+                <td>@Model.HotelLocation</td>
+                    <td><span  id="customerName"></span></td>
+                    <td><span  id="customerName"></span></td>
+                    <td><span  id="customerName"></span></td>
                 </tr>
 
                 <!-- Add more details here as needed -->
@@ -107,14 +171,14 @@
         <table class="table table-bordered text-center mt-2 small-table ">
             <thead>
                 <tr class="table-active">
-                    <th>الاسم</th>
-                    <th>عدد الافراد</th>
+                    <th>المبلغ المدفوع</th>
+                    <th>المتبقى</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><span id="customerName">test test</span></td>
-                    <td><span id="customerName"></span></td>
+                        <td>@Model.Paid</td>
+                        <td>@Model.Remain</td>
                 </tr>
             </tbody>
         </table>

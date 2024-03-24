@@ -14,6 +14,7 @@ using Microsoft.Extensions.Localization;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
 using Microsoft.Data.SqlClient;
 using Rotativa.AspNetCore;
+using Infarstuructre.Helper;
 
 namespace booking.Controllers
 {
@@ -280,17 +281,59 @@ namespace booking.Controllers
             return RedirectToAction("index");
         }
 
-        public IActionResult PrintReservation()
-        {
-            return View("Print");
-        }
         public IActionResult PrintReservation(int id)
         {
-            var report = new ViewAsPdf("Print")
+            var requestCultureFeature = HttpContext.Features.Get<IRequestCultureFeature>();
+            var requestCulture = requestCultureFeature?.RequestCulture;
+
+            PrintReservationModel model = new PrintReservationModel();
+            using (var connection = new SqlConnection(_context.Database.GetDbConnection().ConnectionString))
             {
-                PageMargins = { Left = 20, Bottom = 20, Right = 20, Top = 20 },
-            };
-            return report;
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = "PrintReservation";
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    var param1 = new SqlParameter("@ReservationId", SqlDbType.Int);
+                    param1.Value = 7;
+                    command.Parameters.Add(param1);
+
+                    var param2 = new SqlParameter("@Lang", SqlDbType.NVarChar);
+                    param2.Value = requestCulture.Culture.Name;
+                    command.Parameters.Add(param2);
+
+                    connection.Open();
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+                            model.ReservationDateTime = reader.GetDateTime(reader.GetOrdinal("ReservationDateTime"));
+                            model.StartDate = reader.GetDateTime(reader.GetOrdinal("StartDate"));
+                            model.HotelName = reader.GetString(reader.GetOrdinal("HotelName"));
+                            model.PackageName = reader.GetString(reader.GetOrdinal("PackageName"));
+                            model.CustomerName = reader.GetString(reader.GetOrdinal("CustomerName"));
+                            model.MobileNumber = reader.GetString(reader.GetOrdinal("MobileNumber"));
+                            model.AdultNo = reader.GetInt32(reader.GetOrdinal("AdultNo"));
+                            model.AdultPrice = (int)reader.GetDecimal(reader.GetOrdinal("AdultPrice"));
+                            model.AdultTotal = (int)reader.GetDecimal(reader.GetOrdinal("AdultTotal"));
+                            model.KidNo = reader.GetInt32(reader.GetOrdinal("KidNo"));
+                            model.KidPrice = (int)reader.GetDecimal(reader.GetOrdinal("KidPrice"));
+                            model.KidTotal = (int)reader.GetDecimal(reader.GetOrdinal("KidTotal"));
+                            model.TotalInvoice = (int)reader.GetDecimal(reader.GetOrdinal("TotalInvoice"));
+                            model.Paid = (int)reader.GetDecimal(reader.GetOrdinal("Paid"));
+                            model.Remain = (int)reader.GetDecimal(reader.GetOrdinal("Remain"));
+                            model.HotelLocation = reader.GetString(reader.GetOrdinal("HotelLocation"));
+                        }
+                    }
+                    var report = new ViewAsPdf("test", model)
+                    {
+                        PageMargins = { Left = 5, Bottom = 5, Right = 5, Top = 5 },
+                    };
+                    return report;
+                }
+            }
         }
     }
 }
