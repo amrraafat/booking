@@ -336,7 +336,7 @@ namespace booking.Controllers
                 var Result = await _signInManager.PasswordSignInAsync(model.Eamil,
                     model.Password, model.RememberMy, false);
                 if (Result.Succeeded)
-                    return RedirectToAction("CurrentCustomer", "Customers");
+                    return RedirectToAction("HomePage", "HomePage");
                 else
                     ViewBag.ErrorLogin = false;
             }

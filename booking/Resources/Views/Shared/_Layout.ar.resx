@@ -300,6 +300,9 @@
   <data name="lbRegisters" xml:space="preserve">
     <value>المستخدمين</value>
   </data>
+  <data name="lbReservations" xml:space="preserve">
+    <value>حجوزات</value>
+  </data>
   <data name="lbRoles" xml:space="preserve">
     <value>مجموعة المستخدمين</value>
   </data>

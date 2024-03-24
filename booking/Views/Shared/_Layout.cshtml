@@ -193,16 +193,16 @@
 
 
                             <div class="card custom-card">
-                                <div class="card-header" id="dashboardSection">
+                                <div class="card-header" id="HomePageSection">
                                     <h5 class="mb-0">
-                                        <button class="btn" type="button" data-toggle="collapse" data-target="#collapseDashboard" aria-expanded="true" aria-controls="collapseDashboard">
+                                        <button class="btn" type="button" data-toggle="collapse" data-target="#collapseHomePage" aria-expanded="true" aria-controls="collapseHomePage">
                                             @Localizer["lbHomePage"]
                                         </button>
                                     </h5>
                                 </div>
-                                <div id="collapseDashboard" class="collapse show" aria-labelledby="dashboardSection" data-parent="#accordionMenu">
+                                <div id="collapseHomePage" class="collapse show" aria-labelledby="HomePageSection" data-parent="#accordionMenu">
                                     <div class="card-body">
-                                        <!-- Links for the Dashboard section -->
+                                        <!-- Links for the HomePage section -->
                                         <ul class="nav nav-pills nav-treeview">
                                             <li class="nav-item">
                                                 <a href="/HomePage/HomePage" class="nav-link">
@@ -306,12 +306,54 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="card custom-card">
+                                <div class="card-header" id="ReservationsSection">
+                                    <h5 class="mb-0">
+                                        <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseReservations" aria-expanded="false" aria-controls="collapseReservations">
+                                            @Localizer["lbReservations"]
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseReservations" class="collapse" aria-labelledby="ReservationsSection" data-parent="#accordionMenu">
+                                    <div class="card-body">
+                                        <!-- Links for the Reservations section -->
+                                        <ul class="nav nav-pills nav-treeview">
+                                            <li class="nav-item">
+                                                <a href="/Reservations/Index" class="nav-link">
+                                                    <p>@Localizer["lbReservations"]</p>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
 
                     }
                     else
                     {
+                        <div class="card custom-card">
+                            <div class="card-header" id="HomePageSection">
+                                <h5 class="mb-0">
+                                    <button class="btn" type="button" data-toggle="collapse" data-target="#collapseHomePage" aria-expanded="true" aria-controls="collapseHomePage">
+                                        @Localizer["lbHomePage"]
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseHomePage" class="collapse show" aria-labelledby="HomePageSection" data-parent="#accordionMenu">
+                                <div class="card-body">
+                                    <!-- Links for the HomePage section -->
+                                    <ul class="nav nav-pills nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="/HomePage/HomePage" class="nav-link">
+                                                <p>@Localizer["lbHomePage"]</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                         <div class="accordion" id="accordionMenu">
                             <div class="card custom-card">
                                 <div class="card-header" id="customersSection">
@@ -369,6 +411,27 @@
                                             <li class="nav-item">
                                                 <a href="/Packages/Index" class="nav-link">
                                                     <p>@Localizer["lbPackages"]</p>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card custom-card">
+                                <div class="card-header" id="ReservationsSection">
+                                    <h5 class="mb-0">
+                                        <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseReservations" aria-expanded="false" aria-controls="collapseReservations">
+                                            @Localizer["lbReservations"]
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseReservations" class="collapse" aria-labelledby="ReservationsSection" data-parent="#accordionMenu">
+                                    <div class="card-body">
+                                        <!-- Links for the Reservations section -->
+                                        <ul class="nav nav-pills nav-treeview">
+                                            <li class="nav-item">
+                                                <a href="/Reservations/Index" class="nav-link">
+                                                    <p>@Localizer["lbReservations"]</p>
                                                 </a>
                                             </li>
                                         </ul>
