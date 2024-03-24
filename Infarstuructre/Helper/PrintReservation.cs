@@ -23,6 +23,7 @@ namespace Infarstuructre.Helper
         public decimal TotalInvoice { get; set; }
         public decimal Paid { get; set; }
         public decimal Remain { get; set; }
+        public decimal Discount { get; set; }
         public string HotelLocation { get; set; }
     }
 }

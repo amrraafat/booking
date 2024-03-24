@@ -324,6 +324,7 @@ namespace booking.Controllers
                             model.TotalInvoice = (int)reader.GetDecimal(reader.GetOrdinal("TotalInvoice"));
                             model.Paid = (int)reader.GetDecimal(reader.GetOrdinal("Paid"));
                             model.Remain = (int)reader.GetDecimal(reader.GetOrdinal("Remain"));
+                            model.Discount = (int)reader.GetDecimal(reader.GetOrdinal("Discount"));
                             model.HotelLocation = reader.GetString(reader.GetOrdinal("HotelLocation"));
                         }
                     }

@@ -106,7 +106,7 @@ Edit = (ReservationId, CustomerName, Discount, AdultNo, KidNo, EmployeeId) => {
 }
 
 function printReservation(id) {
-    debugger
+    
     // Get the ID of the reservation you want to print
     var reservationId = id; // Replace with the actual reservation ID
 
@@ -122,7 +122,7 @@ function printReservation(id) {
             newWindow.document.close();
         },
         error: function (xhr, status, error) {
-            de
+            
             console.error(xhr.responseText); // Log the responseText for debugging
             console.error(status); // Log the status for debugging
             console.error(error); // Log the error for debugging

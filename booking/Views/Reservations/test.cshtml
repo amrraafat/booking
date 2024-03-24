@@ -31,9 +31,7 @@
             width: 250px; /* Adjust the width as needed */
             height: auto;
         }
-        page {
-            margin: 0;
-        }
+
     </style>
     <div class="a4-container" id="print-content">
         <div class="header">
@@ -118,15 +116,15 @@
                 <tr class="table-active">
                     <th> <p>مكان الرحله</p></th>
                     <th> <p>عدد الايام</p></th>
-                    <th> <p></p></th>
-                    <th> <p>ارقام الكراسى</p></th>
+                        <th> <p>ارقام الكراسى</p></th>
+                    <th> <p>قيمه الخصم</p></th>
                 </tr>
             </thead>
                 <tr>
                 <td>@Model.HotelLocation</td>
                     <td><span  id="customerName"></span></td>
                     <td><span  id="customerName"></span></td>
-                    <td><span  id="customerName"></span></td>
+                    <td>@Model.Discount</td>
                 </tr>
 
                 <!-- Add more details here as needed -->
@@ -160,7 +158,7 @@
             <p>في حالة الغاء الحجز قبل الرحلة بـ 3 أيام يتم خصم المبلغ كامل</p>
             <p>الأوراق المطلوبة ( صورة بطاقة / صورة قسيمة الجواز / صورة شهادات المياه )</p>
             <p>يتم اعتبار التوقيع على هذا الإيصال بمثابة موافقة على الشروط المذكورة</p>
-            <p>للشكاوي أو الإستفسارات يرجى الإتصال على : 01067246000 </p>
+            <p>للشكاوي أو الإستفسارات يرجى الإتصال على : 01097282089 </p>
 
             <div class="row mt-5">
                 <div class="col-4">

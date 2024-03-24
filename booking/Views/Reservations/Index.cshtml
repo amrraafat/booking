@@ -73,10 +73,10 @@
                                             <td>@Math.Floor(reservation.reservation.Remain)</td>
                                             <td>
                                                 <div class="row">
-                                                    <div class="col-4">
+                                                    <div class="col-3">
                                                         <a href="@Url.Action("Edit", "Reservations", new { id = reservation.reservation.ReservationId })" class="btn btn-warning btn-sm btn-block">@Localizer["lbbtnEdit"]</a>
                                                     </div>
-                                                    <div class="col-4">
+                                                    <div class="col-3">
                                                         <form id="deleteForm-@reservation.reservation.ReservationId" asp-action="DeleteReservation" asp-controller="Reservations" method="post">
                                                             <input type="hidden" name="id" value="@reservation.reservation.ReservationId" />
                                                             <!-- Hidden input field to store the reason for deletion -->
@@ -84,7 +84,7 @@
                                                             <button type="button" class="btn btn-danger btn-sm btn-block" onclick="confirmDelete('@reservation.reservation.ReservationId')" id="confirmButton">@Localizer["lbbtnDelete"]</button>
                                                         </form>
                                                     </div>
-                                                    <div class="col-4">
+                                                    <div class="col-3">
                                                         <button type="button" class="btn btn-primary" onclick="printReservation(@reservation.reservation.ReservationId)">Print Reservation</button>
                                                     </div>
                                                 </div>
