@@ -6,42 +6,9 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 3 | Dashboard</title>
-    <!-- Tell the browser to be responsive to screen width -->
+ 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="~/Admin/plugins/fontawesome-free/css/all.min.css">
-    <!-- Tempusdominus Bbootstrap 4 -->
-    <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="~/Admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    <!-- JQVMap -->
-    <link rel="stylesheet" href="~/Admin/plugins/jqvmap/jqvmap.min.css">
-    <!-- Theme style -->
     <link rel="stylesheet" href="~/Admin/dist/css/adminlte.css">
-    <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="~/Admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-    <!-- Datetime picker -->
-    <link rel="stylesheet" href="~/Admin/plugins/datetimepicker/bootstrap-datetimepicker.min.css">
-    <!-- summernote -->
-    <link rel="stylesheet" href="~/Admin/plugins/summernote/summernote-bs4.css">
-    <!-- Bootstrap 4 RTL -->
-    <link rel="stylesheet" href="~/Admin/dist/css/bootstrap-rtl.min.css">
-    <!-- DataTables -->
-    <link rel="stylesheet" href="~/Admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="~/Admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet" href="~/Admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-    <!-- RoundSlider -->
-    <link rel="stylesheet" href="~/Admin/plugins/roundSlider-master/roundslider.min.css">
-    <!-- Select2 -->
-    <link rel="stylesheet" href="~/Admin/plugins/select2/css/select2.min.css">
-    <link rel="stylesheet" href="~/Admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-
-    <!-- Sweet Aler -->
-    @*<link rel="stylesheet" href="~/Admin/plugins/sweetalert2/sweetalert2.min.css">*@
-    <link rel="stylesheet" href="~/Admin/plugins/sweetalert2/sweetalert2.min.css">
-    <!-- Custom style for RTL -->
     <link rel="stylesheet" href="~/Admin/dist/css/custom.css">
     <!-- Responsive RTL -->
     <link rel="stylesheet" href="~/Admin/dist/css/responsive-rtl.css">
@@ -78,82 +45,82 @@
        
 
         <div class="row g-3 align-items-center">
-            <div class="col-auto">
-                <label  for="" class="col-form-label" >تاريخ الحجز  :</label>
+            <div class="col-2">
+                <label  for="" class=" col-form-label" >تاريخ الحجز  :</label>
             </div>
-            <div class="col-auto">
-                <input value="@Model.ReservationDateTime" type="text" id="" class="form-control" disabled="disabled">
+            <div class="col-2">
+                <input value="@* @Model.ReservationDateTime *@" type="text" id="" class="form-control" disabled="disabled">
             </div>
         </div>
         <div class="row g-3 align-items-center">
-            <div class="col-auto">
+            <div class="col-2">
                 <label for="" class="col-form-label">تاريخ الرحله :</label>
             </div>
-            <div class="col-auto">
-                <input value="@Model.StartDate"  type="text" id="" class="form-control" disabled="disabled">
+            <div class="col-2">
+                <input value="@* @Model.StartDate *@"  type="text" id="" class="form-control" disabled="disabled">
             </div>
         </div>
 
 
 
         <div class="row g-3 align-items-center padding">
-            <div class="col-auto">
+            <div class="col-3">
                 <label for="" class="col-form-label">الفندق :</label>
             </div>
-            <div class="col-auto">
-                <input type="text" value="@Model.HotelName" id="" class="form-control" disabled="disabled">
+            <div class="col-3">
+                <input type="text" value="@* @Model.HotelName *@" id="" class="form-control" disabled="disabled">
             </div>
         </div>
         <div class="row g-3 align-items-center padding">
-            <div class="col-auto">
+            <div class="col-3">
                 <label for="" class="col-form-label">الاقامه :</label>
             </div>
-            <div class="col-auto">
-                <input type="text" value="@Model.PackageName" id="" class="form-control" disabled="disabled">
+            <div class="col-3">
+                <input type="text" value="@* @Model.PackageName *@" id="" class="form-control" disabled="disabled">
             </div>
         </div>
-
-        <table class="table table-bordered  text-center mt-3">
+        <div>
+        <table class="table table-bordered   text-center mt-3">
             <thead>
                 <tr class="table-active">
-                    <th>الاسم</th>
-                    <th>عدد الافراد</th>
-                    <th>سعر الفرد</th>
-                    <th>الاجمالى</th>
+                    <th> <p>الاسم</p></th>
+                    <th> <p>عدد الافراد</p></th>
+                    <th> <p>سعر الفرد</p></th>
+                    <th> <p>الاجمالى</p></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                    
-                    <td>@Model.CustomerName</td>
-                    <td>@Model.AdultNo</td>
-                    <td>@Model.AdultPrice</td>
-                    <td>@Model.AdultTotal</td>
+                    <td>@* @Model. *@CustomerName</td>
+                    <td>@* @Model. *@AdultNo</td>
+                    <td>@* @Model. *@AdultPrice</td>
+                    <td>@* @Model. *@AdultTotal</td>
                 </tr>
             <thead>
                 <tr class ="table-active">
-                    <th>رقم الهاتف</th>
-                    <th>عدد الاطفال</th>
-                    <th>السعر للطفل</th>
-                    <th>الاجمالي</th>
+                    <th> <p>رقم الهاتف</p></th>
+                    <th> <p>عدد الاطفال</p></th>
+                    <th> <p>السعر للطفل</p></th>
+                    <th> <p>الاجمالي</p></th>
                 </tr>
             </thead>
                 <tr>
-                <td>@Model.MobileNumber</td>
-                <td>@Model.KidNo</td>
-                <td>@Model.KidPrice</td>
-                <td>@Model.KidTotal</td>
+                <td>@* @Model. *@MobileNumber</td>
+                <td>@* @Model. *@KidNo</td>
+                <td>@* @Model. *@KidPrice</td>
+                <td>@* @Model. *@KidTotal</td>
                 </tr>
             <thead>
                 <tr class="table-active">
-                    <th>مكان الرحله</th>
-                    <th>عدد الايام</th>
-                    <th></th>
-                    <th>ارقام الكراسى</th>
+                    <th> <p>مكان الرحله</p></th>
+                    <th> <p>عدد الايام</p></th>
+                    <th> <p></p></th>
+                    <th> <p>ارقام الكراسى</p></th>
                 </tr>
             </thead>
                 <tr>
-                <td>@Model.HotelLocation</td>
+                <td>@* @Model.HotelLocation *@</td>
                     <td><span  id="customerName"></span></td>
                     <td><span  id="customerName"></span></td>
                     <td><span  id="customerName"></span></td>
@@ -164,21 +131,21 @@
         </table>
 
 
-
+        </div>
 
 
         <div>
         <table class="table table-bordered text-center mt-2 small-table ">
             <thead>
                 <tr class="table-active">
-                    <th>المبلغ المدفوع</th>
-                    <th>المتبقى</th>
+                    <th> <p>المبلغ المدفوع</p></th>
+                    <th> <p>المتبقى</p></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                        <td>@Model.Paid</td>
-                        <td>@Model.Remain</td>
+                        <td>@* @Model. *@Paid</td>
+                        <td>@* @Model. *@Remain</td>
                 </tr>
             </tbody>
         </table>
@@ -191,10 +158,17 @@
             <p>الأوراق المطلوبة ( صورة بطاقة / صورة قسيمة الجواز / صورة شهادات المياه )</p>
             <p>يتم اعتبار التوقيع على هذا الإيصال بمثابة موافقة على الشروط المذكورة</p>
             <p>للشكاوي أو الإستفسارات يرجى الإتصال على : 01067246000 </p>
-            <div class="signature-container ">
-                <p >إمضاء العميل</p>
-                <p>إمضاء المستلم</p>
+
+            <div class="row mt-5">
+                <div class="col-4">
+                    <p>إمضاء العميل</p>
+                </div>
+                <div class="col-4 padding">
+                    <p>إمضاء.المستلم</p>
+                </div>
             </div>
+           
+
         </div>
     </div>
 

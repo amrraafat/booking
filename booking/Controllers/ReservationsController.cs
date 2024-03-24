@@ -295,7 +295,7 @@ namespace booking.Controllers
                     command.CommandType = CommandType.StoredProcedure;
 
                     var param1 = new SqlParameter("@ReservationId", SqlDbType.Int);
-                    param1.Value = 7;
+                    param1.Value = 22;
                     command.Parameters.Add(param1);
 
                     var param2 = new SqlParameter("@Lang", SqlDbType.NVarChar);
@@ -329,7 +329,7 @@ namespace booking.Controllers
                     }
                     var report = new ViewAsPdf("test", model)
                     {
-                        PageMargins = { Left = 5, Bottom = 5, Right = 5, Top = 5 },
+                        
                     };
                     return report;
                 }
