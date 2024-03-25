@@ -49,43 +49,10 @@ namespace booking.Controllers
             // Pass hotel view models to the view
             return View(hotelViewModelList);
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateCustomer([Bind("CustomerId,CustomerName,Gender,Address,NationalId,NationalIdImage")] Customer customer)
-        {
-            try
-            {
-
-                if (ModelState.IsValid)
-                {
-                    _context.Add(customer);
-                    await _context.SaveChangesAsync();
-
-                    HttpContext.Session.SetString("msgType", "success");
-                    HttpContext.Session.SetString("titel", _localizer["lbadded"].Value);
-                    HttpContext.Session.SetString("msg", _localizer["lbsddedSuccessfully"].Value);
-                }
-                else
-                {
-                    HttpContext.Session.SetString("msgType", "erorr");
-                    HttpContext.Session.SetString("titel", _localizer["lbaddedfeild"].Value);
-                    HttpContext.Session.SetString("msg", _localizer["lbaddingNotCompleted"].Value);
-                }
-                return RedirectToAction("HomePage", "HomePage");
-            }
-            catch (Exception ex)
-            {
-                TempData["ErrorMessage"] = "An error occurred while updating customer information: " + ex.Message;
-                HttpContext.Session.SetString("msgType", "erorr");
-                HttpContext.Session.SetString("titel", _localizer["lbaddedfeild"].Value);
-                HttpContext.Session.SetString("msg", _localizer["lbaddingNotCompleted"].Value);
-                return RedirectToAction("HomePage", "HomePage");
-            }
-
-        }
+        
 
         [HttpPost]
-        public IActionResult Reservation(int hotelId, int selectedPackageId)
+        public IActionResult Reservation(int hotelId, int packageId)
         {
             return View();
         }

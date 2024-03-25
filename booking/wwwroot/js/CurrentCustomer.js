@@ -4,7 +4,7 @@
         "responsive": false
     });
 });
-
+let table = new DataTable('#tableRole');
 
 Edit = (CustomerId, CustomerName, Gender, Address, NationalId, MobileNumber,NationalIdImage) => {
     document.getElementById("CustomerId").value = CustomerId;

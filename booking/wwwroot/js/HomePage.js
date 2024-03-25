@@ -7,18 +7,12 @@
     console.log("Hotel ID:", hotelId);
     });
 
-function setPachageValue() {
-    var changesValue = $('#packageSelect').val();
-    $('#packageSelectForController').val(changesValue);
+function setPackageValue(element, packageId) {
+    var card = element.closest('.card');
+    var packageInput = card.querySelector('.package-id');
+    packageInput.value = packageId;
+
+
 }
-function CheckPackage() {
-    debugger
-    var hotelId = $('#HotelId').val()
-    var packageSelect = $('#packageSelect').val()
-    if (packageSelect <= 0) {
-        alert("Select Package")
-    } else {
-        window.location.href = '@Url.Action("Create", "Reservations")' + '?hotelId=' + hotelId + '&packageId=' + packageSelect;
-    }
-}
+
 

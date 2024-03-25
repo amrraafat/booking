@@ -64,7 +64,7 @@ namespace booking.Controllers
         }
 
 
-        public async Task<IActionResult> Create(int hotelId=0,int packageId=0)
+        public async Task<IActionResult> Create(int hotelId,int packageId)
         {
             var requestCultureFeature = HttpContext.Features.Get<IRequestCultureFeature>();
             var requestCulture = requestCultureFeature?.RequestCulture;
@@ -336,6 +336,54 @@ namespace booking.Controllers
                     return View("test", model);
                 }
             }
+        }
+
+
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateCustomer([Bind("CustomerId,CustomerName,Gender,Address,NationalId,NationalIdImage,MobileNumber")] Customer customer, IFormFile file)
+        {
+            try
+            {
+                if (file != null && file.Length > 0)
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        file.CopyTo(memoryStream);
+
+                        customer.NationalIdImage = memoryStream.ToArray();
+                    }
+                }
+
+                if (ModelState.IsValid)
+                {
+                    _context.Add(customer);
+                    await _context.SaveChangesAsync();
+
+                    HttpContext.Session.SetString("msgType", "success");
+                    HttpContext.Session.SetString("titel", _localizer["lbadded"].Value);
+                    HttpContext.Session.SetString("msg", _localizer["lbsddedSuccessfully"].Value);
+                }
+                else
+                {
+                    HttpContext.Session.SetString("msgType", "erorr");
+                    HttpContext.Session.SetString("titel", _localizer["lbaddedfeild"].Value);
+                    HttpContext.Session.SetString("msg", _localizer["lbaddingNotCompleted"].Value);
+                }
+                return RedirectToAction("Create", "Reservations");
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "An error occurred while updating customer information: " + ex.Message;
+                HttpContext.Session.SetString("msgType", "erorr");
+                HttpContext.Session.SetString("titel", _localizer["lbaddedfeild"].Value);
+                HttpContext.Session.SetString("msg", _localizer["lbaddingNotCompleted"].Value);
+                return RedirectToAction("Create", "Reservations");
+            }
+
         }
     }
 }

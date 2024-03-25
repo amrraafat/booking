@@ -11,8 +11,8 @@ namespace Domin.Entity
     {
         [Key]
         public int HotelId { get; set; }
-        public string HotelNameFL { get; set; }
-        public string HotelNameSL { get; set; }
+        public string? HotelNameFL { get; set; }
+        public string? HotelNameSL { get; set; }
         public byte HotelRate { get; set; }
         public byte[]? HotelImage { get; set; }
         public string HotelLocation { get; set; }

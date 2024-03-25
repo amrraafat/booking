@@ -6,10 +6,7 @@
 <div class="card-header d-flex align-items-center justify-content-start m-3">
     <h3 class="card-title" style="margin-left:20px">@Localizer["lbHotelReservation"]</h3>
 
-    @* <button type="button" style="margin-top:-5px"
-            class="btn btn-outline-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#CrateNew">
-        @Localizer["lbbtnSaveNewUser"]
-    </button> *@
+    
     <div class="card-tools ">
     </div>
 </div>
@@ -18,7 +15,7 @@
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach (var hotelViewModel in Model)
         {
-            <input hidden="hidden" id="HotelId" value="@hotelViewModel.Hotel.HotelId" />
+            <input hidden="hidden" class="hotel-id" value="@hotelViewModel.Hotel.HotelId" />
             <div class="col">
                 <div class="card bg-secondary">
                     @if (!string.IsNullOrEmpty(hotelViewModel.ImageFileName))
@@ -38,15 +35,25 @@
                         <h6 class="selectpicker">Packages</h6>
 
                         <!-- Form for reservation -->
+                        <form asp-action="Create" asp-controller="Reservations" method="get">
 
-                        <select class="form-select" aria-label="Select Package" id="packageSelect">
-                            <option value="0">Select Package</option>
-                            @foreach (var package in hotelViewModel.Packages)
-                            {
-                                <option value="@package.PackageId">@package.PackageName</option>
-                            }
-                        </select>
-                        <button href="@Url.Action("Create", "Reservations", new { })" type="button" class="btn btn-primary mt-3" onclick="CheckPackage();">Book Now</button>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    العروض
+                                </button>
+                                <ul class="dropdown-menu">
+                                    @foreach (var package in hotelViewModel.Packages)
+                                    {
+                                        <li><a class="dropdown-item" onclick="setPackageValue(this, '@package.PackageId')">@package.PackageName</a></li>
+                                    }
+                                </ul>
+                            </div>
+
+                            <input name="packageId" class="package-id" type="hidden" />
+                            <input asp-for="@hotelViewModel.Hotel.HotelId" type="hidden" name="hotelId" />
+
+                            <button type="submit" class="btn btn-primary mt-3">Book Now</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -55,51 +62,9 @@
 </div>
 
 
-<div class="modal fade" id="CrateNew" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog card card-success card-outline">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">@Localizer["lbbtnSaveNewUser"]</h5>
-                <a href="#" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</a>
-            </div>
-            <div class="modal-body">
-                <form asp-action="CreateCustomer" asp-controller="HomePage" method="post" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label asp-for="@customer.CustomerId" class="control-lable">@Localizer["lbCustomerName"]</label>
-                        <input type="text" class="form-control" asp-for="@customer.CustomerName" id="CustomerName" />
-                        <span asp-validation-for="@customer.CustomerName" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="@customer.Address" class="control-lable">@Localizer["lbAddress"]</label>
-                        <input asp-for="@customer.Address" class="form-control" asp-for="@customer.Address" id="Address" />
-                        <span asp-validation-for="@customer.Address" class="text-danger"></span>
-                    </div>
 
 
-                    <div class="form-group">
-                        <label asp-for="@customer.NationalId" class="control-lable">@Localizer["lbNationalId"]</label>
-                        <input asp-for="@customer.NationalId" class="form-control" asp-for="@customer.NationalId" id="NationalId" />
-                        <span asp-validation-for="@customer.NationalId" class="text-danger"></span>
-                    </div>
 
-                    <div class="form-group">
-                        <label asp-for="@customer.Gender" class="control-lable">@Localizer["lbGender"]</label>
-                        <select asp-for="@customer.Gender" class="form-control" id="gender">
-                            <option value="1">@Localizer["lbMale"]</option>
-                            <option value="2">@Localizer["lbFemale"]</option>
-                        </select>
-                        <span asp-validation-for="@customer.Gender" class="text-danger"></span>
-                    </div>
-                    <div class="modal-footer-rtl" style="padding:0 15px 15px 0">
-                        <input type="submit" class="btn btn-success" value="@Localizer["lbbtnSave"]" />
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </form>
-            </div>
-
-        </div>
-    </div>
-</div>
 
 @section Script
 {

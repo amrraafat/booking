@@ -68,6 +68,13 @@
                     class="btn btn-outline-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#CrateNew">
                 @Localizer["lbbtnSelectCustomer"]
             </button>
+
+        </div>
+        <div class="col-md-2">
+            <button type="button" style="margin-top:-5px"
+                    class="btn btn-outline-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#CrateNewCustomer">
+                @Localizer["lbbtnSaveNewUser"]
+            </button>
         </div>
         <input hidden="hidden" asp-for="@Model.reservation.CustomerId" id="CustomerId" />
     </div>
@@ -114,6 +121,7 @@
                 <h5 class="modal-title">@Localizer["lbbtnSelectCustomer"]</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+           
             <div class="modal-body">
                 <section class="content">
                     <div class="row">
@@ -160,5 +168,100 @@
         </div>
     </div>
 </div>
+
+
+<div class="modal fade" id="CrateNewCustomer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog card card-success card-outline">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">@Localizer["lbbtnSaveNewUser"]</h5>
+                <a href="#" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</a>
+            </div>
+            <div class="modal-body">
+                <form asp-action="CreateCustomer" asp-controller="Reservations" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label asp-for="@Model.customer.CustomerId" class="control-lable">@Localizer["lbCustomerName"]</label>
+                        <input type="text" class="form-control" asp-for="@Model.customer.CustomerName" id="CustomerName" />
+                        <span asp-validation-for="@Model.customer.CustomerName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.customer.Address" class="control-lable">@Localizer["lbAddress"]</label>
+                        <input asp-for="@Model.customer.Address" class="form-control"  id="Address" />
+                        <span asp-validation-for="@Model.customer.Address" class="text-danger"></span>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label asp-for="@Model.customer.NationalId" class="control-lable">@Localizer["lbNationalId"]</label>
+                        <input asp-for="@Model.customer.NationalId" class="form-control" id="NationalId" />
+                        <span asp-validation-for="@Model.customer.NationalId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="customer.MobileNumber" class="control-lable">@Localizer["lbMobileNumber"]</label>
+                        <input asp-for="customer.MobileNumber" class="form-control" asp-for="customer.MobileNumber" id="MobileNumber" />
+                        <span asp-validation-for="customer.MobileNumber" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="@Model.customer.Gender" class="control-lable">@Localizer["lbGender"]</label>
+                        <select asp-for="@Model.customer.Gender" class="form-control" id="gender">
+                            <option value="1">@Localizer["lbMale"]</option>
+                            <option value="2">@Localizer["lbFemale"]</option>
+                        </select>
+                        <span asp-validation-for="@Model.customer.Gender" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>@Localizer["lbfile"]</label>
+                        <input type="file" name="file" class="form-control-file" />
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="modal-footer-rtl" style="padding:0 15px 15px 0">
+                        <input type="submit" class="btn btn-success" value="@Localizer["lbbtnSave"]" />
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
 <script src="~/js/reservation.js"></script>
 
+
+
+@section Script
+{
+    @if (!string.IsNullOrEmpty(Context.Session.GetString("msgType")))
+    {
+        if (Context.Session.GetString("msgType") == "success")
+        {
+            <script>
+                Swal.fire({
+                    icon: "success",
+                    title: ' @Context.Session.GetString("titel")',
+                    text: '@Html.Raw(Context.Session.GetString("msg"))',
+                    showConfirmButton: 'حسناً',
+                });
+            </script>
+        }
+        else
+        {
+            <script>
+                Swal.fire({
+                    icon: "error",
+                    title: '@Context.Session.GetString("titel")',
+                    text: '@Html.Raw(Context.Session.GetString("msg"))',
+                    showConfirmButton: 'حسناً',
+
+
+                });
+
+            </script>
+        }
+        Context.Session.SetString("msgType", "");
+    }
+
+
+    
+
+}
