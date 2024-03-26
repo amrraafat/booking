@@ -1,9 +1,4 @@
-﻿$(document).ready(function () {
-    $('#tableRole').DataTable({
-        "autoWidth": false,
-        "responsive": false
-    });
-});
+﻿
 function Delete(id) {
     Swal.fire({
         title: lbTitleMsgDelete,

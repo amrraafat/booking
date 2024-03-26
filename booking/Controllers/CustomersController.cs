@@ -43,7 +43,7 @@ namespace booking.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateCustomer([Bind("CustomerId,CustomerName,Gender,Address,NationalId,NationalIdImage")] Customer customer , IFormFile file)
+        public async Task<IActionResult> CreateCustomer([Bind("CustomerId,CustomerName,Address,NationalId,MobileNumber,Gender,NationalIdImage")] Customer customer , IFormFile file)
         {
             try
             {
@@ -102,18 +102,24 @@ namespace booking.Controllers
             Customer customer = _dbContext.Customers.Find(id);
            
 
-            if (ModelState.IsValid && customer == null)
+            if (ModelState.IsValid! && customer == null)
             {
-                return NotFound(); 
+                HttpContext.Session.SetString("msgType", "erorr");
+                HttpContext.Session.SetString("titel", _localizer["lbNotDeleted"].Value);
+                HttpContext.Session.SetString("msg", _localizer["lbNotDeletedSuccessfully"].Value);
             }
 
             _dbContext.Customers.Remove(customer);
             _dbContext.SaveChanges();
+
+            HttpContext.Session.SetString("msgType", "success");
+            HttpContext.Session.SetString("titel", _localizer["lbDeleted"].Value);
+            HttpContext.Session.SetString("msg", _localizer["lbDeletedSuccessfully"].Value);
             return RedirectToAction("CurrentCustomer");
         }
         // ------------------------------------------------------------------- Edit Current customer -----------------------------------------------------\\
         [HttpPost]
-        public async Task<IActionResult> EditCustomer(CustomerViewModel updatedCustomer , IFormFile file)
+        public async Task<IActionResult> EditCustomer(CustomerViewModel updatedCustomer , IFormFile? file)
         {
             try
             {
@@ -123,7 +129,7 @@ namespace booking.Controllers
 
                 if (file != null && file.Length > 0)
                 {
-                    // Read the uploaded file into a byte array
+                    
                     using (var memoryStream = new MemoryStream())
                     {
                         await file.CopyToAsync(memoryStream);

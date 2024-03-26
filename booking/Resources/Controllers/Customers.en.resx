@@ -126,6 +126,18 @@
   <data name="lbaddingNotCompleted" xml:space="preserve">
     <value>The client has not been added</value>
   </data>
+  <data name="lbDeleted" xml:space="preserve">
+    <value>Deleted</value>
+  </data>
+  <data name="lbDeletedSuccessfully" xml:space="preserve">
+    <value>Deleted Successfully</value>
+  </data>
+  <data name="lbNotDeleted" xml:space="preserve">
+    <value>Can't Delete</value>
+  </data>
+  <data name="lbNotDeletedSuccessfully" xml:space="preserve">
+    <value>Can't Delete something wrong</value>
+  </data>
   <data name="lbsddedSuccessfully" xml:space="preserve">
     <value>The client has been added successfully</value>
   </data>

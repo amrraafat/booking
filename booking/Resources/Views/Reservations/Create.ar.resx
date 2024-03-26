@@ -117,11 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="lbAddress" xml:space="preserve">
+    <value>العنوان</value>
+  </data>
   <data name="lbAdultsCount" xml:space="preserve">
     <value>عدد الافراد</value>
   </data>
   <data name="lbbtnAction" xml:space="preserve">
     <value>الحدث</value>
+  </data>
+  <data name="lbbtnSave" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="lbbtnSaveNewUser" xml:space="preserve">
+    <value>عميل جديد</value>
   </data>
   <data name="lbbtnSelectCustomer" xml:space="preserve">
     <value>اختيار العميل </value>
@@ -135,6 +144,15 @@
   <data name="lbDiscount" xml:space="preserve">
     <value>قيمه الخصم</value>
   </data>
+  <data name="lbFemale" xml:space="preserve">
+    <value>ذكر</value>
+  </data>
+  <data name="lbfile" xml:space="preserve">
+    <value>الملفات</value>
+  </data>
+  <data name="lbGender" xml:space="preserve">
+    <value>النوع</value>
+  </data>
   <data name="lbHotel" xml:space="preserve">
     <value>فندق</value>
   </data>
@@ -144,8 +162,17 @@
   <data name="lbKidsCount" xml:space="preserve">
     <value>عدد الاطفال</value>
   </data>
+  <data name="lbMale" xml:space="preserve">
+    <value>انثى</value>
+  </data>
+  <data name="lbMobileNumber" xml:space="preserve">
+    <value>رقم الهاتف</value>
+  </data>
   <data name="lbNationalId" xml:space="preserve">
     <value>الرقم القومي </value>
+  </data>
+  <data name="lbNationalIdImage" xml:space="preserve">
+    <value>صورة بطاقه </value>
   </data>
   <data name="lbPackage" xml:space="preserve">
     <value>عرض</value>

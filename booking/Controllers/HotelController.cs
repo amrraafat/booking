@@ -124,7 +124,7 @@ namespace booking.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(HotelViewModel viewModel)
+        public async Task<IActionResult> EditHotel(HotelViewModel viewModel)
         {
             if (ModelState.IsValid)
             {

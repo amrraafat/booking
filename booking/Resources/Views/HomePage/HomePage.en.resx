@@ -123,6 +123,9 @@
   <data name="lbAreyousure" xml:space="preserve">
     <value>Are you sure?</value>
   </data>
+  <data name="lbbtBookNow" xml:space="preserve">
+    <value>Book Now</value>
+  </data>
   <data name="lbbtnDelete" xml:space="preserve">
     <value>Delete</value>
   </data>
@@ -182,6 +185,9 @@
   </data>
   <data name="lbNotSavedMsgUserRole" xml:space="preserve">
     <value>Role not saved</value>
+  </data>
+  <data name="lbpackages" xml:space="preserve">
+    <value>packages</value>
   </data>
   <data name="lbYesdelete" xml:space="preserve">
     <value>Yes, delete it!</value>

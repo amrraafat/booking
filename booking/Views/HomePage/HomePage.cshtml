@@ -39,7 +39,7 @@
 
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    العروض
+                                    @Localizer["lbpackages"]
                                 </button>
                                 <ul class="dropdown-menu">
                                     @foreach (var package in hotelViewModel.Packages)
@@ -50,9 +50,9 @@
                             </div>
 
                             <input name="packageId" class="package-id" type="hidden" />
-                            <input asp-for="@hotelViewModel.Hotel.HotelId" type="hidden" name="hotelId" />
+                            <input asp-for="@hotelViewModel.Hotel.HotelId" type="hidden" name="hotelId"/>
 
-                            <button type="submit" class="btn btn-primary mt-3">Book Now</button>
+                            <button type="submit" class="btn btn-primary mt-3"> @Localizer["lbbtBookNow"] </button>
                         </form>
                     </div>
                 </div>

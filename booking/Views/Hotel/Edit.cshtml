@@ -9,8 +9,9 @@
     <h1>@Localizer["lbEditHotel"]</h1>
     <div class="row">
         <div class="col-md-12">
-            <form asp-action="Edit" method="post" enctype="multipart/form-data">
-                <input type="hidden" asp-for="hotel.HotelId" />
+            <form asp-action="EditHotel" asp-controller="Hotel" method="post" enctype="multipart/form-data">
+
+                <input type="text" hidden class="form-control" asp-for="hotel.HotelId" />
                 <div class="form-group">
                     <label asp-for="hotel.HotelNameFL">@Localizer["lbHotelNameFL"] </label>
                     <input asp-for="hotel.HotelNameFL" class="form-control" />
@@ -43,9 +44,16 @@
                     <label asp-for="file"> @Localizer["lbUploadNewImage"]</label>
                     <input asp-for="file" type="file" class="form-control-file" />
                 </div>
-                <button type="submit" class="btn btn-primary"> @Localizer["lbSaveChanges"]</button>
-                <a href="@Url.Action("Index", "Hotel")" class="btn btn-secondary">Cancel</a>
+    
+                <div class="modal-footer-rtl" style="padding:0 15px 15px 0">
+                    <input type="submit" class="btn btn-success" value="@Localizer["lbSaveChanges"]" />
+                    <a href="@Url.Action("Index", "Hotel")" class="btn btn-secondary">Cancel</a>
+                </div>
             </form>
         </div>
     </div>
 </div>
+
+
+
+

@@ -1,11 +1,4 @@
-﻿$(document).ready(function () {
-    $('#tableRole').DataTable({
-        "autoWidth": false,
-        "responsive": false
-    });
-});
-
-
+﻿
 Edit = (CustomerId, CustomerName, Gender, Address, NationalId, MobileNumber) => {
     document.getElementById("CustomerId").value = CustomerId;
     document.getElementById("CustomerName").value = CustomerName;

@@ -126,6 +126,18 @@
   <data name="lbaddingNotCompleted" xml:space="preserve">
     <value>لم يتم إضافه العميل بنجاح</value>
   </data>
+  <data name="lbDeleted" xml:space="preserve">
+    <value>تم الحذف</value>
+  </data>
+  <data name="lbDeletedSuccessfully" xml:space="preserve">
+    <value>تم الحذف بنجاح</value>
+  </data>
+  <data name="lbNotDeleted" xml:space="preserve">
+    <value>لا يمكن الحذف</value>
+  </data>
+  <data name="lbNotDeletedSuccessfully" xml:space="preserve">
+    <value>لا يمكن الحذف يوجد خطب ما </value>
+  </data>
   <data name="lbsddedSuccessfully" xml:space="preserve">
     <value>تم إضافه العميل بنجاح</value>
   </data>
