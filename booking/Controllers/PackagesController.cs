@@ -20,7 +20,7 @@ namespace booking.Controllers
         public async Task<IActionResult> Index()
         {
             List<PackageViewModel> packageViewModelList = new List<PackageViewModel>();
-            List<Package> packages = await _context.Packages.ToListAsync();
+            List<Package> packages = await _context.Packages.Where(p=>p.IsDeleted == false).ToListAsync();
 
             foreach (var package in packages)
             {
@@ -147,7 +147,8 @@ namespace booking.Controllers
             {
                 return NotFound();
             }
-            _context.Packages.Remove(package);
+            package.IsDeleted = true;
+            _context.Packages.Update(package);
             await _context.SaveChangesAsync();
 
 

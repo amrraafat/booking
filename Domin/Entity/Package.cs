@@ -17,5 +17,6 @@ namespace Domin.Entity
         public decimal AdultPrice { get; set; }
         public decimal KidPrice { get; set; }
         public int HotelId { get; set; }
+        public bool IsDeleted  { get; set; }   = false;
     }
 }

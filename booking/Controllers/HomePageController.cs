@@ -32,7 +32,7 @@ namespace booking.Controllers
             {
                 var hotel = item;
                 List<Package> packages1 = (from p in _context.Packages
-                                           where p.HotelId == item.HotelId
+                                           where p.HotelId == item.HotelId && p.IsDeleted == false
                                            select p).ToList();
                 // Create a HotelViewModel object
                 var hotelViewModel = new HomePageViewModel
