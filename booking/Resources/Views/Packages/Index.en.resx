@@ -174,4 +174,10 @@
   <data name="lbHotelName" xml:space="preserve">
     <value>Hotel name</value>
   </data>
+  <data name="lbHomePage" xml:space="preserve">
+    <value>Home Page</value>
+  </data>
+  <data name="lbMangePackage" xml:space="preserve">
+    <value>Mange Packages</value>
+  </data>
 </root>

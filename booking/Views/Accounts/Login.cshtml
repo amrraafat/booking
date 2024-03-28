@@ -1,6 +1,4 @@
-﻿
-
-@model LoginViewModel
+﻿@model LoginViewModel
 @{
     Layout = null;
 }
@@ -33,7 +31,7 @@
         <div class="forms">
             <div class="form-content">
                 <div class="login-form">
-                    <div class="title">Login</div>
+                    <div class="title">@Localizer["lblogin"]</div>
                     <form asp-action="Login" asp-controller="Accounts" method="post">
                         @if (ViewBag.ErrorLogin == false)
                         {
@@ -46,18 +44,18 @@
                         <div class="input-boxes">
                             <div class="input-box">
                                 <i class="fas fa-envelope"></i>
-                                 <input type="email" class="form-control" asp-for="Eamil" placeholder="Email">
+                                <input type="email" class="form-control" asp-for="Eamil" placeholder="@Localizer["lbEmailUser"]">
                             </div>
                             <span class="text-danger" asp-validation-for="Eamil"></span>
                             <div class="input-box">
                                 <i class="fas fa-lock"></i>
-                                <input type="password" class="form-control" asp-for="Password" placeholder="Password">
+                                <input type="password" class="form-control" asp-for="Password" placeholder="@Localizer["lbPassword"]">
                             </div>
                             <span class="text-danger" asp-validation-for="Password"></span>
                             <div class="button input-box">
                                 <input type="submit" value="Sumbit">
                             </div>
-                            
+
                         </div>
                     </form>
                 </div>

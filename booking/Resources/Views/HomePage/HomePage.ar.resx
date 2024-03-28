@@ -195,6 +195,9 @@
   <data name="lbpackages" xml:space="preserve">
     <value>العروض</value>
   </data>
+  <data name="lbRate" xml:space="preserve">
+    <value> التقييم</value>
+  </data>
   <data name="lbYesdelete" xml:space="preserve">
     <value>نعم إمسح </value>
   </data>

@@ -189,6 +189,9 @@
   <data name="lbpackages" xml:space="preserve">
     <value>packages</value>
   </data>
+  <data name="lbRate" xml:space="preserve">
+    <value>Rate</value>
+  </data>
   <data name="lbYesdelete" xml:space="preserve">
     <value>Yes, delete it!</value>
   </data>

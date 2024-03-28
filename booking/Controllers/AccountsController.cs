@@ -20,7 +20,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace booking.Controllers
 {
-    
+
     [Authorize]
     public class Accounts : Controller
     {
@@ -30,7 +30,7 @@ namespace booking.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly BookingDbContext _context;
 
-        public Accounts(RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> UserManager , IStringLocalizer<Accounts> localizer, SignInManager<ApplicationUser> signInManager, BookingDbContext context)
+        public Accounts(RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> UserManager, IStringLocalizer<Accounts> localizer, SignInManager<ApplicationUser> signInManager, BookingDbContext context)
         {
             _roleManager = roleManager;
             _userManager = UserManager;
@@ -42,12 +42,12 @@ namespace booking.Controllers
         [Authorize(Roles = "superadmin")]
         public IActionResult Roles()
         {
-           return View(new RoleViweModel
+            return View(new RoleViweModel
             {
                 NewRole = new NewRole(),
-                Roles = _roleManager.Roles.OrderBy(x=>x.Name).ToList()
+                Roles = _roleManager.Roles.OrderBy(x => x.Name).ToList()
             });
-            
+
 
         }
         //-------------------------------------------------------------------------- calling Users to Viwe -----------------------------------------------------\\
@@ -84,12 +84,12 @@ namespace booking.Controllers
 
         //--------------------------------------------------------------------------create New Users -----------------------------------------------------\\
         [HttpPost]
-        public async Task <IActionResult> Register( RegisterViweModel model)
+        public async Task<IActionResult> Register(RegisterViweModel model)
         {
             if (ModelState.IsValid)
             {
                 var file = HttpContext.Request.Form.Files;
-                if (file.Count()>0)
+                if (file.Count() > 0)
                 {
                     string ImageName = Guid.NewGuid().ToString() + Path.GetExtension(file[0].FileName);
                     var fileStream = new FileStream(Path.Combine(@"wwwroot/", Helper.PathSaveImageuser, ImageName), FileMode.Create);
@@ -107,14 +107,14 @@ namespace booking.Controllers
                     Email = model.NewRegister.Email,
                     ImageUser = model.NewRegister.ImgeUser,
                     ActiveUser = model.NewRegister.AciveUser,
-                   
+
 
 
                 };
                 if (User.Id == null)
                 {
                     User.Id = Guid.NewGuid().ToString();
-                    var result = await _userManager.CreateAsync(User,model.NewRegister.Password);
+                    var result = await _userManager.CreateAsync(User, model.NewRegister.Password);
                     if (result.Succeeded)
                     {
                         var Role = await _userManager.AddToRoleAsync(User, model.NewRegister.RoleName);
@@ -140,51 +140,51 @@ namespace booking.Controllers
                         HttpContext.Session.SetString("msg", _localizer["lbNotSaved"].Value);
                     }
                 }
-               else
+                else
                 {
                     var userUpdate = await _userManager.FindByIdAsync(User.Id);
 
-                        userUpdate.Name = model.NewRegister.Name;
-                        userUpdate.UserName = model.NewRegister.Email;
-                        userUpdate.Email = model.NewRegister.Email;
-                        userUpdate.ImageUser = model.NewRegister.ImgeUser;
-                        userUpdate.ActiveUser = model.NewRegister.AciveUser;
+                    userUpdate.Name = model.NewRegister.Name;
+                    userUpdate.UserName = model.NewRegister.Email;
+                    userUpdate.Email = model.NewRegister.Email;
+                    userUpdate.ImageUser = model.NewRegister.ImgeUser;
+                    userUpdate.ActiveUser = model.NewRegister.AciveUser;
 
-                        var updateResult = await _userManager.UpdateAsync(userUpdate);
+                    var updateResult = await _userManager.UpdateAsync(userUpdate);
 
-                        if (updateResult.Succeeded)
+                    if (updateResult.Succeeded)
+                    {
+                        // Update the role if needed
+                        var roles = await _userManager.GetRolesAsync(userUpdate);
+                        if (roles.Any())
                         {
-                            // Update the role if needed
-                            var roles = await _userManager.GetRolesAsync(userUpdate);
-                            if (roles.Any())
+                            var removeRoleResult = await _userManager.RemoveFromRolesAsync(userUpdate, roles);
+                            if (removeRoleResult.Succeeded)
                             {
-                                var removeRoleResult = await _userManager.RemoveFromRolesAsync(userUpdate, roles);
-                                if (removeRoleResult.Succeeded)
-                                {
-                                    var addRoleResult = await _userManager.AddToRoleAsync(userUpdate, model.NewRegister.RoleName);
+                                var addRoleResult = await _userManager.AddToRoleAsync(userUpdate, model.NewRegister.RoleName);
 
-                                    if (addRoleResult.Succeeded)
-                                    {
-                                        HttpContext.Session.SetString("msgType", "success");
-                                        HttpContext.Session.SetString("titel", "تم التحديث");
-                                        HttpContext.Session.SetString("msg", "تم تحديث مستخدم بنجاح");
-                                    }
-                                    else
-                                    {
-                                        HttpContext.Session.SetString("msgType", "erorr");
-                                        HttpContext.Session.SetString("titel", "خطأ في تحديث الدور");
-                                        HttpContext.Session.SetString("msg", "لم يتم تحديث مستخدم بنجاح");
-                                    }
+                                if (addRoleResult.Succeeded)
+                                {
+                                    HttpContext.Session.SetString("msgType", "success");
+                                    HttpContext.Session.SetString("titel", "تم التحديث");
+                                    HttpContext.Session.SetString("msg", "تم تحديث مستخدم بنجاح");
+                                }
+                                else
+                                {
+                                    HttpContext.Session.SetString("msgType", "erorr");
+                                    HttpContext.Session.SetString("titel", "خطأ في تحديث الدور");
+                                    HttpContext.Session.SetString("msg", "لم يتم تحديث مستخدم بنجاح");
                                 }
                             }
                         }
-                        else
-                        {
-                            HttpContext.Session.SetString("msgType", "erorr");
-                            HttpContext.Session.SetString("titel", "خطأ في تحديث المستخدم");
-                            HttpContext.Session.SetString("msg", "لم يتم تحديث مستخدم بنجاح");
-                        }
-                   
+                    }
+                    else
+                    {
+                        HttpContext.Session.SetString("msgType", "erorr");
+                        HttpContext.Session.SetString("titel", "خطأ في تحديث المستخدم");
+                        HttpContext.Session.SetString("msg", "لم يتم تحديث مستخدم بنجاح");
+                    }
+
                 }
 
             }
@@ -207,7 +207,7 @@ namespace booking.Controllers
         public async Task<IActionResult> DeleteUser(string Id)
         {
             var User = _userManager.Users.FirstOrDefault(x => x.Id == Id);
-            if (User.ImageUser== null && User.ImageUser != Guid.Empty.ToString() )
+            if (User.ImageUser == null && User.ImageUser != Guid.Empty.ToString())
             {
                 var PathImage = Path.Combine(@"wwwroot/", Helper.PathImageUser, User.ImageUser);
                 if (System.IO.File.Exists(PathImage))
@@ -222,9 +222,9 @@ namespace booking.Controllers
             return RedirectToAction("Register", "Accounts");
         }
 
-        
+
         [HttpPost]
-        
+
         public async Task<IActionResult> Roles(RoleViweModel model)
         {
             if (ModelState.IsValid)
@@ -251,7 +251,7 @@ namespace booking.Controllers
                     {
                         List<IdentityError> errorList = result.Errors.ToList();
                         var errors = string.Join(", ", errorList.Select(e => e.Description));
-                        if (result.Errors.Any(x=>x.Code == "DuplicateRoleName"))
+                        if (result.Errors.Any(x => x.Code == "DuplicateRoleName"))
                         {
                             HttpContext.Session.SetString("msgType", "erorr");
                             HttpContext.Session.SetString("titel", "اسم المستخدم مستخدم من قبل");
@@ -262,7 +262,7 @@ namespace booking.Controllers
                             HttpContext.Session.SetString("msgType", "erorr");
                             HttpContext.Session.SetString("titel", errors);
                             HttpContext.Session.SetString("msg", "لم يتم مجموعة المستخدم ");
-                        }                         
+                        }
                         //return Content(errors);
                         return RedirectToAction("Roles");
 
@@ -273,7 +273,7 @@ namespace booking.Controllers
                     var RoleUpdate = await _roleManager.FindByIdAsync(role.Id);
                     RoleUpdate.Id = model.NewRole.RoleId;
                     RoleUpdate.Name = model.NewRole.RoleName;
-                    var Result =await _roleManager.UpdateAsync(RoleUpdate);
+                    var Result = await _roleManager.UpdateAsync(RoleUpdate);
                     if (Result.Succeeded)
                     {
                         HttpContext.Session.SetString("msgType", "success");
@@ -291,11 +291,11 @@ namespace booking.Controllers
                     }
                 }
             }
-            
-           
+
+
             return View();
         }
-      
+
         public async Task<IActionResult> DeleteRole(string Id)
         {
             var role = _roleManager.Roles.FirstOrDefault(x => x.Id == Id);

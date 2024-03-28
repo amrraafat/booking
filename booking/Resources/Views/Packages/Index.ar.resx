@@ -174,4 +174,10 @@
   <data name="lbHotelName" xml:space="preserve">
     <value>الفندق</value>
   </data>
+  <data name="lbHomePage" xml:space="preserve">
+    <value>الصفحه الرئيسيه</value>
+  </data>
+  <data name="lbMangePackage" xml:space="preserve">
+    <value>إداره العروض</value>
+  </data>
 </root>

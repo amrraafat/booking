@@ -7,10 +7,13 @@
     console.log("Hotel ID:", hotelId);
     });
 
-function setPackageValue(element, packageId) {
+function setPackageValue(element, packageId, PackageName) {
     var card = element.closest('.card');
+    var packageNameInput = card.querySelector('.package-name');
     var packageInput = card.querySelector('.package-id');
+
     packageInput.value = packageId;
+    packageNameInput.value = PackageName;
 
 
 }
