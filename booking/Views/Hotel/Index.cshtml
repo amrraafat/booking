@@ -33,15 +33,13 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <a href="@Url.Action("Create", "Hotel")" class="btn btn-success">@Localizer["lbbtCreateNewHotel"]</a>
+                                <a href="@Url.Action("Create", "Hotel")" class="btn btn-outline-primary rounded-pill">@Localizer["lbbtCreateNewHotel"]</a>
                             </div>
                         </div>
-                        <div class="card-tools ">
-                        </div>
+
                     </div>
 
                     <!----------------------------------- To ReViwe Users  ---------------------------------------->
-                    <!-- /.card-header -->
                     <div class="card-body">
                         <table id="tableRole" class="table table-bordered table-hover">
                             <thead>
@@ -83,14 +81,14 @@
                                         <td>
                                             <div class="row">
                                                 <div class="col-3">
-                                            <a href="@Url.Action("Edit", "Hotel", new { id = hotelViewModel.hotel.HotelId })" class="btn btn-warning btn-sm">@Localizer["lbbtnEdit"]</a>
-                                            </div>
+                                                    <a href="@Url.Action("Edit", "Hotel", new { id = hotelViewModel.hotel.HotelId })" class="btn btn-info btn-sm">@Localizer["lbbtnEdit"]</a>
+                                                </div>
                                                 <div class="col-3">
-                                            <form id="deleteForm-@hotelViewModel.hotel.HotelId" asp-action="Delete" asp-controller="Hotel" method="post">
-                                                <input type="hidden" name="id" value="@hotelViewModel.hotel.HotelId" />
-                                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete('@hotelViewModel.hotel.HotelId')">@Localizer["lbbtnDelete"]</button>
-                                            </form>
-                                            </div>
+                                                    <form id="deleteForm-@hotelViewModel.hotel.HotelId" asp-action="Delete" asp-controller="Hotel" method="post">
+                                                        <input type="hidden" name="id" value="@hotelViewModel.hotel.HotelId" />
+                                                        <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete('@hotelViewModel.hotel.HotelId')">@Localizer["lbbtnDelete"]</button>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </td>
                                     </tr>
@@ -99,38 +97,33 @@
                             </tbody>
                         </table>
                     </div>
-                    <!-- /.card-body -->
                 </div>
-                <!-- /.card -->
-                <!-- /.card -->
             </div>
-            <!-- /.col -->
         </div>
-        <!-- /.row -->
     </section>
     <!-- /.content -->
 </div>
 @section Script
 {
-<script>
-    function confirmDelete(customerId) {
-        Swal.fire({
-            title: '@Localizer["lbAreyousure"]',
-            text: "@Localizer["lbCanback"]",
-            icon: 'warning',
-            showCancelButton: true,
-            cancelButtonText: '@Localizer["lbcancelButtonText"]',
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#3085d6',
-            confirmButtonText: '@Localizer["lbYesdelete"]'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // If confirmed, submit the form
-                document.getElementById('deleteForm-' + customerId).submit();
-            }
-        });
-    }
+    <script>
+        function confirmDelete(customerId) {
+            Swal.fire({
+                title: '@Localizer["lbAreyousure"]',
+                text: "@Localizer["lbCanback"]",
+                icon: 'warning',
+                showCancelButton: true,
+                cancelButtonText: '@Localizer["lbcancelButtonText"]',
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: '@Localizer["lbYesdelete"]'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // If confirmed, submit the form
+                    document.getElementById('deleteForm-' + customerId).submit();
+                }
+            });
+        }
 
-</script>
+    </script>
     <script src="~/js/HotelIndex.js"></script>
 }

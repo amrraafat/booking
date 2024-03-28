@@ -17,7 +17,7 @@
     });
 }
 function packageChange() {
-    //debugger
+    debugger
     var AdultsCount = $("#AdultNo").val();
     var KidsCount = $("#KidNo").val();
 
@@ -129,4 +129,8 @@ function printReservation(id) {
             alert('Error occurred while printing reservation.');
         }
     });
+}
+
+function loadCreate() {
+    packageChange();
 }

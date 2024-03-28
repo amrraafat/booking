@@ -1,102 +1,66 @@
 ﻿@model LoginViewModel
-
-@{ 
+@{
     Layout = null;
 }
+
+
+
+
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 3 | Log in</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Font Awesome -->
+    <meta charset="UTF-8">
+    <title> Login and Registration Form in HTML & CSS | CodingLab </title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="~/Admin/plugins/fontawesome-free/css/all.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="~/Admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="~/Admin/dist/css/adminlte.min.css">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <style>
-        body.login-page {
-            background-image: url('/Images/Logo/WhatsApp Image 2024-03-15 at 2.19.04 AM.jpeg');
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-    </style>
+    <link href="~/css/login.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body class="hold-transition login-page">
-    <div class="login-box">
-        <div class="login-logo">
-            <b>Sign in </b>
-        </div>
-        <!-- /.login-logo -->
-        <div class="card">
-            <div class="card-body login-card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
-                
-                <form asp-action="Login" asp-controller="Accounts" method="post">
-                    @if(ViewBag.ErrorLogin == false)
-                        {<span class="alert alert-danger w-100">
-                            @Localizer["lbMsgErrorLogin"]
-                        </span>
-
-                        <br /> <br />
-                    }
-
-                    <div class="input-group mb-3">
-                        <input type="email" class="form-control" asp-for="Eamil" placeholder="Email">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <span class="text-danger" asp-validation-for="Eamil"></span>
-
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control" asp-for="Password" placeholder="Password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <span class="text-danger" asp-validation-for="Password"></span>
-
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="icheck-primary">
-                                <input type="checkbox" asp-for="RememberMy" id="remember">
-                                <label for="remember">
-                                    Remember Me
-                                </label>
-                            </div>
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                </form>
-
-                
+<body>
+    <div class="container">
+        <input type="checkbox" id="flip">
+        <div class="cover">
+            <div class="front">
+                <img src="/Images/Logo/WhatsApp Image 2024-03-15 at 2.19.04 AM.jpeg" alt="">
+                <div class="text">
+                    <span class="text-1">الهضبه للسياحه </span>
+                    <span class="text-2"> إحجز رحتلك</span>
+                </div>
             </div>
-            <!-- /.login-card-body -->
+        </div>
+        <div class="forms">
+            <div class="form-content">
+                <div class="login-form">
+                    <div class="title">@Localizer["lblogin"]</div>
+                    <form asp-action="Login" asp-controller="Accounts" method="post">
+                        @if (ViewBag.ErrorLogin == false)
+                        {
+                            <span class="alert alert-danger w-100">
+                                @Localizer["lbMsgErrorLogin"]
+                            </span>
+
+                            <br /> <br />
+                        }
+                        <div class="input-boxes">
+                            <div class="input-box">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" class="form-control" asp-for="Eamil" placeholder="@Localizer["lbEmailUser"]">
+                            </div>
+                            <span class="text-danger" asp-validation-for="Eamil"></span>
+                            <div class="input-box">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" class="form-control" asp-for="Password" placeholder="@Localizer["lbPassword"]">
+                            </div>
+                            <span class="text-danger" asp-validation-for="Password"></span>
+                            <div class="button input-box">
+                                <input type="submit" value="Sumbit">
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-    <!-- /.login-box -->
-    <!-- jQuery -->
-    <script src="~/Admin/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="~/Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>

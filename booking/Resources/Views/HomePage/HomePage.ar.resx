@@ -123,6 +123,9 @@
   <data name="lbAreyousure" xml:space="preserve">
     <value>هل انت متاكد ؟</value>
   </data>
+  <data name="lbbtBookNow" xml:space="preserve">
+    <value>إحجز الان</value>
+  </data>
   <data name="lbbtnDelete" xml:space="preserve">
     <value>مسح</value>
   </data>
@@ -146,6 +149,12 @@
   </data>
   <data name="lbCustomerName" xml:space="preserve">
     <value>إسم العميل</value>
+  </data>
+  <data name="lbDeleted" xml:space="preserve">
+    <value>تم الحذف</value>
+  </data>
+  <data name="lbDeletedSuccessfully" xml:space="preserve">
+    <value>تم الحذف بنجاح</value>
   </data>
   <data name="lbEditCustomers" xml:space="preserve">
     <value>تعديل بينات المستخدم </value>
@@ -182,6 +191,12 @@
   </data>
   <data name="lbNotSavedMsgUserRole" xml:space="preserve">
     <value>لم يتم حفظ مجموعة المستخدم</value>
+  </data>
+  <data name="lbpackages" xml:space="preserve">
+    <value>العروض</value>
+  </data>
+  <data name="lbRate" xml:space="preserve">
+    <value> التقييم</value>
   </data>
   <data name="lbYesdelete" xml:space="preserve">
     <value>نعم إمسح </value>

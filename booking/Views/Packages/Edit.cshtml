@@ -5,41 +5,41 @@
     var hotelList = ViewBag.HotelList as SelectList;
 }
 
-<h2>Edit Package</h2>
+<h2>@Localizer["lbEdit"]</h2>
 
 <form asp-action="Edit">
     <input type="hidden" asp-for="Package.PackageId" />
     <div class="form-group">
-        <label asp-for="Package.PackageName">Package Name</label>
+        <label asp-for="Package.PackageName">@Localizer["lbPackageName"]</label>
         <input asp-for="Package.PackageName" class="form-control" />
         <span asp-validation-for="Package.PackageName" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="Package.StartDate">Start Date</label>
+        <label asp-for="Package.StartDate">@Localizer["lbStartDate"]</label>
         <input asp-for="Package.StartDate" class="form-control" type="date" />
         <span asp-validation-for="Package.StartDate" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="Package.EndDate">End Date</label>
+        <label asp-for="Package.EndDate">@Localizer["lbEndDate"]</label>
         <input asp-for="Package.EndDate" class="form-control" type="date" />
         <span asp-validation-for="Package.EndDate" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="Package.AdultPrice">Adult Price</label>
+        <label asp-for="Package.AdultPrice">@Localizer["lbAdultPrice"]</label>
         <input asp-for="Package.AdultPrice" class="form-control" type="number" />
         <span asp-validation-for="Package.AdultPrice" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="Package.KidPrice">Kid Price</label>
+        <label asp-for="Package.KidPrice">@Localizer["lbKidPrice"]</label>
         <input asp-for="Package.KidPrice" class="form-control" type="number"  />
         <span asp-validation-for="Package.KidPrice" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Package.HotelId">Select Hotel</label>
+        <label asp-for="Package.HotelId">@Localizer["lbHotelName"]</label>
         <select asp-for="Package.HotelId" class="form-control">
             @foreach (var hotel in hotelList)
             {
@@ -50,6 +50,6 @@
     </div>
 
     <div class="form-group">
-        <input type="submit" value="Edit" class="btn btn-primary" />
+        <input type="submit" value="@Localizer["lbEdit"]" class="btn btn-primary" />
     </div>
 </form>

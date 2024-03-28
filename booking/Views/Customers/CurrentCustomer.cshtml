@@ -1,8 +1,5 @@
 ﻿@model CustomerViewModel
 
-
-
-
 <div class="wrapper">
     <!--Content-Header-->
     <div class="content-header">
@@ -89,10 +86,10 @@
                                         </td>
                                         <td>
                                             <div class="row">
-                                                <div class="col-3">
-                                                    <input type="button" class="btn btn-info btn-sm" onclick="Edit('@Customer.CustomerId','@Customer.CustomerName','@Customer.Gender','@Customer.Address','@Customer.MobileNumber','@Customer.NationalId')" value="@Localizer["lbbtnEdit"]" data-bs-toggle="modal" data-bs-target="#exampleModal" />
+                                                <div class="col-5">
+                                                    <input type="button" class="btn btn-info btn-sm" onclick="Edit('@Customer.CustomerId','@Customer.CustomerName','@Customer.Gender','@Customer.Address','@Customer.NationalId','@Customer.MobileNumber')" value="@Localizer["lbbtnEdit"]" data-bs-toggle="modal" data-bs-target="#exampleModal" />
                                                 </div>
-                                                <div class="col-3">
+                                                <div class="col-5">
                                                     <form id="deleteForm-@Customer.CustomerId" asp-action="DeleteCustomer" asp-controller="Customers" method="post">
                                                         <input type="hidden" name="id" value="@Customer.CustomerId" />
                                                         <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete('@Customer.CustomerId')">@Localizer["lbbtnDelete"]</button>
@@ -163,6 +160,8 @@
                         <input asp-for="customer.NationalId" class="form-control" asp-for="customer.NationalId" id="NationalId" />
                         <span asp-validation-for="customer.NationalId" class="text-danger"></span>
                     </div>
+
+
                     <div class="form-group">
                         <label asp-for="customer.MobileNumber" class="control-lable">@Localizer["lbMobileNumber"]</label>
                         <input asp-for="customer.MobileNumber" class="form-control" asp-for="customer.MobileNumber" id="MobileNumber" />
@@ -206,31 +205,31 @@
                 <form asp-action="CreateCustomer" asp-controller="Customers" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label asp-for="customer.CustomerName" class="control-lable">@Localizer["lbCustomerName"]</label>
-                        <input type="text" class="form-control" asp-for="customer.CustomerName" id="CustomerName" />
+                        <input type="text" class="form-control" asp-for="customer.CustomerName" />
                         <span asp-validation-for="customer.CustomerName" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="customer.Address" class="control-lable">@Localizer["lbAddress"]</label>
-                        <input asp-for="customer.Address" class="form-control" asp-for="customer.Address" id="Address" />
+                        <input asp-for="customer.Address" class="form-control" asp-for="customer.Address"  />
                         <span asp-validation-for="customer.Address" class="text-danger"></span>
                     </div>
 
 
                     <div class="form-group">
                         <label asp-for="customer.NationalId" class="control-lable">@Localizer["lbNationalId"]</label>
-                        <input asp-for="customer.NationalId" class="form-control" asp-for="customer.NationalId" id="NationalId" />
+                        <input asp-for="customer.NationalId" class="form-control" asp-for="customer.NationalId" />
                         <span asp-validation-for="customer.NationalId" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
                         <label asp-for="customer.MobileNumber" class="control-lable">@Localizer["lbMobileNumber"]</label>
-                        <input asp-for="customer.MobileNumber" class="form-control" asp-for="customer.MobileNumber" id="MobileNumber" />
+                        <input asp-for="customer.MobileNumber" class="form-control" asp-for="customer.MobileNumber" />
                         <span asp-validation-for="customer.MobileNumber" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
                         <label asp-for="customer.Gender" class="control-lable">@Localizer["lbGender"]</label>
-                        <select asp-for="customer.Gender" class="form-control" id="gender">
+                        <select asp-for="customer.Gender" class="form-control" >
                             <option value="1">@Localizer["lbMale"]</option>
                             <option value="2">@Localizer["lbFemale"]</option>
                         </select>
@@ -299,6 +298,8 @@
         });
 
     </script>
+
+
     <script>
         function confirmDelete(customerId) {
             Swal.fire({

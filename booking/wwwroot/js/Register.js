@@ -1,10 +1,4 @@
-﻿$(document).ready(function () {
-    $('#tableRole').DataTable({
-        "autoWidth": false,
-        "responsive": false
-    });
-});
-
+﻿
 
 Edit = (id,name,image,Email,ActiveUser,Role) => {
     document.getElementById("userId").value = id;
