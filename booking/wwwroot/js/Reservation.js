@@ -17,7 +17,7 @@
     });
 }
 function packageChange() {
-    debugger
+
     var AdultsCount = $("#AdultNo").val();
     var KidsCount = $("#KidNo").val();
 

@@ -18,6 +18,21 @@
 </style>
 <div class="wrapper">
     <!--Content-Header-->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">@Localizer["lbReservations"]</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/Home/Index">@Localizer["lbHomePage"]</a></li>
+                        <li class="breadcrumb-item active">@Localizer["lbMangeReservations"]</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
     <section class="content">
         <div class="row">
             <div class="col-12">
@@ -40,7 +55,6 @@
                                         <th>@Localizer["lbCustomerName"]</th>
                                         <th>@Localizer["lbHotel"]</th>
                                         <th>@Localizer["lbTotalPrice"]</th>
-                                        <th>@Localizer["lbDiscount"]</th>
                                         <th>@Localizer["lbPriceAfterDiscount"]</th>
                                         <th>@Localizer["lbPaid"]</th>
                                         <th>@Localizer["lbRemain"]</th>
@@ -50,8 +64,9 @@
                                 <tbody>
                                     @foreach (var reservation in Model)
                                     {
-                                        <tr ondblclick="displayReservationDetails('@reservation.customer.CustomerName', '@reservation.hotel.HotelNameFL', '@reservation.package.PackageName', '@reservation.reservation.ReservationDateTime', '@reservation.reservation.AdultNo', '@reservation.reservation.KidNo', '@reservation.reservation.TotalPrice', '@reservation.reservation.Discount', '@(reservation.reservation.TotalPrice - reservation.reservation.Discount)', '@reservation.reservation.Paid', '@reservation.reservation.Remain')">
-                                            <td>@reservation.customer.CustomerName</td>
+                                        <tr >
+                                            
+                                        <td>@reservation.customer.CustomerName</td>
                                             <td>
                                                 @if (currentCulture == "ar")
                                                 {
@@ -63,25 +78,29 @@
                                                 }
                                             </td>
                                             <td>@Math.Floor(reservation.reservation.TotalPrice)</td>
-                                            <td>@Math.Floor(reservation.reservation.Discount)</td>
                                             <td>@Math.Floor((reservation.reservation.TotalPrice - reservation.reservation.Discount))</td>
                                             <td>@Math.Floor(reservation.reservation.Paid)</td>
                                             <td>@Math.Floor(reservation.reservation.Remain)</td>
                                             <td>
                                                 <div class="row">
-                                                    <div class="col-3">
-                                                        <a href="@Url.Action("Edit", "Reservations", new { id = reservation.reservation.ReservationId })" class="btn btn-warning btn-sm btn-block">@Localizer["lbbtnEdit"]</a>
-                                                    </div>
-                                                    <div class="col-3">
+                                                    <div class="col-6">
+                                                        <a href="@Url.Action("Edit", "Reservations", new { id = reservation.reservation.ReservationId })" class="btn btn-warning btn-sm btn-block mb-2">@Localizer["lbbtnEdit"]</a>
+                                                
                                                         <form id="deleteForm-@reservation.reservation.ReservationId" asp-action="DeleteReservation" asp-controller="Reservations" method="post">
                                                             <input type="hidden" name="id" value="@reservation.reservation.ReservationId" />
-                                                            <!-- Hidden input field to store the reason for deletion -->
                                                             <input type="hidden" id="deleteReasonInput" name="reason" />
                                                             <button type="button" class="btn btn-danger btn-sm btn-block" onclick="confirmDelete('@reservation.reservation.ReservationId')" id="confirmButton">@Localizer["lbbtnDelete"]</button>
+                                                        
                                                         </form>
                                                     </div>
-                                                    <div class="col-3">
-                                                        <button type="button" class="btn btn-primary" onclick="printReservation(@reservation.reservation.ReservationId)">Print Reservation</button>
+                                                    <div class="col-6">
+                                                    <button type="button" class="btn btn-info btn-sm btn-block" onclick="displayReservationDetails('@reservation.customer.CustomerName', '@reservation.hotel.HotelNameFL' , '@reservation.package.PackageName' , '@reservation.reservation.ReservationDateTime' , '@reservation.reservation.AdultNo' , '@reservation.reservation.KidNo' , '@reservation.reservation.TotalPrice' , '@reservation.reservation.Discount' , '@(reservation.reservation.TotalPrice - reservation.reservation.Discount)' , '@reservation.reservation.Paid' , '@reservation.reservation.Remain')">
+                                                        @Localizer["lbInfo"]
+                                                    </button>
+
+
+
+                                                        <button type="button" class="btn btn-primary btn-sm btn-block" onclick="printReservation(@reservation.reservation.ReservationId)">@Localizer["lbbtnPrint"]</button>
                                                     </div>
                                                 </div>
                                             </td>
@@ -109,47 +128,47 @@
                     <table class="table table-striped">
                         <tbody>
                             <tr>
-                                <th scope="row">Customer Name</th>
+                                <th scope="row">@Localizer["lbCustomerName"]</th>
                                 <td><span id="customerName"></span></td>
                             </tr>
                             <tr>
-                                <th scope="row">Hotel Name</th>
+                                <th scope="row">@Localizer["lbHotel"]</th>
                                 <td><span id="hotelName"></span></td>
                             </tr>
                             <tr>
-                                <th scope="row">Package Name</th>
+                                <th scope="row">@Localizer["lbPackageName"]</th>
                                 <td><span id="packageName"></span></td>
                             </tr>
                             <tr>
-                                <th scope="row">Reservation Date</th>
+                                <th scope="row">@Localizer["lbReservationDate"]</th>
                                 <td><span id="reservationDate"></span></td>
                             </tr>
                             <tr>
-                                <th scope="row">Adults Count</th>
+                                <th scope="row">@Localizer["lbAdultsCount"]</th>
                                 <td><span id="adultsCount"></span></td>
                             </tr>
                             <tr>
-                                <th scope="row">Kids Count</th>
+                                <th scope="row">@Localizer["lbKidsCount"]</th>
                                 <td><span id="kidsCount"></span></td>
                             </tr>
                             <tr>
-                                <th scope="row">Total Price</th>
+                                <th scope="row">@Localizer["lbTotalPrice"]</th>
                                 <td><span id="totalPrice"></span></td>
                             </tr>
                             <tr>
-                                <th scope="row">Discount Amount</th>
+                                <th scope="row">@Localizer["lbDiscount"]</th>
                                 <td><span id="discountAmount"></span></td>
                             </tr>
                             <tr>
-                                <th scope="row">Price After Discount</th>
+                                <th scope="row">@Localizer["lbPriceAfterDiscount"]</th>
                                 <td><span id="priceAfterDiscount"></span></td>
                             </tr>
                             <tr>
-                                <th scope="row">Paid</th>
+                                <th scope="row">@Localizer["lbPaid"]</th>
                                 <td><span id="paid"></span></td>
                             </tr>
                             <tr>
-                                <th scope="row">Remain</th>
+                                <th scope="row">@Localizer["lbRemain"]</th>
                                 <td><span id="remain"></span></td>
                             </tr>
                         </tbody>

@@ -11,7 +11,7 @@ namespace Domin.Entity
     {
         [Key]
         public int PackageId { get; set; }
-        public string PackageName { get; set; }
+        public required string  PackageName { get; set; }
         public DateOnly StartDate { get; set; }
         public DateOnly EndDate { get; set;}
         public decimal AdultPrice { get; set; }
