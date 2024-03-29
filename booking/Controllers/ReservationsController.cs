@@ -68,9 +68,9 @@ namespace booking.Controllers
         {
             var requestCultureFeature = HttpContext.Features.Get<IRequestCultureFeature>();
             var requestCulture = requestCultureFeature?.RequestCulture;
-            var hotels = _context.Hotels.ToList();
+            var hotels = _context.Hotels.Where(h => h.IsDeleted == false).ToList();
             var packages = _context.Packages.Where(p => p.IsDeleted == false).ToList();
-            var customers = _context.Customers.ToList();
+            var customers = _context.Customers.Where(c => c.IsDeleted == false).ToList();
 
             if (requestCulture.Culture.Name == "en")
             {
@@ -212,9 +212,9 @@ namespace booking.Controllers
             };
             var requestCultureFeature = HttpContext.Features.Get<IRequestCultureFeature>();
             var requestCulture = requestCultureFeature?.RequestCulture;
-            var hotels = _context.Hotels.ToList();
+            var hotels = _context.Hotels.Where(h => h.IsDeleted == false).ToList();
             var packages = _context.Packages.Where(p => p.IsDeleted == false).ToList();
-            var customers = _context.Customers.ToList();
+            var customers = _context.Customers.Where(c => c.IsDeleted == false).ToList();
 
             if (requestCulture.Culture.Name == "en")
             {

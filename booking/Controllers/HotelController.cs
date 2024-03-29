@@ -22,7 +22,7 @@ namespace booking.Controllers
         {
             List<HotelViewModel> hotelViewModelList = new List<HotelViewModel>();
 
-            List<Hotel> hotelList = await _context.Hotels.ToListAsync();
+            List<Hotel> hotelList = await _context.Hotels.Where(h=>h.IsDeleted == false).ToListAsync();
 
             foreach (var hotel in hotelList)
             {
@@ -169,8 +169,9 @@ namespace booking.Controllers
             }
             Package packages = (Package)_context.Packages.Where(p => p.HotelId == id);
             packages.IsDeleted = true;
+            hotel.IsDeleted = true;
             _context.Packages.UpdateRange(packages);
-            _context.Hotels.Remove(hotel);
+            _context.Hotels.Update(hotel);
             await _context.SaveChangesAsync();
 
 

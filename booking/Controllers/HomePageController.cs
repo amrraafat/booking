@@ -26,7 +26,7 @@ namespace booking.Controllers
         {
             var hotelViewModelList = new List<HomePageViewModel>();
 
-            var hotelPackages = await _context.Hotels.ToListAsync();
+            var hotelPackages = await _context.Hotels.Where(h => h.IsDeleted == false).ToListAsync();
             
             foreach (var item in hotelPackages)
             {

@@ -13,7 +13,7 @@ namespace Infarstuructre.ViewModel
         public Reservation reservation { get; set; }
         public Hotel? hotel { get; set; }
         public Package? package { get; set; }
-        public Customer customer { get; set; }
-        public List<Customer> customersList { get; set; }
+        public Customer? customer { get; set; }
+        public List<Customer>? customersList { get; set; }
     }
 }

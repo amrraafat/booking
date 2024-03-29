@@ -14,7 +14,7 @@
 </style>
 <input type="hidden" id="AdultPrice" />
 <input type="hidden" id="KidPrice" />
-<form asp-action="Create">
+<form asp-action="Create" onsubmit="return validateForm()">
     <div class="form-group">
         <label asp-for="@Model.reservation.HotelId">@Localizer["lbHotel"]</label>
         <select asp-for="@Model.reservation.HotelId" class="form-control" onchange="LoadPachages();" id="hotelSelect">
@@ -267,6 +267,7 @@
             
             packageChange();
         }
+        var wrnSelectHotel = @Localizer["lbMobileNumber"]
     </script>
 
 }

@@ -45,7 +45,7 @@ namespace booking.Controllers
         {
             var requestCultureFeature = HttpContext.Features.Get<IRequestCultureFeature>();
             var requestCulture = requestCultureFeature?.RequestCulture;
-            var hotels = _context.Hotels.ToList(); // Fetch the list of hotels from the database
+            var hotels = _context.Hotels.Where(h => h.IsDeleted == false).ToList(); // Fetch the list of hotels from the database
             if (requestCulture.Culture.Name == "en")
             {
                 ViewBag.HotelList = new SelectList(hotels, "HotelId", "HotelNameSL");
@@ -90,7 +90,7 @@ namespace booking.Controllers
             {
                 var requestCultureFeature = HttpContext.Features.Get<IRequestCultureFeature>();
                 var requestCulture = requestCultureFeature?.RequestCulture;
-                var hotels = _context.Hotels.ToList(); // Fetch the list of hotels from the database
+                var hotels = _context.Hotels.Where(h => h.IsDeleted == false).ToList(); // Fetch the list of hotels from the database
                 if (requestCulture.Culture.Name == "en")
                 {
                     ViewBag.HotelList = new SelectList(hotels, "HotelId", "HotelNameSL");

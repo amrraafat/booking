@@ -90,7 +90,7 @@ namespace booking.Controllers
         {
             var model = new CustomerViewModel
             {
-                customerlist = _dbContext.Customers.OrderBy(x => x.CustomerId).ToList()
+                customerlist = _dbContext.Customers.Where(c=>c.IsDeleted == false).OrderBy(x => x.CustomerId).ToList()
             };
             return View(model);
         }
@@ -108,8 +108,8 @@ namespace booking.Controllers
                 HttpContext.Session.SetString("titel", _localizer["lbNotDeleted"].Value);
                 HttpContext.Session.SetString("msg", _localizer["lbNotDeletedSuccessfully"].Value);
             }
-
-            _dbContext.Customers.Remove(customer);
+            customer.IsDeleted = true;
+            _dbContext.Customers.Update(customer);
             _dbContext.SaveChanges();
 
             HttpContext.Session.SetString("msgType", "success");

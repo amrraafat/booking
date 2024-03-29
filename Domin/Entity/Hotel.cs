@@ -16,5 +16,6 @@ namespace Domin.Entity
         public byte HotelRate { get; set; }
         public byte[]? HotelImage { get; set; }
         public string HotelLocation { get; set; }
+        public bool IsDeleted { get; set; } = false;
     }
 }

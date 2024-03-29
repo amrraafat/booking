@@ -17,5 +17,6 @@ namespace Domin.Entity
         public string NationalId { get; set; }
         public byte[]? NationalIdImage { get; set; }
         public string MobileNumber { get; set; }
+        public bool IsDeleted { get; set; } = false;
     }
 }

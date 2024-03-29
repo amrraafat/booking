@@ -134,3 +134,15 @@ function printReservation(id) {
 function loadCreate() {
     packageChange();
 }
+
+function validateForm() {
+    var hotelSelect = $("#hotelSelect").val();
+    if (hotelSelect <= 0) {
+        Swal.fire({
+            title: 'Please Select Hotel',
+            icon: 'warning',
+        });
+        return false;
+    }
+    
+}
