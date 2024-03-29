@@ -167,8 +167,9 @@ namespace booking.Controllers
             {
                 return NotFound();
             }
-            var packages = _context.Packages.Where(p => p.HotelId == id);
-            _context.Packages.RemoveRange(packages);
+            Package packages = (Package)_context.Packages.Where(p => p.HotelId == id);
+            packages.IsDeleted = true;
+            _context.Packages.UpdateRange(packages);
             _context.Hotels.Remove(hotel);
             await _context.SaveChangesAsync();
 

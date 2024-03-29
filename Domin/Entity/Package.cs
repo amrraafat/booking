@@ -31,5 +31,6 @@ namespace Domin.Entity
 
         [Required(ErrorMessageResourceType = typeof(Resource.ResourceData), ErrorMessageResourceName = "Requiredmessage")]
         public int HotelId { get; set; }
+        public bool IsDeleted  { get; set; }   = false;
     }
 }
