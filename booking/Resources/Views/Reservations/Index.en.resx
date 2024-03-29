@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="lbAdultsCount" xml:space="preserve">
+    <value>Adults Count</value>
+  </data>
   <data name="lbAreyousure" xml:space="preserve">
     <value>Are you sure?</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="lbbtnEdit" xml:space="preserve">
     <value>Edit</value>
+  </data>
+  <data name="lbbtnPrint" xml:space="preserve">
+    <value>Print</value>
   </data>
   <data name="lbCanback" xml:space="preserve">
     <value>You won't be able to revert this!</value>
@@ -147,8 +153,17 @@
   <data name="lbHotel" xml:space="preserve">
     <value>Hotel</value>
   </data>
+  <data name="lbInfo" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="lbKidsCount" xml:space="preserve">
+    <value>Kids Count</value>
+  </data>
   <data name="lbNeedEnterReason" xml:space="preserve">
     <value>You need to enter a reason!</value>
+  </data>
+  <data name="lbPackageName" xml:space="preserve">
+    <value>Package Name</value>
   </data>
   <data name="lbPaid" xml:space="preserve">
     <value>Paid</value>
@@ -158,6 +173,12 @@
   </data>
   <data name="lbRemain" xml:space="preserve">
     <value>Remain</value>
+  </data>
+  <data name="lbReservationDate" xml:space="preserve">
+    <value>Reservation Date</value>
+  </data>
+  <data name="lbReservationDetails" xml:space="preserve">
+    <value>Reservation Details</value>
   </data>
   <data name="lbTotalPrice" xml:space="preserve">
     <value>Total Price</value>
