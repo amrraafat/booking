@@ -178,6 +178,15 @@ namespace Domin.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to يجب ملئ الحقل .
+        /// </summary>
+        public static string Requiredmessage {
+            get {
+                return ResourceManager.GetString("Requiredmessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to يجب ادخال اسم المجموعة.
         /// </summary>
         public static string RoleName {
