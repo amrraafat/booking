@@ -156,6 +156,9 @@
   <data name="RegisterName" xml:space="preserve">
     <value>يجب ادخال اسم المستخدم</value>
   </data>
+  <data name="Requiredmessage" xml:space="preserve">
+    <value>يجب ملئ الحقل </value>
+  </data>
   <data name="RoleName" xml:space="preserve">
     <value>يجب ادخال اسم المجموعة</value>
   </data>

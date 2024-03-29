@@ -150,6 +150,9 @@
   <data name="lbDiscount" xml:space="preserve">
     <value>Discount</value>
   </data>
+  <data name="lbHomePage" xml:space="preserve">
+    <value>Home Page</value>
+  </data>
   <data name="lbHotel" xml:space="preserve">
     <value>Hotel</value>
   </data>
@@ -158,6 +161,9 @@
   </data>
   <data name="lbKidsCount" xml:space="preserve">
     <value>Kids Count</value>
+  </data>
+  <data name="lbMangeReservations" xml:space="preserve">
+    <value>Mange Reservations</value>
   </data>
   <data name="lbNeedEnterReason" xml:space="preserve">
     <value>You need to enter a reason!</value>
@@ -179,6 +185,9 @@
   </data>
   <data name="lbReservationDetails" xml:space="preserve">
     <value>Reservation Details</value>
+  </data>
+  <data name="lbReservations" xml:space="preserve">
+    <value>Reservations</value>
   </data>
   <data name="lbTotalPrice" xml:space="preserve">
     <value>Total Price</value>

@@ -12,10 +12,13 @@
         <span asp-validation-for="hotel.HotelNameSL" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="hotel.HotelRate">@Localizer["lbHotelRate"]</label>
-        <input asp-for="hotel.HotelRate" class="form-control" />
-        <span asp-validation-for="hotel.HotelRate" class="text-danger"></span>
-    </div>
+    <label asp-for="hotel.HotelRate">@Localizer["lbHotelRate"]</label>
+    <select id="hotelRateSelect" asp-for="hotel.HotelRate" class="form-control" asp-items="@(new SelectList(Enumerable.Range(1, 7)))">
+        <option value="">Select Rate</option>
+    </select>
+    <div id="starRatingContainer" class="mt-2"></div>
+    <span asp-validation-for="hotel.HotelRate" class="text-danger"></span>
+</div>
     <div class="form-group">
         <label asp-for="hotel.HotelLocation">@Localizer["lbHotelLocation"]</label>
         <input asp-for="hotel.HotelLocation" class="form-control" />

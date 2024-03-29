@@ -150,6 +150,9 @@
   <data name="lbDiscount" xml:space="preserve">
     <value>قيمه الخصم</value>
   </data>
+  <data name="lbHomePage" xml:space="preserve">
+    <value>الصفحة الرئيسيه</value>
+  </data>
   <data name="lbHotel" xml:space="preserve">
     <value>الفندق</value>
   </data>
@@ -158,6 +161,9 @@
   </data>
   <data name="lbKidsCount" xml:space="preserve">
     <value>عدد الاطفال</value>
+  </data>
+  <data name="lbMangeReservations" xml:space="preserve">
+    <value>إداره الحجوزات</value>
   </data>
   <data name="lbNeedEnterReason" xml:space="preserve">
     <value>يجب ان تدخل سبب الحذف</value>
@@ -179,6 +185,9 @@
   </data>
   <data name="lbReservationDetails" xml:space="preserve">
     <value>تفاصيل الحجز</value>
+  </data>
+  <data name="lbReservations" xml:space="preserve">
+    <value>الحجوزات</value>
   </data>
   <data name="lbTotalPrice" xml:space="preserve">
     <value>الاجمالى</value>
