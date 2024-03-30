@@ -29,7 +29,7 @@
                 }
             }
         </select>
-        <span asp-validation-for="@Model.reservation.HotelId" class="text-danger"></span>
+        <span  id="VhotelSelect" class="text-danger"></span>
     </div>
 
     <div class="form-group">
@@ -47,7 +47,7 @@
                 
             }
         </select>
-        <span asp-validation-for="@Model.reservation.PackageId" class="text-danger"></span>
+        <span  id="VpackageSelect" class="text-danger"></span>
     </div>
     <div class="row">
         <div class="col-md-4">
@@ -83,6 +83,7 @@
     <div class="form-group">
         <label asp-for="@Model.reservation.AdultNo">@Localizer["lbAdultsCount"]</label>
         <input type="number" id="AdultNo" asp-for="@Model.reservation.AdultNo " class="form-control" value="1" onchange="changeCounts()" />
+        <span class="text-danger" id="VAdultNo"></span>
     </div>
     <div class="form-group">
         <label asp-for="@Model.reservation.KidNo">@Localizer["lbKidsCount"]</label>
@@ -104,6 +105,7 @@
     <div class="form-group">
         <label asp-for="@Model.reservation.Paid">@Localizer["lbPaid"]</label>
         <input type="number" asp-for="@Model.reservation.Paid" id="Paid" class="form-control" onchange="changePaid();" />
+        <span class="text-danger" id="Vpaid"></span>
     </div>
     <div class="form-group">
         <label asp-for="@Model.reservation.Remain">@Localizer["lbRemain"]</label>

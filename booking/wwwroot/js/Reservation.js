@@ -146,15 +146,82 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 function validateForm() {
+    debugger
     var customerName = document.getElementById("CustomerName").value;
-    
+    var paid = document.getElementById("Paid").value;
+    var hotelSelect = document.getElementById("hotelSelect").value;
+    var packageSelect = document.getElementById("packageSelect").value;
+    var AdultNo = document.getElementById("AdultNo").value;
+
     if (customerName.trim() === "") {
         document.getElementById("VCustomerName").textContent = "يجب تحديد العميل ";
-        return false; 
+
+
+
+    if (paid.trim() === "") {
+        document.getElementById("Vpaid").textContent = "يجب إدخال المبلغ المدفوع ";
+           
     }
+
+
+    if (hotelSelect.trim() === "0") {
+            document.getElementById("VhotelSelect").textContent = "يجب تحديد الفندق ";
+
+    }
+
+
+    if (packageSelect.trim() === "0") {
+            document.getElementById("VpackageSelect").textContent = "يجب تحديد العرض ";
+
+    }
+
+       
+
+    if (AdultNo.trim() === "") {
+            document.getElementById("VAdultNo").textContent = "يجب إدخال عدد الافراد ";
+
+    }
+
+
+        return false;
+    }
+
     if (customerName.trim() !== "") {
         document.getElementById("VCustomerName").textContent = "";
-        return true;
+
+
+    if (paid.trim() !== "") {
+        document.getElementById("Vpaid").textContent = "";
+
     }
-    return true; 
+
+
+    if (paid.trim() !== "0") {
+        document.getElementById("VhotelSelect").textContent = "";
+
+    }
+
+    if (paid.trim() !== "0") {
+        document.getElementById("VpackageSelect").textContent = "";
+
+    }
+
+    if (paid.trim() !== "") {
+        document.getElementById("VAdultNo").textContent = "";
+
+    }
+
+   
+
+        return true;
+
+    }
+    
+   
+
+    
+
+
+    
+     
 }
