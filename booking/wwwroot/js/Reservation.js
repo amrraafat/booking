@@ -131,18 +131,30 @@ function printReservation(id) {
     });
 }
 
-function loadCreate() {
+document.addEventListener("DOMContentLoaded", function () {
+    
     packageChange();
-}
+
+
+});
+
+
+
+
+
+
+
 
 function validateForm() {
-    var hotelSelect = $("#hotelSelect").val();
-    if (hotelSelect <= 0) {
-        Swal.fire({
-            title: 'Please Select Hotel',
-            icon: 'warning',
-        });
-        return false;
-    }
+    var customerName = document.getElementById("CustomerName").value;
     
+    if (customerName.trim() === "") {
+        document.getElementById("VCustomerName").textContent = "يجب تحديد العميل ";
+        return false; 
+    }
+    if (customerName.trim() !== "") {
+        document.getElementById("VCustomerName").textContent = "";
+        return true;
+    }
+    return true; 
 }

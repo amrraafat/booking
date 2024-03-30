@@ -54,7 +54,9 @@
             <div class="form-group">
                 <label asp-for="@Model.customer.CustomerName">@Localizer["lbCustomerName"]</label>
                 <input type="text" asp-for="@Model.customer.CustomerName" class="form-control" disabled="disabled" id="CustomerName" />
+                <span class="text-danger" id="VCustomerName"></span>
             </div>
+          
         </div>
 
         <div class="col-md-4">
