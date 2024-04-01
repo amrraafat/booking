@@ -10,7 +10,8 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="~/Admin/plugins/fontawesome-free/css/all.min.css">
     <!-- Tempusdominus Bbootstrap 4 -->
-    <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css">
+
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- iCheck -->
     <link rel="stylesheet" href="~/Admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- JQVMap -->
@@ -43,7 +44,9 @@
     <!-- Responsive RTL -->
     <link rel="stylesheet" href="~/Admin/dist/css/responsive-rtl.css">
     <link href="~/css/site.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css" />
+
+    <link href="~/admin/dist/css/datatables.datatables.css" rel="stylesheet" />
+
 
 
 </head>
@@ -405,11 +408,14 @@
         $.widget.bridge('uibutton', $.ui.button)
     </script>
     <!-- Bootstrap 4 rtl -->
-    <script src="https://cdn.rtlcss.com/bootstrap/v4.2.1/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script src="~/admin/docs/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <a href="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map">~/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map</a>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Bootstrap 4 -->
-    <script src="~/Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Admin/plugins/bootstrap/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- ChartJS -->
+    
     <script src="~/Admin/plugins/chart.js/Chart.min.js"></script>
     <!-- Sparkline -->
     <script src="~/Admin/plugins/sparklines/sparkline.js"></script>
@@ -457,7 +463,7 @@
     <!-- filter -->
     @*<script src="~/Admin/plugins/isotope/isotope.pkgd.min.js"></script>*@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- AdminLTE App -->
     <script src="~/Admin/dist/js/adminlte.js"></script>
     <!-- AdminLTE for demo purposes -->

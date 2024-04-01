@@ -144,84 +144,47 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
 function validateForm() {
-    debugger
-    var customerName = document.getElementById("CustomerName").value;
-    var paid = document.getElementById("Paid").value;
-    var hotelSelect = document.getElementById("hotelSelect").value;
-    var packageSelect = document.getElementById("packageSelect").value;
-    var AdultNo = document.getElementById("AdultNo").value;
+    var customerName = document.getElementById("CustomerName").value.trim();
+    var paid = document.getElementById("Paid").value.trim();
+    var hotelSelect = document.getElementById("hotelSelect").value.trim();
+    var packageSelect = document.getElementById("packageSelect").value.trim();
+    var AdultNo = document.getElementById("AdultNo").value.trim();
 
-    if (hotelSelect.trim() === "0") {
+    if (hotelSelect === "0") {
         document.getElementById("VhotelSelect").textContent = "يجب تحديد الفندق ";
-
-
-
-    if (paid.trim() === "") {
-        document.getElementById("Vpaid").textContent = "يجب إدخال المبلغ المدفوع ";
-           
-    }
-
-
-        if (customerName.trim() === "") {
-            document.getElementById("VCustomerName").textContent = "يجب تحديد العميل ";
-
-    }
-
-
-    if (packageSelect.trim() === "0") {
-            document.getElementById("VpackageSelect").textContent = "يجب تحديد العرض ";
-
-    }
-
-       
-
-    if (AdultNo.trim() === "") {
-            document.getElementById("VAdultNo").textContent = "يجب إدخال عدد الافراد ";
-
-    }
-
-
         return false;
-    }
-
-    if (hotelSelect.trim() !== "0") {
+    } else {
         document.getElementById("VhotelSelect").textContent = "";
+    }
 
-
-    if (paid.trim() !== "") {
+    if (paid === "") {
+        document.getElementById("Vpaid").textContent = "يجب إدخال المبلغ المدفوع ";
+        return false;
+    } else {
         document.getElementById("Vpaid").textContent = "";
-
     }
 
-
-        if (customerName.trim() !== "") {
-            document.getElementById("VCustomerName").textContent = "";
-
+    if (customerName === "") {
+        document.getElementById("VCustomerName").textContent = "يجب تحديد العميل ";
+        return false;
+    } else {
+        document.getElementById("VCustomerName").textContent = "";
     }
 
-        if (packageSelect.trim() !== "0") {
+    if (packageSelect === "0") {
+        document.getElementById("VpackageSelect").textContent = "يجب تحديد العرض ";
+        return false;
+    } else {
         document.getElementById("VpackageSelect").textContent = "";
-
     }
 
-        if (AdultNo.trim() !== "") {
+    if (AdultNo === "") {
+        document.getElementById("VAdultNo").textContent = "يجب إدخال عدد الافراد ";
+        return false;
+    } else {
         document.getElementById("VAdultNo").textContent = "";
-
     }
 
-   
-
-        return true;
-
-    }
-    
-   
-
-    
-
-
-    
-     
+    return true;
 }
