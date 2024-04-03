@@ -119,12 +119,12 @@ namespace booking.Controllers
                 CustomerId = viewModel.reservation.CustomerId,
                 AdultNo = viewModel.reservation.AdultNo,
                 KidNo = viewModel.reservation.KidNo,
-                ReservationDateTime = DateTime.UtcNow,
+                ReservationDateTime = DateTime.Now,
                 TotalPrice = viewModel.reservation.TotalPrice,
                 Discount = viewModel.reservation.Discount,
                 Paid = viewModel.reservation.Paid,
                 Remain = viewModel.reservation.Remain,
-                LastModify = DateTime.UtcNow,
+                LastModify = DateTime.Now,
                 UserName = loggedInUserName,
                 IsDeleted = false,
                 DeleteReason = ""
@@ -252,7 +252,7 @@ namespace booking.Controllers
                 Discount = viewModel.reservation.Discount,
                 Paid = viewModel.reservation.Paid,
                 Remain = viewModel.reservation.Remain,
-                LastModify = DateTime.UtcNow,
+                LastModify = DateTime.Now,
                 UserName = loggedInUserName,
                 IsDeleted = false,
                 DeleteReason = ""

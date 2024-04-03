@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-7"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -144,29 +144,14 @@
   <data name="lbcancelButtonText" xml:space="preserve">
     <value>إلغاء</value>
   </data>
+  <data name="lbCreate" xml:space="preserve">
+    <value>إضافه عرض</value>
+  </data>
   <data name="lbCurrentPackage" xml:space="preserve">
     <value>العروض</value>
   </data>
   <data name="lbEndDate" xml:space="preserve">
     <value>تاريخ الانتهاء</value>
-  </data>
-  <data name="lbPackageLoction" xml:space="preserve">
-    <value>عنوان الفندق</value>
-  </data>
-  <data name="lbPackageName" xml:space="preserve">
-    <value>أسم العرض</value>
-  </data>
-  <data name="lbKidPrice" xml:space="preserve">
-    <value>سعر الاطفال</value>
-  </data>
-  <data name="lbPackageAction" xml:space="preserve">
-    <value>الاحداث</value>
-  </data>
-  <data name="lbStartDate" xml:space="preserve">
-    <value>تاريخ البدء</value>
-  </data>
-  <data name="lbYesdelete" xml:space="preserve">
-    <value>نعم إمسح </value>
   </data>
   <data name="lbHotelLocation" xml:space="preserve">
     <value>موقع الفندق</value>
@@ -174,7 +159,22 @@
   <data name="lbHotelName" xml:space="preserve">
     <value>الفندق</value>
   </data>
-  <data name="lbCreate" xml:space="preserve">
-    <value>إضافه عرض</value>
+  <data name="lbKidPrice" xml:space="preserve">
+    <value>سعر الاطفال</value>
+  </data>
+  <data name="lbPackageAction" xml:space="preserve">
+    <value>الاحداث</value>
+  </data>
+  <data name="lbPackageLoction" xml:space="preserve">
+    <value>عنوان الفندق</value>
+  </data>
+  <data name="lbPackageName" xml:space="preserve">
+    <value>أسم العرض</value>
+  </data>
+  <data name="lbStartDate" xml:space="preserve">
+    <value>تاريخ البدء</value>
+  </data>
+  <data name="lbYesdelete" xml:space="preserve">
+    <value>نعم إمسح </value>
   </data>
 </root>

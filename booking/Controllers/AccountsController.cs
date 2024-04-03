@@ -39,7 +39,7 @@ namespace booking.Controllers
             _context = context;
         }
 
-        [Authorize(Roles = "superadmin")]
+        [Authorize(Roles = "superadmin, admin")]
         public IActionResult Roles()
         {
             return View(new RoleViweModel
@@ -51,7 +51,7 @@ namespace booking.Controllers
 
         }
         //-------------------------------------------------------------------------- calling Users to Viwe -----------------------------------------------------\\
-        [Authorize(Roles = "superadmin")]
+        [Authorize(Roles = "superadmin, admin")]
         public IActionResult Register()
         {
             var model = new RegisterViweModel

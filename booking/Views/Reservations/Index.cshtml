@@ -4,18 +4,7 @@
     var currentCulture = ViewBag.currentCulture;
     var reservationpag = ViewBag.Reservationpag as Reservation;
 }
-<style>
-    .table-responsive {
-        overflow-x: auto;
-    }
 
-    #tableRole td,
-    #tableRole th {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-</style>
 <div class="wrapper">
     <!--Content-Header-->
     <div class="content-header">
@@ -58,7 +47,7 @@
                                         <th>@Localizer["lbPriceAfterDiscount"]</th>
                                         <th>@Localizer["lbPaid"]</th>
                                         <th>@Localizer["lbRemain"]</th>
-                                        <th></th>
+                                        <th>Action(Print,Edit,Delete)</th>
                                     </tr>
                                 </thead>
                                 <tbody>

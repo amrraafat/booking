@@ -31,12 +31,14 @@
                     <div class="card-header d-flex align-items-center justify-content-start">
                         <h3 class="card-title" style="margin-left:20px">@Localizer["lbRoleUser"]</h3>
                         <div class="card-tools ">
-
+                             @if (User.IsInRole("superadmin"))
+                                            {
                             <!-- Button trigger modal -->
                             <button type="button" style="margin-top:-5px"
                                     class="btn btn-outline-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 @Localizer["lbbtnSaveNewUser"]
                             </button>
+                                            }
                         </div>
                     </div>
                     <!----------------------------------- To ReViwe Users  ---------------------------------------->
@@ -65,20 +67,25 @@
                                         <td>@user.Email</td>
                                         <td><input type="checkbox" disabled checked="@user.ActiveUser" style="width : 35px; height:35px" /></td>
                                         <td>
-                                            <div class="row">
-                                                <div class="col-3">
-                                            <input type="button" class="btn btn-info btn-sm" onclick="Edit('@user.Id','@user.Name','@user.ImageUser','@user.Email','@user.ActiveUser','@user.Role')" value="@Localizer["lbbtnEdit"]" data-bs-toggle="modal" data-bs-target="#EditModal" />
+                                            @if (User.IsInRole("superadmin"))
+                                            {
+                                                <div class="row">
+
+                                                    <div class="col-3">
+                                                        <input type="button" class="btn btn-info btn-sm" onclick="Edit('@user.Id','@user.Name','@user.ImageUser','@user.Email','@user.ActiveUser','@user.Role')" value="@Localizer["lbbtnEdit"]" data-bs-toggle="modal" data-bs-target="#EditModal" />
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <form id="deleteForm-@user.Id" asp-action="DeleteUser" asp-controller="Accounts" method="post">
+                                                            <input type="hidden" name="id" value="@user.Id" />
+                                                            <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete('@user.Id')">@Localizer["lbbtnDelete"]</button>
+                                                        </form>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <input type="button" class="btn btn-danger btn-sm" onclick="ChangePassword('@user.Id')" value="@Localizer["lbbtnChangePassword"]" data-bs-toggle="modal" data-bs-target="#ChangePassword" />
+                                                    </div>
+
                                                 </div>
-                                            <div class="col-3">
-                                            <form id="deleteForm-@user.Id" asp-action="DeleteUser" asp-controller="Accounts" method="post">
-                                                <input type="hidden" name="id" value="@user.Id" />
-                                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete('@user.Id')">@Localizer["lbbtnDelete"]</button>
-                                            </form>
-                                                </div>
-                                            <div class="col-3">
-                                            <input type="button" class="btn btn-danger btn-sm" onclick="ChangePassword('@user.Id')" value="@Localizer["lbbtnChangePassword"]" data-bs-toggle="modal" data-bs-target="#ChangePassword" />
-                                                </div>
-                                        </div>
+                                            }
                                         </td>
                                     </tr>
 

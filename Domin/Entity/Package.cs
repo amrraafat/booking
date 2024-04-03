@@ -18,10 +18,10 @@ namespace Domin.Entity
         public string  PackageName { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resource.ResourceData), ErrorMessageResourceName = "Requiredmessage")]
-        public DateOnly StartDate { get; set; }
+        public DateTime StartDate { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resource.ResourceData), ErrorMessageResourceName = "Requiredmessage")]
-        public DateOnly EndDate { get; set;}
+        public DateTime EndDate { get; set;}
 
         [Required(ErrorMessageResourceType = typeof(Resource.ResourceData), ErrorMessageResourceName = "Requiredmessage")]
         public decimal AdultPrice { get; set; }

@@ -90,7 +90,7 @@
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
                 @{
-                    if (User.Identity.IsAuthenticated && User.IsInRole("superadmin"))
+                    @if (User.Identity.IsAuthenticated && (User.IsInRole("superadmin") || User.IsInRole("admin")))
                     {
                         <!----------------------------------------------- Homepage ----------------------------------------------->
                         <div class="accordion" id="accordionMenu">
@@ -364,6 +364,7 @@
                 </div>
             </div>
 
+
             <!-- /.sidebar -->
         </aside>
         <!--Body -->
@@ -376,14 +377,30 @@
                 </div>
             </div>
         </div>
+
         <!--End Body-->
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->
         </aside>
+
+        <!--  <div class="container">
+            <footer class="py-2 my-2">
+                <ul class="nav justify-content-center border-bottom ">
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+                </ul>
+                <p class="text-center text-muted">&copy; 2024 Company, Inc</p>
+            </footer>
+        </div>          -->
+        
         <!-- /.control-sidebar -->
     </div>
-    
+   
+
     <!-- ./wrapper -->
     <style>
         .custom-card {
@@ -398,6 +415,35 @@
             .custom-card .nav-link p {
                 font-size: 16px; /* Set your desired font size */
             }
+
+
+
+        /* Footer Styles */
+        .main-footer {
+            background-color: #f8f9fa;
+            padding: 30px 0;
+            color: #333;
+        }
+
+            .main-footer h4 {
+                color: #555;
+                margin-bottom: 20px;
+            }
+
+            .main-footer p {
+                margin-bottom: 10px;
+                font-size: 16px;
+                line-height: 1.6;
+            }
+
+            .main-footer a {
+                color: #007bff;
+            }
+
+                .main-footer a:hover {
+                    text-decoration: underline;
+                }
+
     </style>
 
     <script src="~/Admin/plugins/jquery/jquery.min.js"></script>
@@ -410,7 +456,7 @@
     <!-- Bootstrap 4 rtl -->
 
     <script src="~/admin/docs/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <a href="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map">~/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map</a>
+
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="~/Admin/plugins/bootstrap/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
