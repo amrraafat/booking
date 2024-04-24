@@ -167,8 +167,15 @@ namespace booking.Controllers
             {
                 return NotFound();
             }
-            Package packages = (Package)_context.Packages.Where(p => p.HotelId == id);
-            packages.IsDeleted = true;
+
+            List<Package> packages = await _context.Packages
+            .Where(p => p.HotelId == id)
+            .ToListAsync();
+            foreach (var package in packages)
+            {
+                package.IsDeleted = true;
+            }
+           
             hotel.IsDeleted = true;
             _context.Packages.UpdateRange(packages);
             _context.Hotels.Update(hotel);

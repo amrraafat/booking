@@ -66,8 +66,8 @@ namespace booking.Controllers
                 var package = new Package
                 {
                     PackageName = model.Package.PackageName,
-                    StartDate = model.Package.StartDate,
-                    EndDate = model.Package.EndDate,
+                    //StartDate = model.Package.StartDate,
+                    //EndDate = model.Package.EndDate,
                     AdultPrice = model.Package.AdultPrice,
                     KidPrice = model.Package.KidPrice,
                     HotelId = model.Package.HotelId
@@ -120,8 +120,8 @@ namespace booking.Controllers
 
                 // Update the properties of the existing package
                 package.PackageName = model.Package.PackageName;
-                package.StartDate = model.Package.StartDate;
-                package.EndDate = model.Package.EndDate;
+                //package.StartDate = model.Package.StartDate;
+                //package.EndDate = model.Package.EndDate;
                 package.AdultPrice = model.Package.AdultPrice;
                 package.KidPrice = model.Package.KidPrice;
                 package.HotelId = model.Package.HotelId;

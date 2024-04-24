@@ -20,6 +20,8 @@ function packageChange() {
 
     var AdultsCount = $("#AdultNo").val();
     var KidsCount = $("#KidNo").val();
+    var varNumberofextrachairs = $("#Numberofextrachairs").val();
+    var varAmountofextrachairs = $("#Amountofextrachairs").val();
 
     var packageId = $('#packageSelect').val();
     if (packageId > 0) {
@@ -31,8 +33,8 @@ function packageChange() {
                 //debugger
                 $('#AdultPrice').val(data.adultPrice)
                 $('#KidPrice').val(data.kidPrice)
-                $('#TotalPrice').val(data.adultPrice * AdultsCount + data.kidPrice * KidsCount)
-                $('#TotalPriceHidden').val(data.adultPrice * AdultsCount + data.kidPrice * KidsCount)
+                $('#TotalPrice').val(data.adultPrice * AdultsCount + data.kidPrice * KidsCount + varAmountofextrachairs * varNumberofextrachairs)
+                $('#TotalPriceHidden').val(data.adultPrice * AdultsCount + data.kidPrice * KidsCount + varAmountofextrachairs * varNumberofextrachairs)
                 caluclateDiscount();
             },
             error: function (xhr, status, error) {
@@ -45,6 +47,7 @@ function caluclateDiscount() {
     //debugger
     var discount = $('#Discount').val();
     var totalPrice = $('#TotalPrice').val();
+    var totalChairsPrice = $("totalAmountHidden").val();
     if (totalPrice - discount < 0) {
         $('#Discount').val(0);
         alert("discount must be less than total price");
@@ -55,18 +58,31 @@ function caluclateDiscount() {
 }
 
 function changeCounts() {
-    //debugger
+    //debugger;
     var AdultsCount = $("#AdultNo").val();
     var KidsCount = $("#KidNo").val();
-    var adultPrice = $('#AdultPrice').val()
-    var kidPrice = $('#KidPrice').val()
+    var adultPrice = $('#AdultPrice').val();
+    var kidPrice = $('#KidPrice').val();
     var discount = $('#Discount').val();
-    var totalPrice = adultPrice * AdultsCount + kidPrice * KidsCount;
-    $('#TotalPrice').val(totalPrice - discount)
-    $('#TotalPriceHidden').val(totalPrice - discount)
+    var chairprice = $('#totalAmount').val();
+    
+    // Calculate total price including chair price
+    var totalPrice = (adultPrice * AdultsCount) + (kidPrice * KidsCount) + (chairprice);
+    
+    // Subtract discount from total price
+    var discountedTotalPrice = totalPrice - parseFloat(discount);
+    
+    // Set the total price to the input fields
+    $('#TotalPrice').val(discountedTotalPrice);
+    $('#TotalPriceHidden').val(discountedTotalPrice);
+    
+    // Recalculate discount and paid amount
     caluclateDiscount();
     changePaid();
 }
+
+
+
 
 function changePaid() {
     var priceAfterDiscount = $('#priceAfterDiscount').val();
@@ -134,7 +150,7 @@ function printReservation(id) {
 document.addEventListener("DOMContentLoaded", function () {
     
     packageChange();
-
+    changechairsCounts();
 
 });
 
@@ -188,3 +204,16 @@ function validateForm() {
 
     return true;
 }
+
+
+
+    function changechairsCounts() {
+        var numberOfExtraChairs = parseInt(document.getElementById("Numberofextrachairs").value);
+    var amountOfExtraChairs = parseInt(document.getElementById("Amountofextrachairs").value);
+
+    var totalAmount = numberOfExtraChairs * amountOfExtraChairs;
+
+
+        document.getElementById("totalAmount").innerText = totalAmount;
+        document.getElementById("totalAmount").value = totalAmount;
+    }

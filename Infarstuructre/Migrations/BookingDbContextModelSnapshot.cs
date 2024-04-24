@@ -17,7 +17,7 @@ namespace Infarstuructre.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.2")
+                .HasAnnotation("ProductVersion", "7.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -32,11 +32,13 @@ namespace Infarstuructre.Migrations
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("CustomerName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
 
                     b.Property<byte>("Gender")
                         .HasColumnType("tinyint");
@@ -73,13 +75,18 @@ namespace Infarstuructre.Migrations
 
                     b.Property<string>("HotelLocation")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("HotelNameFL")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("HotelNameSL")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<byte>("HotelRate")
                         .HasColumnType("tinyint");
@@ -103,9 +110,6 @@ namespace Infarstuructre.Migrations
                     b.Property<decimal>("AdultPrice")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<DateOnly>("EndDate")
-                        .HasColumnType("date");
-
                     b.Property<int>("HotelId")
                         .HasColumnType("int");
 
@@ -117,10 +121,8 @@ namespace Infarstuructre.Migrations
 
                     b.Property<string>("PackageName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateOnly>("StartDate")
-                        .HasColumnType("date");
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
 
                     b.HasKey("PackageId");
 
@@ -138,17 +140,25 @@ namespace Infarstuructre.Migrations
                     b.Property<int>("AdultNo")
                         .HasColumnType("int");
 
+                    b.Property<int>("Amountofextrachairs")
+                        .HasColumnType("int");
+
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<string>("DeleteReason")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Discount")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("EmployeeId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("HotelId")
                         .HasColumnType("int");
@@ -162,6 +172,9 @@ namespace Infarstuructre.Migrations
                     b.Property<DateTime?>("LastModify")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("Numberofextrachairs")
+                        .HasColumnType("int");
+
                     b.Property<int>("PackageId")
                         .HasColumnType("int");
 
@@ -172,12 +185,21 @@ namespace Infarstuructre.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime?>("ReservationDateTime")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Residencylevel")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("UserName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ReservationId");

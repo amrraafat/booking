@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Infarstuructre.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class Aaaa : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -59,11 +59,13 @@ namespace Infarstuructre.Migrations
                 {
                     CustomerId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CustomerName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CustomerName = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
                     Gender = table.Column<byte>(type: "tinyint", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NationalId = table.Column<int>(type: "int", nullable: false),
-                    NationalIdImage = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
+                    Address = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    NationalId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NationalIdImage = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    MobileNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -76,11 +78,12 @@ namespace Infarstuructre.Migrations
                 {
                     HotelId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    HotelNameFL = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    HotelNameSL = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HotelNameFL = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    HotelNameSL = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     HotelRate = table.Column<byte>(type: "tinyint", nullable: false),
                     HotelImage = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
-                    HotelLocation = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    HotelLocation = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -93,12 +96,11 @@ namespace Infarstuructre.Migrations
                 {
                     PackageId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PackageName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    StartDate = table.Column<DateOnly>(type: "date", nullable: false),
-                    EndDate = table.Column<DateOnly>(type: "date", nullable: false),
+                    PackageName = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
                     AdultPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     KidPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    HotelId = table.Column<int>(type: "int", nullable: false)
+                    HotelId = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -112,18 +114,21 @@ namespace Infarstuructre.Migrations
                     ReservationId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     EmployeeId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Residencylevel = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Numberofextrachairs = table.Column<int>(type: "int", nullable: false),
+                    Amountofextrachairs = table.Column<int>(type: "int", nullable: false),
                     HotelId = table.Column<int>(type: "int", nullable: false),
                     PackageId = table.Column<int>(type: "int", nullable: false),
                     CustomerId = table.Column<int>(type: "int", nullable: false),
                     AdultNo = table.Column<int>(type: "int", nullable: false),
                     KidNo = table.Column<int>(type: "int", nullable: false),
-                    ReservationDateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ReservationDateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TotalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Discount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Paid = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Remain = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     LastModify = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     DeleteReason = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },

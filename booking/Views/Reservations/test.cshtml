@@ -36,50 +36,72 @@
     <div class="a4-container" id="print-content">
         <div class="header">
             <div class="company-info">
-                <p> شركه الهضبه تورز</p>
+                <p> الهضبه للتسويق السياحى</p>
+                <p>Elhadaba for tourism marketing</p>
                 <p>شرم الشيخ - الغردقة - العين السخنة الساحل الشمالي</p>
             </div>
             <div class="logo">
                 <img src="~/Images/Logo/WhatsApp Image 2024-03-15 at 2.19.04 AM.jpeg" alt="Logo" class="reportImage">
             </div>
         </div>
-       
 
-        <div class="row g-3 align-items-center">
-            <div class="col-2">
-                <label  for="" class=" col-form-label" >تاريخ الحجز  :</label>
-            </div>
-            <div class="col-2">
-                <input value="@Model.ReservationDateTime" type="text" id="" class="form-control" disabled="disabled">
+        <div class="container">
+            <div class="row g-3">
+                <div class="col">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-4">
+                            <label for="" class="col-form-label">تاريخ الحجز</label>
+                        </div>
+                        <div class="col">
+                            <input value="@Model.ReservationDateTime.ToString("yyyy-MM-dd")" type="text" id="" class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="row g-3 align-items-center">
+                        <div class="col-4">
+                            <label for="" class="col-form-label">تاريخ بدء الرحلة</label>
+                        </div>
+                        <div class="col">
+                            <input value="@Model.StartDate.ToString("yyyy-MM-dd")" type="text" id="" class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="row g-3 align-items-center">
+                        <div class="col-4">
+                            <label for="" class="col-form-label">تاريخ انتهاء الرحلة</label>
+                        </div>
+                        <div class="col">
+                            <input value="@Model.EndDate.ToString("yyyy-MM-dd")" type="text" id="" class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-4">
+                            <label for="" class="col-form-label">الفندق</label>
+                        </div>
+                        <div class="col">
+                            <input type="text" value="@Model.HotelName" id="" class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="row g-3 align-items-center">
+                        <div class="col-4">
+                            <label for="" class="col-form-label">العرض</label>
+                        </div>
+                        <div class="col">
+                            <input type="text" value="@Model.PackageName" id="" class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="row g-3 align-items-center">
+                        <div class="col-4">
+                            <label for="" class="col-form-label">درجة الإقامة</label>
+                        </div>
+                        <div class="col">
+                            <input type="text" value="@Model.Residencylevel" class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row g-3 align-items-center">
-            <div class="col-2">
-                <label for="" class="col-form-label">تاريخ الرحله :</label>
-            </div>
-            <div class="col-2">
-                <input value="@Model.StartDate"  type="text" id="" class="form-control" disabled="disabled">
-            </div>
-        </div>
 
-
-
-        <div class="row g-3 align-items-center padding">
-            <div class="col-3">
-                <label for="" class="col-form-label">الفندق :</label>
-            </div>
-            <div class="col-3">
-                <input type="text" value="@Model.HotelName" id="" class="form-control" disabled="disabled">
-            </div>
-        </div>
-        <div class="row g-3 align-items-center padding">
-            <div class="col-3">
-                <label for="" class="col-form-label">الاقامه :</label>
-            </div>
-            <div class="col-3">
-                <input type="text" value="@Model.PackageName" id="" class="form-control" disabled="disabled">
-            </div>
-        </div>
         <div>
         <table class="table table-bordered   text-center mt-3">
             <thead>
@@ -115,15 +137,17 @@
             <thead>
                 <tr class="table-active">
                     <th> <p>مكان الرحله</p></th>
-                    <th> <p>عدد الايام</p></th>
-                        <th> <p>ارقام الكراسى</p></th>
+                    <th> <p>عدد الكراسي</p></th>
+                    <th> <p>اجمالي سعر الكراسي</p></th>
                     <th> <p>قيمه الخصم</p></th>
                 </tr>
             </thead>
                 <tr>
                 <td>@Model.HotelLocation</td>
-                    <td><span  id="customerName"></span></td>
-                    <td><span  id="customerName"></span></td>
+                    <td>@Model.Numberofextrachairs</td>
+                    <input type="text" value="@Model.Numberofextrachairs" id="Numberofextrachairs" class="form-control" hidden="hidden">
+                    <td><span id="totalAmount"></span></td>
+                    <input type="text" value="@Model.Amountofextrachairs" id="Amountofextrachairs" class="form-control" hidden="hidden">
                     <td>@Model.Discount</td>
                 </tr>
 
@@ -178,7 +202,20 @@
     <script>
         window.onload = printContent();
         function printContent() {
+            changechairsCounts();
             window.print();
+            
+        }
+        
+        function changechairsCounts() {
+            var numberOfExtraChairs = parseInt(document.getElementById("Numberofextrachairs").value);
+            var amountOfExtraChairs = parseInt(document.getElementById("Amountofextrachairs").value);
+
+            var totalAmount = numberOfExtraChairs * amountOfExtraChairs;
+
+
+            document.getElementById("totalAmount").innerText = totalAmount;
+            document.getElementById("totalAmount").value = totalAmount;
         }
     </script>
     <script src="script.js"></script> <!-- Assuming you have a separate JavaScript file -->

@@ -83,7 +83,7 @@
                                                         </form>
                                                     </div>
                                                     <div class="col-6">
-                                                    <button type="button" class="btn btn-info btn-sm btn-block" onclick="displayReservationDetails('@reservation.customer.CustomerName', '@reservation.hotel.HotelNameFL' , '@reservation.package.PackageName' , '@reservation.reservation.ReservationDateTime' , '@reservation.reservation.AdultNo' , '@reservation.reservation.KidNo' , '@reservation.reservation.TotalPrice' , '@reservation.reservation.Discount' , '@(reservation.reservation.TotalPrice - reservation.reservation.Discount)' , '@reservation.reservation.Paid' , '@reservation.reservation.Remain')">
+                                                        <button type="button" class="btn btn-info btn-sm btn-block" onclick="displayReservationDetails('@reservation.customer.CustomerName', '@reservation.hotel.HotelNameFL' , '@reservation.package.PackageName' , '@reservation.reservation.ReservationDateTime' , '@reservation.reservation.AdultNo' , '@reservation.reservation.KidNo' , '@reservation.reservation.TotalPrice' , '@reservation.reservation.Discount' , '@(reservation.reservation.TotalPrice - reservation.reservation.Discount)' , '@reservation.reservation.Paid' , '@reservation.reservation.Remain' , '@reservation.reservation.Residencylevel' , '@reservation.reservation.Numberofextrachairs' , '@reservation.reservation.Amountofextrachairs' , '@reservation.reservation.StartDate', '@reservation.reservation.EndDate')">
                                                         @Localizer["lbInfo"]
                                                     </button>
 
@@ -141,6 +141,18 @@
                                 <td><span id="kidsCount"></span></td>
                             </tr>
                             <tr>
+                                <th scope="row">@Localizer["lbResidencylevel"]</th>
+                                <td><span id="Residencylevel"></span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">@Localizer["lbNumberofextrachairs"]</th>
+                                <td><span id="Numberofextrachairs"></span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">@Localizer["lbAmountofextrachairs"]</th>
+                                <td><span id="Amountofextrachairs"></span></td>
+                            </tr>
+                            <tr>
                                 <th scope="row">@Localizer["lbTotalPrice"]</th>
                                 <td><span id="totalPrice"></span></td>
                             </tr>
@@ -160,6 +172,16 @@
                                 <th scope="row">@Localizer["lbRemain"]</th>
                                 <td><span id="remain"></span></td>
                             </tr>
+                            <<tr>
+                                <th scope="row">@Localizer["lbStartDate"]</th>
+                                <td><span id="StartDate"></span></td>
+                                
+                            </tr>
+                            <tr>
+                                <th scope="row">@Localizer["lbEndDate"]</th>
+                                <td><span id="EndDate"></span></td>
+                            </tr>
+                          
                         </tbody>
                     </table>
                 </div>
@@ -250,7 +272,7 @@
 
 
     <script>
-        function displayReservationDetails(customerName, hotelName, packageName, reservationDate, adultsCount, kidsCount, totalPrice, discountAmount, priceAfterDiscount, paid, remain) {
+        function displayReservationDetails(customerName, hotelName, packageName, reservationDate, adultsCount, kidsCount, totalPrice, discountAmount, priceAfterDiscount, paid, remain, Residencylevel, Numberofextrachairs, Amountofextrachairs, StartDate, EndDate) {
             // Set the values in the modal form
             document.getElementById("customerName").textContent = customerName;
             document.getElementById("hotelName").textContent = hotelName;
@@ -263,6 +285,11 @@
             document.getElementById("priceAfterDiscount").textContent = priceAfterDiscount;
             document.getElementById("paid").textContent = paid;
             document.getElementById("remain").textContent = remain;
+            document.getElementById("Residencylevel").textContent = Residencylevel;
+            document.getElementById("Numberofextrachairs").textContent = Numberofextrachairs;
+            document.getElementById("Amountofextrachairs").textContent = Amountofextrachairs;
+            document.getElementById("StartDate").textContent = StartDate;
+            document.getElementById("EndDate").textContent = EndDate;
             // Show the modal
             $('#reservationModal').modal('show');
         }

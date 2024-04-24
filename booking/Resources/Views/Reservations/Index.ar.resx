@@ -120,6 +120,9 @@
   <data name="lbAdultsCount" xml:space="preserve">
     <value>عدد البالغين</value>
   </data>
+  <data name="lbAmountofextrachairs" xml:space="preserve">
+    <value>سعر الكرسي</value>
+  </data>
   <data name="lbAreyousure" xml:space="preserve">
     <value>هل انت متاكد ؟</value>
   </data>
@@ -150,6 +153,9 @@
   <data name="lbDiscount" xml:space="preserve">
     <value>قيمه الخصم</value>
   </data>
+  <data name="lbEndDate" xml:space="preserve">
+    <value>تاريخ الانتهاء</value>
+  </data>
   <data name="lbHomePage" xml:space="preserve">
     <value>الصفحة الرئيسيه</value>
   </data>
@@ -167,6 +173,9 @@
   </data>
   <data name="lbNeedEnterReason" xml:space="preserve">
     <value>يجب ان تدخل سبب الحذف</value>
+  </data>
+  <data name="lbNumberofextrachairs" xml:space="preserve">
+    <value>عدد الكراسي الإضافية</value>
   </data>
   <data name="lbPackageName" xml:space="preserve">
     <value>العرض</value>
@@ -188,6 +197,12 @@
   </data>
   <data name="lbReservations" xml:space="preserve">
     <value>الحجوزات</value>
+  </data>
+  <data name="lbResidencylevel" xml:space="preserve">
+    <value>مستوى الإقامة</value>
+  </data>
+  <data name="lbStartDate" xml:space="preserve">
+    <value>تاريخ البدء</value>
   </data>
   <data name="lbTotalPrice" xml:space="preserve">
     <value>الاجمالى</value>

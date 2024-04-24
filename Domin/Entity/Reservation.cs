@@ -16,6 +16,15 @@ namespace Domin.Entity
         public string? EmployeeId { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resource.ResourceData), ErrorMessageResourceName = "Requiredmessage")]
+        public string? Residencylevel { get; set; }
+
+        [Required(ErrorMessageResourceType = typeof(Resource.ResourceData), ErrorMessageResourceName = "Requiredmessage")]
+        public int Numberofextrachairs { get; set; }
+
+        [Required(ErrorMessageResourceType = typeof(Resource.ResourceData), ErrorMessageResourceName = "Requiredmessage")]
+        public int Amountofextrachairs { get; set; }
+
+        [Required(ErrorMessageResourceType = typeof(Resource.ResourceData), ErrorMessageResourceName = "Requiredmessage")]
         public int HotelId { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resource.ResourceData), ErrorMessageResourceName = "Requiredmessage")]
@@ -51,5 +60,12 @@ namespace Domin.Entity
 
         [Required(ErrorMessageResourceType = typeof(Resource.ResourceData), ErrorMessageResourceName = "Requiredmessage")]
         public string? DeleteReason { get; set; }
+
+        [Required(ErrorMessageResourceType = typeof(Resource.ResourceData), ErrorMessageResourceName = "Requiredmessage")]
+        public DateTime StartDate { get; set; }
+
+        [Required(ErrorMessageResourceType = typeof(Resource.ResourceData), ErrorMessageResourceName = "Requiredmessage")]
+        public DateTime EndDate { get; set; }
+
     }
 }

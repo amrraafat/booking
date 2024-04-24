@@ -119,6 +119,11 @@ namespace booking.Controllers
                 CustomerId = viewModel.reservation.CustomerId,
                 AdultNo = viewModel.reservation.AdultNo,
                 KidNo = viewModel.reservation.KidNo,
+                StartDate = viewModel.reservation.StartDate,
+                EndDate = viewModel.reservation.EndDate,
+                Residencylevel = viewModel.reservation.Residencylevel,
+                Numberofextrachairs = viewModel.reservation.Numberofextrachairs,
+                Amountofextrachairs = viewModel.reservation.Amountofextrachairs,
                 ReservationDateTime = DateTime.Now,
                 TotalPrice = viewModel.reservation.TotalPrice,
                 Discount = viewModel.reservation.Discount,
@@ -243,10 +248,15 @@ namespace booking.Controllers
                 ReservationId = viewModel.reservation.ReservationId,
                 EmployeeId = viewModel.reservation.EmployeeId,
                 HotelId = viewModel.reservation.HotelId,
+                StartDate = viewModel.reservation.StartDate,
+                EndDate = viewModel.reservation.EndDate,
                 PackageId = viewModel.reservation.PackageId,
                 CustomerId = viewModel.reservation.CustomerId,
                 AdultNo = viewModel.reservation.AdultNo,
                 KidNo = viewModel.reservation.KidNo,
+                 Residencylevel = viewModel.reservation.Residencylevel,
+                Numberofextrachairs = viewModel.reservation.Numberofextrachairs,
+                Amountofextrachairs = viewModel.reservation.Amountofextrachairs,
                 ReservationDateTime = viewModel.reservation.ReservationDateTime,
                 TotalPrice = viewModel.reservation.TotalPrice,
                 Discount = viewModel.reservation.Discount,
@@ -311,6 +321,10 @@ namespace booking.Controllers
                             reader.Read();
                             model.ReservationDateTime = reader.GetDateTime(reader.GetOrdinal("ReservationDateTime"));
                             model.StartDate = reader.GetDateTime(reader.GetOrdinal("StartDate"));
+                            model.EndDate = reader.GetDateTime(reader.GetOrdinal("EndDate"));
+                            model.Residencylevel = reader.GetString(reader.GetOrdinal("Residencylevel"));
+                            model.Amountofextrachairs = reader.GetInt32(reader.GetOrdinal("Amountofextrachairs"));
+                            model.Numberofextrachairs = reader.GetInt32(reader.GetOrdinal("Numberofextrachairs"));
                             model.HotelName = reader.GetString(reader.GetOrdinal("HotelName"));
                             model.PackageName = reader.GetString(reader.GetOrdinal("PackageName"));
                             model.CustomerName = reader.GetString(reader.GetOrdinal("CustomerName"));

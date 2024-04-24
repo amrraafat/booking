@@ -123,6 +123,9 @@
   <data name="lbAdultsCount" xml:space="preserve">
     <value>Adults Count</value>
   </data>
+  <data name="lbAmountofextrachairs" xml:space="preserve">
+    <value>Chair price</value>
+  </data>
   <data name="lbbtnAction" xml:space="preserve">
     <value>Action</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="lbDiscount" xml:space="preserve">
     <value>Discount</value>
+  </data>
+  <data name="lbEndDate" xml:space="preserve">
+    <value>End Date</value>
   </data>
   <data name="lbFemale" xml:space="preserve">
     <value>Male</value>
@@ -171,6 +177,9 @@
   <data name="lbNationalId" xml:space="preserve">
     <value>National ID</value>
   </data>
+  <data name="lbNumberofextrachairs" xml:space="preserve">
+    <value>Number of extra chairs</value>
+  </data>
   <data name="lbPackage" xml:space="preserve">
     <value>Package</value>
   </data>
@@ -183,6 +192,9 @@
   <data name="lbRemain" xml:space="preserve">
     <value>Remain</value>
   </data>
+  <data name="lbResidencylevel" xml:space="preserve">
+    <value>Residency level</value>
+  </data>
   <data name="lbSave" xml:space="preserve">
     <value>Save</value>
   </data>
@@ -191,6 +203,9 @@
   </data>
   <data name="lbSelectPackage" xml:space="preserve">
     <value>Select Package</value>
+  </data>
+  <data name="lbStartDate" xml:space="preserve">
+    <value>Start Date</value>
   </data>
   <data name="lbTotalPrice" xml:space="preserve">
     <value>Total Price</value>

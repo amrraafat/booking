@@ -12,8 +12,8 @@
         margin: 0px;
     }
 </style>
-<input type="hidden" id="AdultPrice" />
-<input type="hidden" id="KidPrice" />
+<input type="hidden" id="AdultPrice"/>
+<input type="hidden" id="KidPrice"/>
 <form asp-action="Create" onsubmit="return validateForm()">
     <div class="form-group">
         <label asp-for="@Model.reservation.HotelId">@Localizer["lbHotel"]</label>
@@ -89,6 +89,31 @@
         <label asp-for="@Model.reservation.KidNo">@Localizer["lbKidsCount"]</label>
         <input type="number" id="KidNo" asp-for="@Model.reservation.KidNo " class="form-control" value="0" onchange="changeCounts()" />
     </div>
+     <div class="form-group">
+        <label asp-for="@Model.reservation.Residencylevel">@Localizer["lbResidencylevel"]</label>
+        <input type="text" id="Residencylevel" asp-for="@Model.reservation.Residencylevel " class="form-control" value=" الإقامة"  />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.reservation.StartDate">@Localizer["lbStartDate"]</label>
+        <input asp-for="@Model.reservation.StartDate" class="form-control" type="date" />
+        <span asp-validation-for="@Model.reservation.StartDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.reservation.EndDate">@Localizer["lbEndDate"]</label>
+        <input asp-for="@Model.reservation.EndDate" class="form-control" type="date" />
+        <span asp-validation-for="@Model.reservation.EndDate" class="text-danger"></span>
+    </div>
+     <div class="form-group">
+        <label asp-for="@Model.reservation.Numberofextrachairs">@Localizer["lbNumberofextrachairs"]</label>
+        <input type="number" id="Numberofextrachairs" asp-for="@Model.reservation.Numberofextrachairs " class="form-control" value="0" onchange="changechairsCounts()" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.reservation.Amountofextrachairs">@Localizer["lbAmountofextrachairs"] </label>
+        <input type="number" id="Amountofextrachairs" asp-for="@Model.reservation.Amountofextrachairs " class="form-control" value="0" onchange="changechairsCounts(); changeCounts()" />
+        <span>Total Amount: <span  id="totalAmount" ></span></span>
+        <input  type="hidden" id="totalAmount"  class="form-control "  />
+    </div>
     <div class="form-group">
         <label asp-for="@Model.reservation.TotalPrice">@Localizer["lbTotalPrice"]</label>
         <input type="number" id="TotalPrice" asp-for="@Model.reservation.TotalPrice " class="form-control " disabled="disabled" />
@@ -111,7 +136,6 @@
         <label asp-for="@Model.reservation.Remain">@Localizer["lbRemain"]</label>
         <input type="number" asp-for="@Model.reservation.Remain" id="Remain" class="form-control" disabled="disabled"/>
         <input type="hidden" asp-for="@Model.reservation.Remain" id="RemainHidden" />
-
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary">@Localizer["lbSave"]</button>
@@ -188,18 +212,19 @@
                         <input type="text" class="form-control" asp-for="@Model.customer.CustomerName" id="CustomerName" />
                         <span asp-validation-for="@Model.customer.CustomerName" class="text-danger"></span>
                     </div>
+
                     <div class="form-group">
                         <label asp-for="@Model.customer.Address" class="control-lable">@Localizer["lbAddress"]</label>
                         <input asp-for="@Model.customer.Address" class="form-control"  id="Address" />
                         <span asp-validation-for="@Model.customer.Address" class="text-danger"></span>
                     </div>
 
-
                     <div class="form-group">
                         <label asp-for="@Model.customer.NationalId" class="control-lable">@Localizer["lbNationalId"]</label>
                         <input asp-for="@Model.customer.NationalId" class="form-control" id="NationalId" />
                         <span asp-validation-for="@Model.customer.NationalId" class="text-danger"></span>
                     </div>
+
                     <div class="form-group">
                         <label asp-for="customer.MobileNumber" class="control-lable">@Localizer["lbMobileNumber"]</label>
                         <input asp-for="customer.MobileNumber" class="form-control" asp-for="customer.MobileNumber" id="MobileNumber" />
@@ -214,15 +239,18 @@
                         </select>
                         <span asp-validation-for="@Model.customer.Gender" class="text-danger"></span>
                     </div>
+
                     <div class="form-group">
                         <label>@Localizer["lbNationalIdImage"]</label>
                         <input type="file" name="file" class="form-control-file" />
                         <span class="text-danger"></span>
                     </div>
+
                     <div class="modal-footer-rtl" style="padding:0 15px 15px 0">
                         <input type="submit" class="btn btn-info " value="@Localizer["lbbtnSave"]" />
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
+
                 </form>
             </div>
 
@@ -235,6 +263,9 @@
 
 @section Script
 {
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+      }
     @if (!string.IsNullOrEmpty(Context.Session.GetString("msgType")))
     {
         if (Context.Session.GetString("msgType") == "success")

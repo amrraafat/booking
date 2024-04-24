@@ -72,6 +72,31 @@
         <input type="number" id="KidNo" asp-for="@Model.reservation.KidNo " class="form-control" onchange="changeCounts()" />
     </div>
     <div class="form-group">
+        <label asp-for="@Model.reservation.StartDate">@Localizer["lbStartDate"]</label>
+        <input asp-for="@Model.reservation.StartDate" class="form-control" type="date" />
+        <span asp-validation-for="@Model.reservation.StartDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.reservation.EndDate">@Localizer["lbEndDate"]</label>
+        <input asp-for="@Model.reservation.EndDate" class="form-control" type="date"/>
+        <span asp-validation-for="@Model.reservation.EndDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.reservation.Residencylevel">@Localizer["lbResidencylevel"]</label>
+        <input type="text" id="Residencylevel" asp-for="@Model.reservation.Residencylevel " class="form-control" onchange="changeCounts()" />
+    </div>
+   
+    <div class="form-group">
+        <label asp-for="@Model.reservation.Numberofextrachairs">@Localizer["lbNumberofextrachairs"]</label>
+        <input type="number" id="Numberofextrachairs" asp-for="@Model.reservation.Numberofextrachairs " class="form-control"  onchange="changechairsCounts()" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.reservation.Amountofextrachairs">@Localizer["lbAmountofextrachairs"] </label>
+        <input type="number" id="Amountofextrachairs" asp-for="@Model.reservation.Amountofextrachairs " class="form-control" onchange="changechairsCounts(); changeCounts()" />
+        <span>Total Amount: <span id="totalAmount"></span></span>
+        <input type="hidden" id="totalAmountHidden" class="form-control " />
+    </div>
+    <div class="form-group">
         <label asp-for="@Model.reservation.TotalPrice">@Localizer["lbTotalPrice"]</label>
         <input type="number" id="TotalPrice" asp-for="@Model.reservation.TotalPrice " class="form-control " disabled="disabled" />
         <input type="hidden" asp-for="@Model.reservation.TotalPrice" id="TotalPriceHidden" />
@@ -150,6 +175,7 @@
         </div>
     </div>
 </div>
+
 <script src="~/js/reservation.js"></script>
 <script>
     window.onload = function () {
@@ -158,6 +184,7 @@
         document.getElementById('TotalPrice').value = @(Math.Floor(Model.reservation.TotalPrice));
         document.getElementById('RemainHidden').value = @(Math.Floor(Model.reservation.Discount));
         document.getElementById('Remain').value = @(Math.Floor(Model.reservation.Discount));
+        document.getElementById('totalAmountHidden').value = document.getElementById('Amountofextrachairs').value * document.getElementById('Numberofextrachairs').value
 
     };
 </script>
